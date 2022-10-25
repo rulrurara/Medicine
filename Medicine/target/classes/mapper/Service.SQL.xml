@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="service">
+	<insert id="insertServiceQna" parameterType="hashmap">
+   		INSERT INTO Q(Q_NUM , MEM_NUM, TITLE, CON)
+		VALUES(Q_SEQ.NEXTVAL , #{memNum} , #{title} , #{con})
+	</insert>
+	<select id="selectServiceQna" parameterType="hashmap" resultType="hashmap">
+		SELECT NM,PHONE,EMAIL 
+        FROM MEM
+        WHERE MEM_NUM=#{memnum}
+	</select>
+	<select id="selectFaqList" parameterType="hashmap" resultType="hashmap">
+       SELECT FAQ_NUM, GBN_NM, TITLE, CON
+        FROM(
+        SELECT FAQ_NUM, GBN_NM, TITLE, CON,
+        ROW_NUMBER ()OVER(ORDER BY F.FAQ_NUM DESC) AS RNUM
+        FROM FAQ F INNER JOIN FAQ_GBN G
+        ON F.GBN_NUM = G.GBN_NUM
+        WHERE DEL_D IS NULL
+        ORDER BY GBN_NM) T
+        WHERE T.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="getServiceCnt" parameterType = "hashmap" resultType="Integer">
+        SELECT COUNT(*) AS CNT 
+		FROM FAQ 
+		WHERE DEL_D IS NULL
+	</select>
+
+</mapper>

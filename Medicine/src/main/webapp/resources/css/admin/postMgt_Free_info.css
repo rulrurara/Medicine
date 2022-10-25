@@ -1,0 +1,73 @@
+@charset "UTF-8";
+#bottom {
+   	padding-top: 2.9%; /* 1:1 화면비율 */
+	display:inline-block;
+	vertical-align: top;
+}
+
+textarea {
+	width: 95%; 
+	height: 60%;
+	border: 0px;
+	line-height: 20px;
+}
+.title{
+	vertical-align: middle;
+	text-align: left;
+    padding: 16px;
+    height: 24px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 17px;
+    line-height: 21px;
+    color:black;
+    font-weight: 600;
+    margin-left: 10%;
+    background-color: white;
+}
+.title:hover{
+	cursor: pointer;
+}
+.writerwrap{
+	display: flex;
+    box-sizing: border-box;
+    width: 90%;
+    height: 55px;
+    border-bottom: 1px solid #c8c8c8;
+    align-items: center;
+    justify-content: center;
+    padding : 0 30;
+    margin-left: 10%;
+	background-color: white;
+}
+.writer{
+	font-family: "Nanum-SquareR";
+	width: 80%;
+    text-align: right;
+    font-size:13px;
+    color: #929292;
+}
+.date{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:2;
+	color: #929292;
+	text-align: right;
+}
+.hit{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:1;
+	color: #929292;
+	text-align: right;
+	margin-right:30px;
+}
+.content{
+	font-family: "Nanum-SquareR";
+	font-size:15px;
+	border-bottom: 2px solid #000;
+	height: 400px;
+	text-indent:30px;
+	padding-top:20px;
+	margin-left: 10%;
+	background-color: white;
+}

@@ -1,0 +1,110 @@
+@charset "UTF-8";
+body {
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    background: url(../../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+/* 네비게이션 바*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-family: "Nanum-Square";
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -8.6%;
+    margin-bottom: 10px;
+}
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:10%;
+    font-family: "Nanum-Square";
+}
+/*여기서부터 메인*/
+.main_border {
+	display: block;
+    width: 70%;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: white;
+    opacity: 0.9;
+    /*그림자 테스트*/
+     box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+}
+.table_border {
+	display: block;
+	width:100%;
+	height:500px;
+	margin:0 auto;
+}
+td {
+	font-size: 20px;
+	font-family: "Nanum-Square";
+}
+tr {
+	margin-top: 20px;
+}
+.th {
+	text-align: center;
+}
+.answerTitle {
+	width: 1000px;
+	height: 40px;
+	border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid #D5D5D5;
+    font-size: 20px;
+    font-family: "Nanum-Square";
+}
+.answerCon, .answerCon2 {
+	font-size: 20px;
+    font-family: "Nanum-Square";
+    resize: none;
+}
+.answerTitle:focus, .answerCon:focus , .answerCon2:focus{
+	outline: none;
+}
+.bottom_border {
+	display: inline-block;
+    width: 1200px;
+    height: 40px;
+    margin-left: 85px;
+    float: left;
+}
+.bottom_border input[type="button"] {
+	width: 64px;
+	height: 37px;
+	margin-left: 20px;
+}
+.updateBtn,.deleteBtn,.cancelBtn {
+    border : 0px;
+    cursor: pointer;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size: 15px;
+}
+.deleteBtn,.cancelBtn {
+	float: right;
+}

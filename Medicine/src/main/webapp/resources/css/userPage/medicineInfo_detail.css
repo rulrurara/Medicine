@@ -1,0 +1,598 @@
+@charset "UTF-8";
+@font-face{
+   font-family: "Nanum-Square";
+   font-size:"normal";
+   src: url("../../font/NanumSquare_acEB.ttf");
+}
+body{
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    /*background: url(../images/userPage/medicineDetail.png) no-repeat;*/
+   background: url(../../images/userPage/medicine3.jpg);
+    background-size: cover;
+}
+body::-webkit-scrollbar { 
+    display: none; 
+}
+.menu{
+    display: inline-block;
+    width: 54px;
+    height: 50px;
+    margin: 25px 20px 0px 25px;
+    cursor: pointer;
+    background: url(../../images/common/menu_bar.png) no-repeat;
+    background-position: 0 0;
+}
+.logo {
+	vertical-align: top;
+    cursor: pointer;
+    margin:28px 0px 0px 0px;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url(../../images/common/logo.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+}
+.logo2{
+	vertical-align: top;
+	cursor: pointer;
+	margin-top:30px;
+	display : inline-block;
+	width: 90px;
+	height:90px;
+	background-image: url('../../images/common/logo.png');
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+.bar{
+	background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    transition-duration: .3s;
+    transition-timing-function: ease-in;
+    width: 260px;
+    z-index: 10000;
+    margin-left:-300px;
+ 
+}
+.wrap{
+	height:239px;
+	background-color:#D9D9D9;
+}
+.element{
+	font-size: 20px;
+	margin: 0 auto;
+    width: 240px;
+    padding: 13px 0;
+    text-align:center;
+    font-family: "Nanum-Square";
+}
+.elements{
+	line-height:20px;
+	font-size: 20px;
+	margin-top: 60px;
+	cursor: pointer;
+	
+}
+.elements > div {
+	display: none;
+}
+
+.elements:hover{
+	color:#F26A4B;
+}
+.top_header {
+	background-color: transparent !important;
+	height: 100px;
+}
+/*
+.top_header {
+	background-color: #FAE6B1;
+	height: 100px;
+}
+.homepage_name {
+    height: 30px;
+    text-align: center;
+    position: relative;
+    width: 50%;
+    font-size: 30px;
+    margin-left: 24%;
+    line-height: 26px;
+    margin-top: -40px;
+    font-family: "Nanum-Square";
+}
+*/
+/* 약품정보 글자*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -8.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:10%;
+    font-family: "Nanum-Square";
+    font-size: 17px;
+}
+
+
+/* 메인페이지 */
+.main_border {
+	display: block;
+    width: 70%;
+    border: 1px solid black;
+/*     border-radius:10px; */
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: white;
+    opacity: 0.9;
+    /*그림자 테스트*/
+     box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+    position: relative;
+}
+
+.main_table td {
+	font-size: 13px;
+	border-collapse: collapse;
+	border:1px solid black;
+	text-align: center;
+}
+.main_table {
+	width: 100%;
+	height : 500px;
+	border-collapse: collapse;
+	
+}
+
+
+/* 1번째 전체 통계 그래프 관련 */
+.statistic_border1 , .statistic_border2{
+	display: inline-block;
+    width: 45%;
+    height: 600px;
+    border: 1px solid black;
+    border-radius:10px;
+    margin-top: 20px;
+    margin-left: 3%;
+}
+/* 2번째 전체 통계 그래프 관련 */
+.statistic_border2 {
+    margin-left: 4%;
+}
+
+/*내용*/
+.con {
+	font-family: "Nanum-SquareR";
+    font-size:15px;
+	width: 1258px;
+	height: 250px;
+	resize: none;
+}
+.con:focus {
+	outline: none;
+}
+
+/* highChart css - 1번째 전체 통계 그래프*/
+.highcharts-figure,
+.highcharts-data-table table {
+   min-width: 300px;
+    max-width: 580px;
+    
+    min-height:300px;
+    max-height:600px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 600px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+
+
+/* highChart css - 2번째 전체 통계 그래프*/
+.highcharts-figure2,
+.highcharts-data-table table {
+    min-width: 300px;
+    max-width: 580px;
+    
+    min-height:300px;
+    max-height:600px;
+    margin: 1em auto;
+}
+
+#container2 {
+    height: 600px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+/* 리뷰등록div 및 버튼 */
+.reviewDiv {
+	float: right;
+}
+
+.reviewBtn {
+	/*background-image: url(../images/userPage/reviewAddBtn.png);
+	background-color:#FAE6B1;
+    background-repeat: no-repeat;*/
+    background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    width: 111px;
+    height: 37px;
+    border:0px;
+    cursor: pointer;
+    margin-right: 35px;
+    margin-top: 11px;
+    border-radius : 10px;
+   }
+
+/* 의약품 정보 상세 목록 스크롤3 (목록) */
+.board_table_border {
+	width: 95%;
+    /*height: 800px;*/
+    margin: 0 auto;
+}
+.board_table {
+	width: 100%;
+   /* height: 500px; */
+    border-collapse: collapse;
+    margin-left : 2px;
+}
+
+.board_table th {
+	font-size: 13px;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.board_table td {
+	font-size: 13px;
+	border-collapse: collapse;
+	border-top : 1px solid black;
+	border-bottom : 1px solid black;
+	text-align: center;
+	height: 35px;
+}
+.board_table thead {
+	height: 50px;
+}
+
+.board_table td:nth-child(5n) {
+	border:0px;
+	float:left;
+}
+/*tr 2행마다 히든*/
+/* .board_table tr:nth-child(2n) {
+	display: none;
+	border:0px;
+} */
+.spreadBtn {
+	/*background-image: url(../images/userPage/spreadBtn.png);
+	background-color:#FAE6B1;
+    background-repeat: no-repeat;*/
+    background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    width: 111px;
+    height: 37px;
+    border:0px;
+    cursor: pointer;
+    margin-left:10px;
+    border-radius : 10px;
+}
+
+
+/* 펼치기 눌렀을때의 border */
+.detail_border {
+	width: 800px;
+	border-collapse: collapse;
+	margin-top:65px;
+}
+.detail_border td {
+	height: 30px;
+	border:0px;
+}
+.detail_border tr:nth-child(2n) {
+	display:table-row;
+}
+.detail_border tr {
+	border:0px;
+	height: 30px;
+}
+
+
+/* 펼치기 - 사진 div */
+.pic_div {
+	border: 1px solid black;
+    width: 400px;
+    display: inline-block;
+    height: 320px;
+    float: right;
+    position: relative;
+    margin-right: 2%;
+    border-radius: 10px;
+    margin-top:90px;
+}
+
+
+/* 상세보기 해당 의약품에 대한 그래프 css*/
+.highcharts-figure3,
+.highcharts-data-table table {
+   min-width: 300px;
+    max-width: 580px;
+    
+    min-height:300px;
+    max-height:600px;
+    margin: 1em auto;
+}
+
+#container3 {
+    height: 300px;
+}
+
+
+/* 좋아요*/
+.goodBtn {
+	background-image: url(../../images/userPage/goodBefore.png);
+    background-color: white;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    border: 0px;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.editor_border{
+	margin-top:10px;
+	display: none;
+	
+}
+
+/*     댓글 관련     */
+.comment_border {
+	height: 50px;
+}
+.review_comment {
+	margin-top: 10px;
+    display: inline-block;
+    width: 1185px;
+    height: 30px;
+    float: left;
+    border: 1px solid black;
+}
+
+.commentAddBtn{
+	border: 0px;
+    /*background-image: url(../images/userPage/enrollBtn.png);
+    background-color: white;
+    background-repeat: no-repeat;*/
+    background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    width: 64px;
+    height: 36px;
+    cursor: pointer;
+    margin-top: 10px;
+    float: left;
+    margin-left: 5px;
+}
+/* 해당 리뷰에 대한 댓글 테두리*/
+.comment_list_border {
+	width: 94.1%;
+    height: auto;
+}
+.comment_list_top {
+	display: inline-block;
+	width: 100%;
+	height: 70px;
+	margin-top : 5px;
+}
+
+.comment_list_top_left, .comment_list_top_right {
+	float: left;
+	width: 20%;
+	height: 30px;
+}
+/*댓글을 작성한 사람이 현재 로그인 사람일 경우에만 보여주기*/
+.comment_list_top_right {
+	float: right;
+}
+/*댓글 수정 버튼*/
+.commentUpdateBtn, .commentDeleteBtn {
+	/*background-image: url(../images/userPage/editBtn_w64_h30.png);
+    background-color: white;
+    background-repeat: no-repeat;*/
+     background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+	width: 64px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+    border:0px;
+}
+.commentUpdateBtn {
+	margin-right:10px;
+}
+
+/*댓글 삭제 버튼*/
+.commentDeleteBtn {
+	/*
+	background-image: url(../images/userPage/deleteBtn_w64_h30.png);
+*/
+ 	background-color:#8C8C8C;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+}
+/*댓글 입력 테두리*/
+.comment_input_border {
+	height: 40px;
+	width: 100%;
+	display: inline-block;
+}
+/*댓글 입력 input*/
+.comment_input_text {
+	margin-top: 4px;
+    width: 99.1%;
+    height: 28px;
+}
+.comment_table td{
+	border : 0px;
+}
+
+.listBtn {
+	background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    border:0px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+}
+
+/* 리뷰 상세보기 - 테이블 td처리*/
+.detail_border tbody td:nth-child(5n) {
+	height: 30px !important;
+    border: 0px !important;
+    float: none !important;
+}
+.detail_border tbody td {
+	width: 100px !important;
+}
+.detail_border tbody tr {
+	height: 90px !important;
+}
+.detail_border tbody td:nth-child(1) {
+	border-right: 1px solid black;
+}
+.repTable td {
+	border:0px;
+	width: 200px;
+	text-align: left;
+}
+.repTable {
+	width: 1190px;
+	margin-left:73px;
+}
+.revRegday {
+	float: none !important;
+}
+.comment_input_text:focus, .review_comment:foucs {
+	outline: none;
+}
+.medicineImage {
+	background-size: 420px 300px;
+	background-repeat: no-repeat;
+}

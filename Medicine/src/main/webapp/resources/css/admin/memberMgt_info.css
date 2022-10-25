@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#bottom {
+   	padding-top: 2.9%; /* 1:1 화면비율 */
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+    margin-right: 130px;
+    height: 0px;
+}
+.t {
+   margin-top: 10px;
+   margin-bottom: 30px;
+}
+
+/* th:hover{
+	background-color: #FAE6B1;
+} */
+th, td {
+	height: 100px;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+
+.del, .reg {
+	margin-top: 0px;
+}
+
+.btn_one {
+	margin-bottom:0px;
+}
+
+.Yes{
+	float: right;
+	background-image: url("../../../resources/images/adminPage/yes.png");
+	height: 25px;
+    width: 30px;
+}
+.No{
+	float: right;
+	background-image: url("../../../resources/images/adminPage/no.png");
+	height: 25px;
+    width: 55px;
+}

@@ -1,0 +1,322 @@
+@charset "UTF-8";
+
+@font-face{
+   font-family: "Nanum-SquareR";
+   font-size:"normal";
+   src: url("../../../resources/font/NanumSquare_acR.ttf");
+}
+html, body {
+	margin: 0;
+	font-size: 0;
+	min-width:1190px;
+}
+.top_header{
+	background-color: #F5F0E6;
+}
+body {
+	overflow-y: scroll;
+	min-width:1190px;
+	font-family: "Nanum-SquareR";
+	font-size:"normal";
+	background-color: #F5F0E6;
+}
+.total{
+height: 1374px;
+margin:0px auto;
+position: relative;
+text-align: center;
+}
+
+.img{
+position: absolute;
+height: 310px;
+left: 0%;
+right: 0%;
+top: 0px;
+/* background: url(../../images/userPage/ye/ppp.jpg) no-repeat; */
+background-size:cover;
+background-position: center; 
+}
+#imgch {
+	opacity : 0.8;
+	width:100%;
+	position: absolute;
+	height: 310px;
+	left: 0%;
+	right: 0%;
+	top: 0px;
+	background-size: cover;
+	background-position: center;
+}
+.cont{
+	white-space : pre-line;
+font-size: 10.5pt;
+position: absolute;
+height: 1085px;
+left: 17.45%;
+right: 17.5%;
+top: 335px;
+background: white;
+}
+.exit{
+	font-size: 11pt;
+}
+.repleUserid {
+	position: absolute;
+	width: 60px;
+	height: 18px;
+	left: 74px;
+	top: 15px;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.date{
+position: absolute;
+left: 190px;
+top: 15px;
+font-size: 12px;
+line-height: 18px;
+}
+
+/* #revise{
+position: absolute;
+width: 64px;
+height: 30px;
+right: 75px;
+top: 10px;
+background-image: url(../images/userPage/edit.png);
+}  */
+
+.revise{
+	    margin: 5px 0px;
+    margin-left: 32%;
+line-height: 29px;
+/* position: absolute; */
+width: 64px;
+height: 30px;
+right: 75px;
+top: 10px;
+box-sizing : border-box;
+border:0;
+font-size:13px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+.replog{
+    width: 64px;
+    height: 30px;
+    right: 0px;
+    top: 32px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+}
+.replogin{
+	cursor:pointer;
+	top: 144%;
+    position: absolute;
+    font-size: 12pt;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    right: 36%;
+}
+/* #del{
+position: absolute;
+width: 64px;
+height: 30px;
+right: 0px;
+top: 10px;
+background-image: url(../images/userPage/delete.png);
+} */
+
+.del{
+	    margin: 5px 0px;
+    margin-left: 32%;
+	line-height: 29px;
+/* position: absolute; */
+width: 64px;
+height: 30px;
+right: 0px;
+top: 10px;
+box-sizing : border-box;
+border:0;
+font-size:13px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+
+.repleCntBlock{
+position: absolute;
+height: 44px;
+left: 17.44%;
+right: 76.3%;
+top:1425px;
+font-size: 16px;
+}
+
+.repleCnt1{
+position: absolute;
+left: 15px;
+top: 13px;
+}
+
+.repleCnt2{
+position: absolute;
+right: 35px;
+top: 13px;
+}
+
+.reple{
+position: absolute;
+height: 92px;
+left: 17.44%;
+right: 17.52%;
+border-top: 0.5px solid rgba(0, 0, 0, 0.4);
+}
+.reple1004{
+position: absolute;
+height: 92px;
+left: 17.44%;
+right: 17.52%;
+border-top: 0.5px solid rgba(0, 0, 0, 0.4);
+}
+
+#reple1{
+top: 1470px;
+}
+#reple2{
+top: 995px;
+}
+#reple3{
+top: 145%;
+border-bottom: 0.5px solid rgba(0, 0, 0, 0.4);
+}
+.paging_area{
+	top: 140%;
+}
+td{
+	height: 77px;
+}
+.repletxt{
+position: absolute;
+height: 27px;
+left: 7.59%;
+right: 7.59%;
+top: 49px;
+resize: none;
+font-size: 13px;
+text-align: left;
+}
+
+#replePlaceHolder{
+height: 63px;
+top: 13px;
+font-size: 12px;
+border: 1px solid grey;
+vertical-align: middle;
+line-height: 30px;
+}
+.cancel{
+	display: none;
+	position: absolute;
+    width: 64px;
+    height: 30px;
+    right: 0.2px;
+    top: 34%;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+}
+.sujeong{
+	display: none;
+	position: absolute;
+    width: 64px;
+    height: 30px;
+    right: 70px;
+    top: 32px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+}
+#replePlaceHolder::-webkit-input-placeholder{text-align:center}
+
+/* #enroll{
+position: absolute;
+width: 64px;
+text-align: left;
+height: 30px;
+right: 0px;
+top: 32px;
+background-image: url(../images/userPage/enroll.png);
+} */
+
+.enroll{
+	display: block;
+    position: absolute;
+    width: 64px;
+    height: 30px;
+    right: 70px;
+    top: 32px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+}
+
+/* #list{
+position: absolute;
+width: 84px;
+height: 37px;
+right: 129.2px;
+top: 1130px;
+background-image: url(../images/userPage/list.png);
+} */
+
+.list{
+	display: block;
+    position: absolute;
+    width: 64px;
+    height: 30px;
+    right: 0.2px;
+    top: 34%;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+}
+
+.blueBtn{
+	background-color : #6799FF;
+	border:0px;
+	border-radius:10px;
+}
+
+.grayBtn{
+	background-color: #8C8C8C;
+	border: 0px;
+	border-radius:10px;
+}

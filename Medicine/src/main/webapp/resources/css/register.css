@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+body {
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    background: url(../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+	float: right;
+	width: 20%;
+	height: 30px;
+	margin-top: 60px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 30px;
+	position: relative;
+	margin-bottom: 10px;
+	right: 10%;
+}
+
+.main_border {
+	background-color: white;
+	display: block;
+	width: 25%;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 10px;
+	opacity: 0.9;
+	box-shadow: 5px 5px 5px 5px grey;
+}
+
+.main_border h1 {
+	font-size: 20px;
+	text-align: center;
+}
+.homepage_name {
+	width: 53%;
+}
+.logo{
+	left: 42.2%;
+}
+/* 여기서부터 */
+.border, .userbirth_border {
+	width: 90%;
+	height: 35px;
+	/*border:1px solid red;*/
+	margin: 0 auto;
+	margin-top: 17px;
+}
+
+.border input[type="text"] {
+	display: inline-block;
+	width: 330px;
+	height: 30px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+.border input[type="password"] {
+	display: inline-block;
+	width: 99%;
+	height: 30px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+input[type="password"] {
+	width: 99%;
+}
+
+.border input:focus {
+	outline: none;
+}
+input[type="number"]:focus {
+	outline: none;
+}
+.userIdBtn {
+	width: 80px;
+	height: 33px;
+	/*background-image:url(../../resources/images/userPage/userIdconfirmBtn.png);
+	background-repeat: no-repeat;
+	background-color: white;*/
+	color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+	border: 0px;
+	vertical-align: top;
+	margin-left: 13px;
+}
+
+.gender_border {
+	width: 90%;
+	height: 35px;
+	margin: 0 auto;
+	margin-top: 17px;
+}
+
+.gender_border span {
+	font-size: 15px;
+}
+
+.gender_border input[type="radio"] {
+	display: none;
+}
+
+.gender_border input[type="radio"]+label {
+	display: inline-block;
+	cursor: pointer;
+	width: 60px;
+	height: 35px;
+	border: 1px sold black;
+	line-height: 33px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.gender_border input[type="radio"]+label {
+	background-color: #fff;
+	color: black;
+}
+
+.gender_border input[type="radio"]:checked+label {
+	background-color: #6799FF;
+	color: white;
+}
+
+.gender_border label {
+	border-radius: 10px;
+	border: 1px solid #6799FF;
+}
+
+.userbirth_border input[type="text"],
+.userbirth_border input[type="number"] {
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	text-align: center;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+.userbirth_border input[type="text"]:focus, .month:focus {
+	outline: none;
+}
+
+.month {
+	width: 60px;
+	height: 33px;
+	text-align: center;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+	margin-left: 15px;
+}
+
+.day {
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	text-align: center;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+	margin-left: 15px;
+}
+
+.email_border {
+	width: 90%;
+	height: 35px;
+	margin: 0 auto;
+	/*border:1px solid red;*/
+}
+
+.userEmail {
+	width: 330px;
+	height: 30px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+.emailCertificationBtn {
+	width: 80px;
+	height: 33px;
+	/*background-image:
+		url(../../resources/images/userPage/certificationBtn_w80_h33.png);
+	background-repeat: no-repeat;
+	background-color: white;*/
+	border: 0px;
+	vertical-align: top;
+	margin-left: 13px;
+	color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+
+.phone_border, .certification_border {
+	width: 90%;
+	height: 35px;
+	margin: 0 auto;
+	/*border:1px solid red;*/
+}
+
+.userPhone {
+	width: 99%;
+	height: 30px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+.userPhone:focus, .userEmail:focus, .certificationConfirm:focus {
+	outline: none;
+}
+
+.input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.certification_border input[type="number"] {
+	display: inline-block;
+	width: 330px;
+	height: 30px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid #D5D5D5;
+	font-size: 15px;
+	font-weight: 100;
+}
+
+.certificationConfirmBtn {
+	width: 80px;
+	height: 33px;
+	/*background-image:
+		url(../../resources/images/userPage/verifyBtn_w80_h33.png);
+	background-repeat: no-repeat;
+	background-color: white;*/
+	border: 0px;
+	vertical-align: top;
+	margin-left: 13px;
+	color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+
+.newAccountBtn {
+	width: 111px;
+	height: 37px;
+	/*background-image:
+		url(../../resources/images/userPage/newAccountBtn_w111_h37.png);
+	background-repeat: no-repeat;
+	background-color: white;*/
+	border: 0px;
+	vertical-align: top;
+	margin-left: 13px;
+	color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+input[type="button"] {
+	cursor: pointer;
+}
+.cancelBtn {
+	float: right;
+	width: 111px;
+	height: 37px;
+	/*background-image:
+		url(../../resources/images/userPage/cancelBtn_w111_h37.png);
+	background-repeat: no-repeat;
+	background-color: white;*/
+	border: 0px;
+	vertical-align: top;
+	margin-left: 13px;
+	color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+
+.main_border span {
+	color: red;
+	font-size: 13px;
+	margin-left: 25px;
+}
+
+.menu_userId_border span {
+	color: black;
+}
+
+.bottom_border {
+	margin-top: 30px;
+}

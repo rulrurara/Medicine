@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+@font-face{
+   font-family: "Nanum-SquareR";
+   font-size:"normal";
+   src: url("../../../resources/font/NanumSquare_acR.ttf");
+}
+
+table td{
+	height:55px;
+}
+
+table {
+	border-collapse: collapse;
+	display:none;
+	border-width: 2px 2px 2px 2px;
+	border-color: #d9d9d9;
+	border-style: solid;
+}
+
+tr:nth-child(even) {
+	border-width: 0px 0px 2px 0px;
+	border-color: #d9d9d9;
+	border-style: solid;
+	border-collapse: collapse;
+}
+
+html, body {
+	margin: 0;
+	font-size: 0;
+	min-width:1190px;
+}
+
+body {
+	min-width:1190px;
+	font-family: "Nanum-SquareR";
+	font-size:"normal";
+	background-color: #F2E3D5;
+	background-size: /* 100% 100%; */  cover; 
+	background-position: center;
+	 -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar{
+  display:none;
+}
+
+.top_header {
+	background:none; 
+}
+
+.total{
+width: 1381.09px;
+top:100px;
+margin:0px auto;
+text-align: center;
+}
+
+.blocks{
+background:#F5F5F5;
+width: 875px;
+height: 122px;
+margin-left: 255px;
+margin-top: 35px;
+text-align: left;
+}
+
+#nameblock{
+margin-top: 80px;
+}
+
+.blockTxt{
+font-weight: bold;
+font-size: 15px;
+margin-left: 34px;
+padding-top: 23px;
+}
+
+.searchbox{
+width: 231px;
+height: 37px;
+left: 30px;
+bottom: 22px;
+font-weight: bold;
+background-color: #F5F5F5;
+border : none;
+border-bottom: solid 2px grey ;
+text-indent: 10px;
+margin-left: 35px;
+margin-top: 15px;
+outline-style: none;
+}
+
+.inputbox{
+    width: 231px;
+    height: 37px;
+    left: 30px;
+    bottom: 22px;
+    background-color: #F5F5F5;
+    border: none;
+    border-bottom: solid 2px grey;
+    font-size: 15px;
+    line-height: 37px;
+    margin-left: 35px;
+	margin-top: 15px;
+	display:inline-block;
+	text-align: center;
+	outline-style: none;
+	font-family: "Nanum-SquareR";
+}
+
+.searchbox{
+width: 390px;
+}
+
+#namebar{
+width:120px;
+}
+
+#year{
+width:150px;
+}
+
+#cmbox, #kgbox{
+width: 112px;
+}
+
+#searchbox{
+width : 390px;
+}
+
+#cmtxt, #kgtxt{
+bottom: 28px;
+font-size: 15px;
+line-height: 24px;
+left: 152px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.searchimg{
+position: relative;
+width: 30px;
+height: 37px;
+left: 394px;
+bottom: 41px;
+background: url(../../images/userPage/ye/search_icon.png) no-repeat;
+background-size:cover;
+background-position: center;
+cursor:pointer;
+}
+
+#editCm, #editKg{
+width:45px;
+height:45px;
+background-size:cover;
+background-position: center;
+cursor:pointer;
+display: inline-block;
+float: right;
+margin-right: 64px;
+}
+
+#img, #img1, #img2, #img3{
+width: 45px;
+height: 45px;
+}
+
+/* -------------------------------------------------------- */
+
+.resultblock {
+	box-sizing: border-box;
+	display: none;
+	background-color: white;
+	width: 875px;
+	text-align: center;
+	border-width: 2px 2px 2px 2px;
+	border-color: #d9d9d9;
+	border-style: solid;
+	margin-left: 255px
+}
+
+.resultblock img {
+	height: 85px;
+	background-size: cover;
+	background-position: center;
+}
+
+.co {
+	font-family: "Nanum-SquareR";
+	font-size: 13px;
+	text-align: left;
+}
+
+.name {
+	font-family: "Nanum-SquareR";
+	font-size: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.check {
+	background: url(../../images/userPage/ye/check_icon.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+
+.del{
+	background: url(../../images/userPage/ye/deleteIcon2.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+
+.popup_search, .popup_del {
+	border: none;
+	background-color: white;
+	width: 350px;
+	height: 350px;
+	display: none;
+	z-index: 999;
+	position: fixed;
+	top: 23%;
+	left: 39%;
+	border-radius: 15px;
+	text-align: center;
+	border-color: ghostwhite;
+    border-style: solid;
+    box-sizing: border-box;
+}
+
+.enrollTxt {
+	width: 320px;
+	height: 25px;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 28px;
+	display: inline-block;
+	margin-bottom: 20px
+}
+
+.searchResCo {
+	width: 320px;
+	height: 25px;
+	font-size: 13px;
+	margin-top: 15px;
+	display: inline-block;
+	color: gray;
+}
+
+.searchResName {
+	width: 320px;
+	height: 25px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+.cancelBtn {
+	position: absolute;
+	display: inline-block;
+	width: 175px;
+	height: 40px;
+	left: 0px;
+	bottom: 0px;
+	box-sizing: border-box;
+	border: 0;
+	font-size: 17px;
+	color: #fff;
+	cursor: pointer;
+	font-family: "Nunum-SquareR";
+	border-radius: 0px !important;
+	border-bottom-left-radius: 15px !important;
+	font-weight: bold;
+}
+
+.enrollBtn {
+	position: absolute;
+	display: inline-block;
+	width: 175px;
+	height: 40px;
+	right: 0px;
+	bottom: 0px;
+	box-sizing: border-box;
+	border: 0;
+	font-size: 17px;
+	color: #fff;
+	cursor: pointer;
+	font-family: "Nunum-SquareR";
+	border-radius: 0px !important;
+	border-bottom-right-radius: 15px !important;
+	font-weight: bold;
+}
+
+.homepage_name {
+	font-family: "Nanum-Square" !important;
+	font-size: "normal" !important;
+	src: url("../../font/NanumSquare_acEB.ttf") !important;
+}
+
+.blueBtn {
+	background-color: #6799FF;
+	border: 0px;
+	border-radius: 10px;
+}
+
+.grayBtn {
+	background-color: #8C8C8C;
+	border: 0px;
+	border-radius: 10px;
+}
+
+.bottom_table {
+	width: 875px;
+	height: 45px;
+	background-color: white;
+	display: none;
+	border-width: 0px 2px 2px 2px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    box-sizing: border-box;
+    margin-left: 255px;
+}
+
+.bottom_table span{
+	margin-top:5px;
+}
+
+.enrollTxt{
+font-size: 22px;
+font-weight: bold;
+margin-top: 28px;
+margin-bottom: 20px
+}
+
+.searchResImg{
+display:inline-block;
+height: 150px;
+background: url(../../images/userPage/ye/korea.jpg) no-repeat;
+background-size:cover;
+background-position: center;
+}
+
+.searchResCo{
+width: 320px;
+height : 25px;
+font-size: 13px;
+margin-top: 15px;
+display:inline-block;
+color : gray;
+}
+
+.searchResName{
+width: 320px;
+height : 25px;
+font-size: 16px;
+display:inline-block;
+}
+
+.enroll{
+height: 33px;
+width: 100px;
+margin-top: 50px;
+box-sizing : border-box;
+border:0;
+font-size:17px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+
+.popup_del {
+    border: none;
+   	background-color: white;
+   	width: 350px;
+   	height: 225px;
+   	display: none;
+   	z-index: 999;
+   	position: fixed;
+    top: 23%;
+    left: 39%;
+   	border-radius: 15px;
+   	text-align: center;
+}
+
+.delTxt{
+	width: 320px;
+	height : 25px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 37px;
+    display:inline-block;
+    margin-bottom: 20px
+}
+
+.backBtn, .delBtn{
+position:absolute;
+display:inline-block;
+width: 175px;
+height: 40px;
+bottom: 0px;
+box-sizing : border-box;
+border:0;
+font-size:17px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+
+.backBtn{
+left: 0px;
+border-radius : 0px !important ;
+border-bottom-left-radius : 15px !important ;
+}
+
+.delBtn{
+right: 0px;
+border-radius : 0px !important ;
+border-bottom-right-radius : 15px !important ;
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free">
+	<select id="getFreeCnt" parameterType = "hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT 
+		FROM BB B INNER JOIN MEM M
+		                       ON B.MEM_NUM = M.MEM_NUM
+		                        AND M.LEAVE_D IS NULL
+		WHERE B.DEL_D IS NULL
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND M.NM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and B.TXT_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 2">
+					and B.TITLE LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="getFreeList" parameterType = "hashmap" resultType="hashmap">
+		SELECT T.TXT_NUM , T.NM , T.TITLE , T.REG_D, T.HIT
+		FROM (
+		SELECT B.TXT_NUM , M.NM , B.TITLE ,
+		    CASE WHEN TO_CHAR(B.REG_D , 'YY.MM.DD') = TO_CHAR(SYSDATE , 'YY.MM.DD')
+		         THEN TO_CHAR(B.REG_D, 'HH24:MI')
+		         ELSE TO_CHAR(B.REG_D , 'YY.MM.DD')
+		    END AS REG_D,HIT,
+		    ROW_NUMBER ()OVER(ORDER BY B.TXT_NUM DESC) AS RNUM
+		 FROM BB B INNER JOIN MEM M
+		                        ON B.MEM_NUM = M.MEM_NUM
+		                        AND M.LEAVE_D IS NULL
+		WHERE B.DEL_D IS NULL
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND M.NM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and B.TXT_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 2">
+					and B.TITLE LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>) T
+		WHERE T.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="getFreeDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT B.TXT_NUM , M.NM , B.TITLE , B.HIT,B.CON,
+	       TO_CHAR(B.REG_D , 'YYYY-MM-DD') AS REG_D
+		FROM BB B INNER JOIN MEM M
+	                   ON B.MEM_NUM = M.MEM_NUM
+	                   AND M.LEAVE_D IS NULL
+		WHERE B.DEL_D IS NULL
+		AND B.TXT_NUM=#{num}
+	</select>
+	<update id="updateFreeHit">
+		UPDATE BB SET HIT = HIT + 1 
+		WHERE TXT_NUM = #{num}
+	</update>
+		<update id="freeDelete" parameterType="hashmap">
+        UPDATE BB SET DEL_D=SYSDATE 
+		WHERE TXT_NUM = #{num}
+	</update>
+	<insert id="freeInsert" parameterType="hashmap">
+   		INSERT INTO BB(TXT_NUM , TITLE, MEM_NUM, CON)
+		VALUES(BB_SEQ.NEXTVAL , #{title} , #{MemNum} , #{con})
+	</insert>
+		<update id="freeUpdate" parameterType="hashmap">
+		UPDATE BB SET TITLE= #{title},
+                    CON =#{con} 
+		WHERE TXT_NUM = #{num}
+	</update>
+	<select id="getFreeReple" parameterType="hashmap" resultType="hashmap">
+    SELECT CON,REG_D,NM,REP_NUM
+    FROM(
+    SELECT CON,TO_CHAR(REP.REG_D, 'YYYY-MM-DD') AS REG_D,NM,ROW_NUMBER ()OVER(ORDER BY TXT_NUM DESC) AS RNUM , REP_NUM
+    FROM REP REP INNER JOIN MEM MEM
+    ON REP.MEM_NUM = MEM.MEM_NUM
+    WHERE TXT_NUM=#{num}
+    AND REP.DEL_D IS NULL)
+    WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="getRepleCnt" parameterType="hashmap" resultType="Integer">
+	    SELECT COUNT(*) AS CNT
+	    FROM REP
+	    WHERE TXT_NUM=#{num}
+	    AND DEL_D IS NULL
+	</select>
+	<update id="freeRepleDelete" parameterType="hashmap">
+        UPDATE REP SET DEL_D=SYSDATE 
+        WHERE REP_NUM = #{repNum}
+	</update>
+	<insert id="freeRepleInsert" parameterType="hashmap">
+   		INSERT INTO REP(REP_NUM , TXT_NUM, MEM_NUM, CON)
+		VALUES(REP_SEQ.NEXTVAL ,#{num} , #{smemnum} , #{con})
+	</insert>
+	<update id="freeRepleUpdate" parameterType="hashmap">
+		UPDATE REP SET CON= #{con}
+		WHERE REP_NUM = #{repNum}
+	</update>
+</mapper>

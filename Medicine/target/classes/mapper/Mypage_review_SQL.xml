@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage_review">
+<select id="getReviewCnt" parameterType = "hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT 
+		FROM MEDI_REV
+		WHERE DEL_D IS NULL
+        AND MEM_NUM =#{memnum}
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REV_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<!--  -->
+	<select id="getReviewList" parameterType = "hashmap" resultType="hashmap">
+		SELECT REV_NUM , MEDI_NUM, CON, REG_D
+		FROM(
+		SELECT REV_NUM , MEDI_NUM, CON,
+		CASE WHEN TO_CHAR(REG_D , 'YY.MM.DD') = TO_CHAR(SYSDATE , 'YY.MM.DD')
+				         THEN TO_CHAR(REG_D, 'HH24:MI')
+				         ELSE TO_CHAR(REG_D , 'YY-MM-DD')
+				    END AS REG_D,
+				    ROW_NUMBER ()OVER(ORDER BY REV_NUM DESC) AS RNUM
+		FROM MEDI_REV 
+		WHERE MEM_NUM=#{memnum}
+		AND DEL_D IS NULL
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REV_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>) A
+			WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 리뷰의 약품명 , 등록일 가져오기 -->
+	<select id="getReviewTitle" parameterType="hashmap" resultType="hashmap">
+		SELECT ME.MEDI_NUM, ME.PROD_NM, TO_CHAR(MR.REG_D, 'YYYY-MM-DD') AS REG_D
+		FROM MEDI ME INNER JOIN MEDI_REV MR
+		                ON ME.MEDI_NUM = MR.MEDI_NUM
+		WHERE ME.MEDI_NUM = #{mediNum}
+		AND MR.REV_NUM = #{revNum}
+	</select>
+	<!-- 효과 삭제 -->
+	<delete id="deleteEffect" parameterType="hashmap">
+		DELETE FROM REV_EFFECT_SCORE
+		WHERE REV_NUM = #{revNum}
+		AND EFFECT_NUM = #{effectDelNum}
+	</delete>
+	<!-- 부작용 삭제 -->
+	<delete id="deleteSEffect" parameterType="hashmap">
+		DELETE FROM REV_SEFFECT_SCORE
+		WHERE REV_NUM = #{revNum}
+		AND SEFFECT_NUM = #{effectDelNum}
+	</delete>
+	<!-- 기타효과 삭제 -->
+	<delete id="delete_etc_Effect" parameterType="hashmap">
+		DELETE FROM REV_ETC_EFFECT_SCORE
+		WHERE REV_NUM = #{revNum}
+		AND EFFECT_NM = #{effectTargetNm}
+	</delete>
+	<!-- 기타 부작용 삭제 -->
+	<delete id="delete_etc_SEffect" parameterType="hashmap">
+		DELETE FROM REV_ETC_SEFFECT_SCORE
+		WHERE REV_NUM = #{revNum}
+		AND SEFFECT_NM = #{seffectTargetNm}
+	</delete>
+	<!-- 내용 가져오가 -->
+	<select id="getRevCon" parameterType="hashmap" resultType="hashmap">
+	SELECT CON FROM MEDI_REV
+	WHERE REV_NUM = #{revNum}
+	</select>
+	<!-- 리뷰 수정 -->
+	<!-- 효과 -->
+	<insert id="updateRevEffect" parameterType="hashmap" >
+	INSERT INTO REV_EFFECT_SCORE
+	VALUES(#{revNum},#{effectNum},#{effectScore})
+	</insert>
+	<!-- 부작용 -->
+	<insert id="updateRevSEffect" parameterType="hashmap" >
+	INSERT INTO REV_SEFFECT_SCORE
+	VALUES(#{revNum},#{seffectNum},#{seffectScore})
+	</insert>
+	<!-- 기타 효과 -->
+	<insert id="updateRevEffect_etc" parameterType="hashmap" >
+	INSERT INTO REV_ETC_EFFECT_SCORE
+	VALUES(REV_ETC_EFFECT_SCORE_SEQ.NEXTVAL,#{revNum},#{effectArr2},#{effectScore2})
+	</insert>
+	<!-- 기타 부작용 -->
+	<insert id="updateRevSEffect_etc" parameterType="hashmap" >
+	INSERT INTO REV_ETC_SEFFECT_SCORE
+	VALUES(REV_ETC_SEFFECT_SCORE_SEQ.NEXTVAL,#{revNum},#{seffectArr2},#{seffectScore2})
+	</insert>
+	
+	<update id="updateRevCon" parameterType="hashmap">
+	UPDATE MEDI_REV SET CON = #{revCon},REG_D = SYSDATE
+	WHERE REV_NUM = #{revNum}
+	</update>
+	
+	<!-- 리뷰 삭제 -->
+	<update id="deleteRev" parameterType="hashmap" >
+	UPDATE MEDI_REV SET DEL_D = SYSDATE
+	WHERE REV_NUM = #{revNum}
+	</update>
+	
+	
+	
+</mapper>

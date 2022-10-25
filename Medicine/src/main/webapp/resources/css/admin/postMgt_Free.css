@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.t {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+thead {
+	background-color: #e8e7e3;
+	border-top: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	text-align: center;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+}
+#im {
+	height: 240px;
+}
+.text {
+	border:1px solid black;
+}
+.text:focus {
+	
+	outline: none;
+}
+tbody tr:hover{
+	background-color: #DCDCDC;
+}
+
+tbody th{
+	background: #00ff0000;
+	border-right: 0px;
+	border-bottom: 0px;	
+} 
+th {
+	height: 40px;
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+td {
+	height: 50px;
+	border-right: 0px;
+	border-bottom: 0px;
+	background: #00ff0000;
+}
+
+.select_bar {
+	position: relative;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+	background: white;
+}
+
+.serbtn {
+	display: inline-block;
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.next_one {
+	margin-bottom: -1.2px;
+}
+
+.next_two {
+	margin-bottom: -1.4px;
+}
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.paging_area{
+	margin-left: 4.5%;
+}	
+

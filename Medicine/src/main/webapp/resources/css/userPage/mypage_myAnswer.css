@@ -1,0 +1,201 @@
+@charset "UTF-8";
+/*여기서부터*/
+body {
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    background: url(../../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+table{
+   border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    box-sizing: border-box;
+    font-family:"Nanum-Square";
+    width: 100%;
+    margin-top:100px;
+}
+th{
+   vertical-align: middle;
+    height: 53px;
+    background-color: #fafafa;
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+}
+td{
+   color: #929292;
+   text-align: center;
+    font-size: 13px;
+    height: 24px;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 21px;
+    
+}
+.title{
+   vertical-align: middle;
+   text-align: left;
+    padding: 16px;
+    height: 24px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 17px;
+    line-height: 21px;
+    color:black;
+    font-weight: 600;
+}
+
+/* 네비게이션 바*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-family: "Nanum-Square";
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -6.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:8%;
+    font-family: "Nanum-Square";
+    font-size: 17px;
+}
+
+
+
+.allwrap{
+   min-height: 600px;
+   margin: 0 auto;
+   min-width:1200px;
+   width: 75%;
+   height:670px;
+   background-color: white;
+   border-radius: 10px;
+   opacity: 0.9;
+   
+   box-shadow: 5px 5px 5px 5px grey;
+   
+}
+.btnwrap{
+   margin-top: 20px;
+    text-align: right;
+}
+.writebtn{
+   width: 112px;
+    height: 40px;
+    background: #FFB300;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.pagingwrap{
+    margin-top: 40px;
+    width: 100%;
+    height: 25px;
+    font-family: "Nanum-Square";
+    text-align: center;
+}
+.paging{
+   display:inline-block;
+   width: 25px;
+    height: 25px;
+    margin-right:12px;
+    cursor: pointer;
+}
+.searchwrap{
+   margin: 30px auto 10px;
+    width: 400px;
+    height: 30px;
+}
+.searchbox{
+    float: left;
+    position: relative;
+    padding: 7px 10px;
+    width: 301px;
+    height: 20px;
+    border: 1px solid #b7b7b7;
+   
+}
+.searchselect{
+   box-sizing: border-box;
+    float: left;
+    margin-right: 10px;
+    width: 61px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #fff;
+    color: #838383;
+    font-family: "Nanum-Square";
+}
+.searchtext{
+    box-sizing: border-box;
+    float: left;
+   maxlength:23;
+    padding: 0 0 0 10px;
+    width: 228px;
+    height: 20px;
+    background: #fff;
+    border: none;
+    font: 12px;
+    font-family: "Nanum-Square";
+}
+.searchbox:before{
+   display: block;
+    position: absolute;
+    left: 75px;
+    top: 11px;
+    width: 1px;
+    height: 11px;
+    background-color: #dbdbdb;
+    content: "";
+}
+input[type="text"]:focus, select:focus {
+	outline: none;
+}
+.searchbtn{
+   box-sizing: border-box;
+   float:left;
+    width: 64px;
+    height: 36px;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    padding: 1px 6px;
+    font-family: "Nanum-SquareR";
+    margin-left:5px;
+}
+.listBtn {
+	background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    border:0px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+    margin-right:10px;
+}

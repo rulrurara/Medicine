@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+.total{
+width: 1096px;
+height: 1410px;
+position: relative;
+margin: 0px auto;
+background-color: white;
+box-sizing: border-box;
+}
+
+.analysisIcon{
+position: absolute;
+width: 47px;
+height: 49px;
+left: 29px;
+top: 11px;
+background: url(../images/userPage/analysisIcon.png) no-repeat;
+}
+
+.nutrTxt{
+position: absolute;
+left: 103px;
+top: 20px;
+font-size: 30px;
+}
+
+.nutrHead{
+position: absolute;
+width: 755px;
+height: 59px;
+left: 170px;
+background-color:#FFA101;
+filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.5));
+}
+
+#essential{
+top: 123px;
+}
+#functional{
+top: 978px;
+}
+
+.subHeadTxt{
+position: absolute;
+font-size: 25px;
+text-align: center;
+color:white;
+font-weight: bold;
+letter-spacing: 0.1em;
+}
+
+#subHeadTxt1{
+left: 40.79%;
+right: 40.79%;
+top: 27.12%;
+bottom: 25.42%;
+}
+
+#subHeadTxt2{
+left: 38.17%;
+right: 38.17%;
+top: 27.12%;
+bottom: 25.42%;
+}
+
+.questionIcon{
+position: absolute;
+left: 85.23%;
+right: 11.13%;
+top: 33.9%;
+bottom: 32.2%;
+background: url(../images/userPage/questionBlackIcon.png) no-repeat;
+z-index: 999;
+cursor:pointer;
+}
+
+.popup{
+    border: none;
+    background-color: papayawhip;
+    width: 590px;
+    height: 138px;
+    display: none;
+    z-index: 999;
+    position: absolute;
+    left: 23%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+#popup1{
+    top: 9%;
+
+}
+
+#popup2{
+    top: 66%;
+}
+.deleteIcon{
+position: absolute;
+width: 25px;
+height: 25px;
+right: 33px;
+top: 19px;
+background: url(../images/userPage/deleteIcon.png) no-repeat;
+background-size:cover;
+background-position: center;
+cursor:pointer;
+}
+
+.infoColor{
+position: absolute;
+width: 40px;
+height: 10px;
+left: 980px;
+border-radius: 20px;
+}
+
+#excColor{
+top: 194px;
+background: red;
+}
+#optColor{
+top: 214px;
+background: green;
+}
+#lackColor{
+top: 235px;
+background: grey;
+}
+
+.infoTxt{
+position: absolute;
+width: 45px;
+height: 13px;
+left: 1030px;
+top: 192px;
+font-size: 12px;
+line-height: 13px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
+
+}
+
+#excTxt{
+top: 192px;
+}
+#optTxt{
+top: 212px;
+}
+#lackTxt{
+top: 235px;
+}
+
+.intake{
+position: absolute;
+width: 72px;
+height: 29px;
+font-size: 15px;
+display: flex;
+align-items: center;
+}
+#adequateIntake1{
+left: 709px;
+top: 214px;
+}
+#adequateIntake2{
+left: 709px;
+top: 1069px;
+}
+#currentIntake1{
+left: 802px;
+top: 214px;
+}
+#currentIntake2{
+left: 802px;
+top: 1069px;
+}
+
+/* 이름 + 그래프 */
+.essentialRes, .functionalRes{
+position: absolute;
+width: 657px;
+height: 20px;
+left: 201px;
+}
+
+#essentialRes1{
+top: 272px;
+}
+#essentialRes2{
+top: 317px;
+}
+#essentialRes3{
+top: 362px;
+}
+#essentialRes4{
+top: 407px;
+}
+#essentialRes5{
+top: 452px;
+} 
+#essentialRes6{
+top: 497px;
+} 
+#essentialRes7{
+top: 542px;
+} 
+#essentialRes8{
+top: 587px;
+} 
+#essentialRes9{
+top: 632px;
+} 
+#essentialRes10{
+top: 677px;
+} 
+#essentialRes11{
+top: 722px;
+} 
+#essentialRes12{
+top: 767px;
+} 
+#essentialRes13{
+top: 812px;
+} 
+#functionalRes1{
+top: 1127px;
+} 
+#functionalRes2{
+top: 1172px;
+} 
+#functionalRes3{
+top: 1217px;
+} 
+#functionalRes4{
+top: 1262px;
+} 
+#functionalRes5{
+top: 1307px;
+} 
+
+/* 글자 */
+.nutrName{
+position: absolute;
+top: 1px;
+font-size: 15px;
+}
+
+/* 그래프 전체 */
+.totalGraph{
+position: absolute;
+left: 25.72%;
+right: 28.61%;
+top: 0%;
+bottom: 0%;
+background: #D9D9D9;
+border-radius: 20px;
+}
+
+/* 그래프 중 차지하는 영역 */
+.subGraph{
+position: absolute;
+left: 25.72%;
+right: 36.23%;
+top: 0%;
+bottom: 0%;
+background: #FD0B0B;
+border-radius: 20px;
+}
+
+#exc{
+   width:250px;
+   background-color:red;
+}
+#opt{
+   width:180px;
+   background-color:green;
+}
+#lack{
+   width:100px;
+   background-color:gray;
+}
+
+.adqIntake{
+position: absolute;
+left: 79.91%;
+font-size: 15px;
+}
+
+.currIntake{
+position: absolute;
+left: 93.91%;
+font-size: 15px;
+}
+
+.line{
+position: absolute;
+width: 1096px;
+height: 0px;
+left: 0px;
+top: 903px;
+border: 1px solid rgba(0, 0, 0, 0.2);
+}

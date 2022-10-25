@@ -1,0 +1,374 @@
+@charset "UTF-8";
+
+#birthblock {
+	position: absolute;
+	height: 122px;
+	left: 18.34%;
+	right: 18.27%;
+	top: 157px;
+	background: #f5f5f5;
+	box-shadow: 0 1px 6px 0 rgb(32 33 36/ 28%);
+}
+
+#birth {
+	position: absolute;
+	width: 74px;
+	height: 24px;
+	left: 34px;
+	top: 21px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 24px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #000000;
+}
+
+#year {
+	position: absolute;
+	width: 145px;
+	height: 31px;
+	left: 30px;
+	bottom: 22px;
+	font-size: 15px;
+	line-height: 31px;
+	background: #F5F5F5;
+	border: solid 2px grey;
+	text-align: center;
+}
+
+#month {
+	position: absolute;
+	width: 145px;
+	height: 31px;
+	left: 212px;
+	bottom: 22px;
+	font-size: 15px;
+	line-height: 31px;
+	font-weight: normal;
+	background-color: #F5F5F5;
+	border: solid 2px grey;
+	text-align: center;
+}
+
+#day {
+	position: absolute;
+	width: 145px;
+	height: 31px;
+	left: 394px;
+	bottom: 22px;
+	font-size: 15px;
+	line-height: 31px;
+	font-weight: normal;
+	background-color: #F5F5F5;
+	border: solid 2px grey;
+	text-align: center;
+}
+
+#cmblock {
+	position: absolute;
+	height: 122px;
+	left: 18.34%;
+	right: 18.27%;
+	top: 314px;
+	background: #f5f5f5;
+	box-shadow: 0 1px 6px 0 rgb(32 33 36/ 28%);
+}
+
+#cm, #kg, #search {
+	position: absolute;
+	width: 300px;
+	height: 12px;
+	left: 34px;
+	top: 21px;
+	font-family: "Nanum-Square";
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 24px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #000000;
+}
+
+#cmbox, #kgbox, #searchbox {
+	position: absolute;
+	width: 112px;
+	height: 30px;
+	left: 30px;
+	bottom: 22px;
+	background-color: #F5F5F5;
+	color: #000000;
+	border: none;
+	border-bottom: solid 2px grey;
+}
+
+#cmVal {
+	position: absolute;
+	width: 50px;
+	height: 24px;
+	left: 18px;
+	top: 3px;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 24px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #000000;
+}
+
+#cmtxt, #kgtxt {
+	position: absolute;
+	width: 29px;
+	height: 24px;
+	bottom: 28px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #000000;
+}
+
+#cmtxt {
+	left: 152px;
+}
+
+#kgtxt {
+	left: 155px;
+}
+
+#kgblock {
+	position: absolute;
+	height: 122px;
+	left: 18.34%;
+	right: 18.27%;
+	top: 471px;
+	background: #f5f5f5;
+	box-shadow: 0 1px 6px 0 rgb(32 33 36/ 28%);
+}
+
+#kgVal {
+	position: absolute;
+	width: 50px;
+	height: 24px;
+	left: 18px;
+	top: 2px;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 24px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #000000;
+}
+
+#searchblock {
+	top: 628px;
+	background: #f5f5f5;
+	box-shadow: 0 1px 6px 0 rgb(32 33 36/ 28%);
+}
+
+#searchbox {
+	width: 252px;
+}
+
+#searchimg {
+	position: absolute;
+	width: 30px;
+	height: 37px;
+	left: 299px;
+	bottom: 22px;
+	background: url(../../images/userPage/hee/userPage/search_icon.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+}
+
+.blocks {
+	background: #F5F5F5;
+	position: absolute;
+	height: 122px;
+	left: 18.34%;
+	right: 18.27%;
+}
+
+.inputbox {
+	position: absolute;
+	width: 231px;
+	height: 37px;
+	left: 30px;
+	bottom: 22px;
+	font-weight: bold;
+	background-color: #F5F5F5;
+	border: none;
+	border-bottom: solid 2px grey;
+}
+
+.blockTxt {
+	position: absolute;
+	left: 34px;
+	top: 21px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.side_rap {
+	opacity: 0.8;
+	font-size: 15pt;
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
+	height: 30px;
+	position: absolute;
+	left: 90%;
+	top: 0px;
+	box-shadow: 0 1px 6px 0 rgb(32 33 36/ 28%);
+	text-align: center;
+}
+
+.side_rap2 {
+	position: absolute;
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
+	height: 400px;
+	left: 90%;
+	top: 10%;
+	color: #f5f5f5;
+	font-size: 35pt;
+	text-align: center;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px
+		#919191, 1px 4px 1px #919191, 1px 5px 1px #919191, 1px 5px 1px #919191,
+		1px 7px 1px #919191, 1px 5px 1px #919191, 1px 5px 1px #919191, 1px 7px
+		1px #919191, 1px 18px 6px rgb(16 16 16/ 40%), 1px 22px 10px
+		rgb(16 16 16/ 20%), 1px 25px 35px rgb(16 16 16/ 20%), 1px 30px 60px
+		rgb(16 16 16/ 40%);
+}
+.headTxt{
+position: absolute;
+width: 589px;
+height: 33px;
+left: 143px;
+top: 93px;
+font-weight: 700;
+font-size: 30px;
+line-height: 33px;
+text-align: center;
+color: #000000;
+font-family: "Nanum-Square";
+}
+.headImg{
+position: absolute;
+width: 50px;
+height: 50px;
+left: 52%;
+top: 82px;
+background-image: url(../../images/userPage/hee/userPage/magnifyingGlassIcon.png);
+background-repeat: no-repeat;
+}
+
+.compare1, .compare2{
+position: absolute;
+width: 548px;
+height: 289px;
+left: 143px;
+top: 235px;
+box-sizing: border-box;
+border-width: 4px 2px 2px 4px;
+border-style: solid;
+border-color: #000000;
+border-color: rgba(0, 0, 0, 0.5);
+}
+
+.compare2{
+left: 691px;
+top: 235px;
+border-width: 4px 4px 2px 0px;
+}
+
+.compareTxt{
+position: absolute;
+width: 1096px;
+height: 99px;
+left: 143px;
+top: 524px;
+box-sizing: border-box;
+border-width: 0px 4px 4px 4px;
+border-style: solid;
+border-color:rgba(0, 0, 0, 0.1);
+font-size: 25px;
+font-weight : normal;
+line-height: 99px;
+letter-spacing: 0.2em;
+background-color: black;
+color: white;
+background-color: rgba(0, 0, 0, 0.7);
+cursor: pointer;
+text-align: center;
+}
+.comtxt_rap{
+	top: 150px;
+    left: 93%;
+    width: 400px;
+    height: 500px;
+    position: absolute;
+}
+
+/* 여기부터 잠깐 임시 */
+
+.comtext{
+    width: 395px;
+    height: 300px;
+    color: #f5f5f5;
+    font-size: 32pt;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #919191, 
+    1px 2px 1px #919191, 
+    1px 3px 1px #919191, 
+    1px 4px 1px #919191, 
+    1px 5px 1px #919191, 
+    1px 5px 1px #919191, 
+    1px 7px 1px #919191, 
+    1px 5px 1px #919191, 
+    1px 5px 1px #919191, 
+    1px 7px 1px #919191, 
+    1px 18px 6px rgb(16 16 16 / 40%), 
+    1px 22px 10px rgb(16 16 16 / 20%), 
+    1px 25px 35px rgb(16 16 16 / 20%), 
+    1px 30px 60px rgb(16 16 16 / 40%);
+}
+.compareBtn1, .compareBtn2{
+position: absolute;
+left: 40.69%;
+right: 40.85%;
+top: 32.95%;
+bottom: 32.22%;
+background: url(../../images/userPage/hee/userPage/compareEnroll.png) no-repeat;
+background-size:cover;
+background-position: center;
+cursor: pointer;
+}
+.userlogin{
+	font-size: 11pt;
+    width: 111px;
+    height: 37px;
+    text-align: center;
+    margin-top: -1px;
+    background-color: #6799ff;
+    border: 0px;
+    cursor: pointer;
+    float: right;
+    border-radius: 10px;
+    font-family: "Nanum-Square";
+    font-weight: bold;
+    margin-right: 4px;
+}

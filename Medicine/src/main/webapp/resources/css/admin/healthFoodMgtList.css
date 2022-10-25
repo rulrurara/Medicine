@@ -1,0 +1,175 @@
+body{
+	height: 98%;
+}
+.loggo {
+	background-size: cover;
+	width: 90px;
+	height: 90px;
+}
+#bottom {
+	padding-top: 0.5%; /* 1:1 화면비율 */
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	margin-top: 30px;
+}
+
+#bottom_right {
+	width: 40%;
+	display: inline-block;
+}
+
+#bottom_left {
+	width: 40%;
+	display: inline-block;
+}
+
+.tr {
+	margin-top: 10px;
+	border-collapse: collapse;
+	border-bottom: 1px solid #FCE9DE;
+	box-shadow: 5px 5px 5px 5px grey;
+	border: 2px rgba(0, 0.2, 0, 0) solid;
+	background-color: white;
+	opacity: 0.9;
+	display: inline-table;
+	vertical-align: top;
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+.tl {
+	margin-top: 10px;
+	border-collapse: collapse;
+	border-bottom: 1px solid #FCE9DE;
+	box-shadow: 0 5px 5px 5px grey;
+	border: 2px rgba(0, 0, 0, 0.2) solid;
+	background-color: white;
+	opacity: 0.9;
+	display: inline-table;
+	vertical-align: top;
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+thead {
+	font-size: 16.8px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #e8e7e3;
+	border-top: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	text-align: center;
+	font-family: "Nanum-Square";
+}
+
+th {
+	border-top: 2px solid #A7A49A;
+	border-right: 0px;
+	border-bottom: 2px solid #A7A49A;
+	background-color: white;
+}
+
+td {
+	font-size: 15.4px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	border-right:0px;
+	border-bottom: 2px solid #A7A49A;
+	border-top: 2px solid #A7A49A;
+}
+
+tbody tr:hover {
+	background-color: #DCDCDC;
+}
+
+.select_bar {
+	position: relative;
+	right:4%;
+}
+.paging_area {
+	left: 48%;
+}
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+	background-color: white;
+	border:1px solid black;
+}
+
+.serbtn {
+	display: inline-block;
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.del {
+	margin-right: 10%;
+}
+
+.btn_one {
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.dropbtn {
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	height: 65px;
+	width: 200px;
+}
+
+.clickBtn {
+	float: right;
+}
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-right:10px;
+}
+.th_main th {
+	background-color: #d5d5d5;
+}

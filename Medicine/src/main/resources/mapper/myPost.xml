@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+	<select id="List" parameterType="hashmap" resultType="hashmap">
+	SELECT BM.TXT_NUM , BM.MEM_NUM , BM.TITLE , BM.CON , BM.HIT , BM.DEL_D , BM.REG_D
+	FROM
+	(SELECT B.TXT_NUM , B.MEM_NUM , B.TITLE , B.CON , B.HIT , B.DEL_D ,TO_CHAR(B.REG_D , 'YYYY-MM-DD') AS REG_D , ROW_NUMBER() OVER(ORDER BY B.MEM_NUM DESC) AS RNUM
+	FROM BB B INNER JOIN MEM M
+    ON B.MEM_NUM = M.MEM_NUM
+    WHERE B.MEM_NUM = #{smemnum}
+    AND DEL_D IS NULL
+    <if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searGbn eq 0">
+					AND B.TXT_NUM LIKE '%' || #{searchTxt} ||'%'
+				</when>
+				<when test="searGbn eq 1">
+					AND B.TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>) BM
+    WHERE BM.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="postCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM BB
+	WHERE MEM_NUM = #{smemnum}
+	<if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searGbn eq 0">
+    				AND TXT_NUM LIKE '%' || #{searchTxt} ||'%'
+				</when>
+				<when test="searGbn eq 1">
+    				AND TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+</mapper>

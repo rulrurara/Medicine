@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="answer">
+	<select id="List" parameterType="hashmap" resultType="hashmap">
+	SELECT QN.Q_NUM , QN.MEM_NUM , QN.TITLE , QN.CON , QN.RNUM ,TO_CHAR(QN.REG_D , 'YYYY-MM-DD') AS REG_D , QN.AON
+	FROM
+	(SELECT Q.Q_NUM , Q.MEM_NUM , Q.TITLE , Q.CON ,Q.REG_D,Q.AON ,ROW_NUMBER() OVER(ORDER BY Q.MEM_NUM DESC) AS RNUM
+	FROM Q Q INNER JOIN MEM M
+    ON Q.MEM_NUM = M.MEM_NUM
+    WHERE Q.MEM_NUM = #{smemnum}
+    AND Q.DEL_D IS NULL
+    <if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searGbn eq 0">
+					AND Q.Q_NUM LIKE '%' || #{searchTxt} ||'%'
+				</when>
+				<when test="searGbn eq 1">
+					AND Q.TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>) QN
+    WHERE QN.RNUM BETWEEN #{start} AND #{end} 
+	</select>
+	<select id="pageCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM Q
+	WHERE Q.MEM_NUM = #{smemnum}
+    <if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searGbn eq 0">
+    				AND Q.Q_NUM LIKE '%' || #{searchTxt} ||'%'
+				</when>
+				<when test="searGbn eq 1">
+    				AND TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="detail" parameterType="hashmap" resultType="hashmap">
+	SELECT Q_NUM, TITLE , CON , A , REG_D
+	FROM Q
+	WHERE MEM_NUM = #{smemnum}
+	AND Q_NUM = #{no}
+	</select>
+	<update id="update" parameterType="hashmap">
+	UPDATE Q SET TITLE = #{title} , CON = #{con}
+	WHERE Q_NUM = #{no}
+	</update>
+	<delete id="delete" parameterType="hashmap">
+	UPDATE Q SET DEL_D = SYSDATE
+	WHERE Q_NUM = #{no}
+	</delete>
+</mapper>

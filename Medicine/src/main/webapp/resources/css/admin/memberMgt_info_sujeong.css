@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+#bottom {
+	padding-top: 2.9%; /* 1:1 화면비율 */
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+	margin-right: 130px;
+	height:0px;
+}
+
+.t {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+/* th:hover{
+	background-color: #FAE6B1;
+} */
+th,td {
+	height: 100px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+   outline:none;
+   border-bottom: 1px solid black;
+}
+input[type="text"], input[type="password"] {
+   border-radius: 0px;
+   width: 150px;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+
+.del {
+margin-top: 0px;
+}
+
+.reg {
+margin-top: 0px;
+}
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.aYes{
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}

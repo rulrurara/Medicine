@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="medicine">
+	<select id="medicineCnt" parameterType="hashmap" resultType="Integer">
+	SELECT ceil(COUNT(*)/2) AS CNT
+	FROM MEDI ME INNER JOIN COM_NM COM
+    ON ME.COM_NUM = COM.COM_NUM
+    WHERE DEL_D IS NULL
+    <if test="searchText != null and searchText != ''">
+			<choose>
+				<when test="searchGbn eq 0">
+				AND ME.MAT_CODE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchGbn eq 1">
+				AND ME.PROD_NM LIKE '%' || #{searchText} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="medicineList" parameterType="hashmap" resultType="hashmap">
+		SELECT SA.MEDI_NUM, SA.RNUM, SA.PROD_NM ,SA.PIC, SA.COM_NM , SA.MAT_CODE 
+		FROM
+		(
+		SELECT  SS.MEDI_NUM , SS.PROD_NM ,SS.PIC, SS.COM_NM , SS.MAT_CODE , ROW_NUMBER() OVER(ORDER BY SS.MEDI_NUM DESC) AS RNUM
+		FROM
+		(
+		SELECT SE.MEDI_NUM, SE.PROD_NM ,SE.PIC, SE.COM_NM , SE.MAT_CODE
+		FROM (
+		SELECT MED.MEDI_NUM, MED.PROD_NM ,MED.PIC, MED.COM_NM , MED.MAT_CODE , MOD(MED.MEDI_NUM,2) AS MOD
+		FROM 
+		(SELECT ME.MEDI_NUM , ME.PROD_NM , ME.PIC , COM.COM_NM, ME.MAT_CODE
+    		FROM MEDI ME INNER JOIN COM_NM COM
+    		ON ME.COM_NUM = COM.COM_NUM
+    		WHERE DEL_D IS NULL
+    		ORDER BY MEDI_NUM) MED 
+    		) SE
+    		WHERE SE.MOD = 1
+            <if test="searchText != null and searchText != ''">
+			<choose>
+				<when test="searchGbn eq 0">
+				AND SE.MAT_CODE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchGbn eq 1">
+				AND SE.PROD_NM LIKE '%' || #{searchText} || '%'
+				</when>
+			</choose>
+		</if>) SS
+            )SA
+         WHERE SA.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="medicineList2" parameterType="hashmap" resultType="hashmap">
+	SELECT SA.MEDI_NUM, SA.RNUM, SA.PROD_NM ,SA.PIC, SA.COM_NM , SA.MAT_CODE 
+FROM
+(
+SELECT SS.MEDI_NUM , SS.PROD_NM ,SS.PIC, SS.COM_NM , SS.MAT_CODE , ROW_NUMBER() OVER(ORDER BY SS.MEDI_NUM DESC) AS RNUM
+		FROM
+		(
+		SELECT SE.MEDI_NUM, SE.PROD_NM ,SE.PIC, SE.COM_NM , SE.MAT_CODE
+		FROM (
+		SELECT MED.MEDI_NUM, MED.PROD_NM ,MED.PIC, MED.COM_NM , MED.MAT_CODE , MOD(MED.MEDI_NUM,2) AS MOD
+		FROM 
+		(SELECT ME.MEDI_NUM , ME.PROD_NM , ME.PIC , COM.COM_NM, ME.MAT_CODE
+    		FROM MEDI ME INNER JOIN COM_NM COM
+    		ON ME.COM_NUM = COM.COM_NUM
+    		WHERE DEL_D IS NULL
+    		ORDER BY MEDI_NUM) MED 
+    		) SE
+    		WHERE SE.MOD = 0
+            <if test="searchText != null and searchText != ''">
+			<choose>
+				<when test="searchGbn eq 0">
+				AND SE.MAT_CODE LIKE '%' || #{searchText} || '%'
+				</when>
+				<when test="searchGbn eq 1">
+				AND SE.PROD_NM LIKE '%' || #{searchText} || '%'
+				</when>
+			</choose>
+		</if>) SS
+            )SA
+         WHERE SA.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<insert id="insert" parameterType="hashmap">
+	INSERT INTO MEDI(MEDI_NUM , MEM_NUM , COM_NUM , PROD_NM , PROD_CODE , MAT_CODE , TAKE_METH_NUM , MAT_NM , PIC)
+	VALUES(#{numnum},2,#{num4},#{prnm},#{prcode},#{matcode},#{num2},'졲같네',#{pic})
+	</insert>
+	<select id="medicineselectList" parameterType="hashmap" resultType="hashmap">
+	SELECT EFFECT_NUM,EFFECT_NM 
+	FROM MEDI_EFFECT
+	WHERE EFFECT_NUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="medicineselList" parameterType="hashmap" resultType="hashmap">
+	SELECT TAKE_METH , TAKE_METH_NUM
+	FROM MEDI_TAKE_METH
+	</select>
+	<select id="medicineselect2List" parameterType="hashmap" resultType="hashmap">
+	SELECT SEFFECT_NUM , SEFFECT_NM
+	FROM MEDI_SEFFECT
+	WHERE SEFFECT_NUM BETWEEN #{start} AND #{end}
+	</select>
+	<insert id="insert2" parameterType="hashmap">
+	INSERT INTO MEDI_EFFECT_MID(MEDI_NUM , EFFECT_NUM)
+    VALUES(#{numnum},#{arr})
+	</insert>
+	<insert id="insert3" parameterType="hashmap">
+	INSERT INTO MEDI_SEFFECT_MID(MEDI_NUM , SEFFECT_NUM)
+    VALUES(#{numnum},#{arr2})
+	</insert>
+	<insert id="shapeinsert" parameterType="hashmap">
+	INSERT INTO MEDI_SHAPE_MID(MEDI_NUM , SHAPE_NUM)
+	VALUES(#{numnum},#{shap})
+	</insert>
+	<select id="mediselList" parameterType="hashmap" resultType="hashmap">
+	SELECT SHAPE_NUM , SHAPE_NM 
+	FROM SHAPE
+	</select>
+	<select id="selectNum" resultType="Integer">
+	SELECT MEDI_SEQ.NEXTVAL AS NUM
+	FROM DUAL
+	</select>
+	<insert id="insert4" parameterType="hashmap">
+	INSERT INTO SHAPE(SHAPE_NUM , SHAPE_NM)
+	VALUES(SHAPE_SEQ.NEXTVAL,#{shapen})
+	</insert>
+	<insert id="insert5" parameterType="hashmap">
+	INSERT INTO MEDI_EFFECT(EFFECT_NUM , EFFECT_NM)
+	VALUES(MEDI_EFFECT_SEQ.NEXTVAL,#{meef})
+	</insert>
+	<insert id="insert6" parameterType="hashmap">
+	INSERT INTO MEDI_SEFFECT(SEFFECT_NUM,SEFFECT_NM)
+	VALUES(MEDI_SEFFECT_SEQ.NEXTVAL,#{mesef})
+	</insert>
+	<select id="medicineDetail" parameterType="hashmap" resultType="hashmap">
+	SELECT DISTINCT MECOM.MEDI_NUM , MECOM.PROD_NM , MECOM.PIC, MECOM.COM_NM , MECOM.PROD_CODE , MECOM.MAT_CODE ,MECOM.TAKE_METH_NUM  ,MECOM.TAKE_METH , MECOM.SHAPE_NM
+	FROM (
+	SELECT MED.MEDI_NUM, MED.COM_NUM, MED.PROD_NM, MED.PIC, MED.PROD_CODE , MED.MAT_CODE , MED.TAKE_METH_NUM, TM.TAKE_METH , COM.COM_NM , S.SHAPE_NM
+	FROM MEDI MED INNER JOIN COM_NM COM
+    ON MED.COM_NUM = COM.COM_NUM
+    INNER JOIN MEDI_TAKE_METH TM
+    ON MED.TAKE_METH_NUM = TM.TAKE_METH_NUM
+    INNER JOIN MEDI_SHAPE_MID MHM
+    ON MED.MEDI_NUM = MHM.MEDI_NUM
+    INNER JOIN SHAPE S
+    ON S.SHAPE_NUM = MHM.SHAPE_NUM
+    ) MECOM
+    WHERE MEDI_NUM = #{no}
+	</select>
+	<select id="medicineEffectList" parameterType="hashmap" resultType="hashmap">
+	SELECT EF.EFFECT_NUM , EF.EFFECT_NM
+	FROM MEDI ME INNER JOIN MEDI_EFFECT_MID MEF
+    ON ME.MEDI_NUM = MEF.MEDI_NUM
+    INNER JOIN MEDI_EFFECT EF
+    ON MEF.EFFECT_NUM = EF.EFFECT_NUM
+	WHERE ME.MEDI_NUM = #{no}
+	</select>
+	<select id="medicineSEffectList" parameterType="hashmap" resultType="hashmap">
+	SELECT SF.SEFFECT_NM , SF.SEFFECT_NUM
+	FROM MEDI ME INNER JOIN MEDI_SEFFECT_MID MESF
+    ON ME.MEDI_NUM = MESF.MEDI_NUM
+    INNER JOIN MEDI_SEFFECT SF
+    ON MESF.SEFFECT_NUM = SF.SEFFECT_NUM
+    WHERE ME.MEDI_NUM = #{no}
+	</select>
+	<select id="medicineShapeList" parameterType="hashmap" resultType="hashmap">
+	SELECT SH.SHAPE_NM
+	FROM MEDI ME INNER JOIN MEDI_SHAPE_MID SHM
+    ON ME.MEDI_NUM = SHM.MEDI_NUM
+    INNER JOIN SHAPE SH
+    ON SHM.SHAPE_NUM = SH.SHAPE_NUM
+    WHERE ME.MEDI_NUM = #{no}
+	</select>
+	
+	<select id="suinsert" parameterType="hashmap">
+	INSERT INTO MEDI_EFFECT_MID(MEDI_NUM , EFFECT_NUM)
+	VALUES(#{no}, #{mefnum})
+	</select>
+	<select id="mescNum" resultType="Integer">
+	SELECT MEDI_EFFECT_SEQ.NEXTVAL AS MEF
+	FROM DUAL
+	</select>
+	<insert id="suinsert2" parameterType="hashmap">
+	INSERT INTO MEDI_EFFECT(EFFECT_NUM , EFFECT_NM)
+	VALUES(#{mefnum},#{meef})
+	</insert>
+	<select id="mescCurrNum" resultType="Integer">
+	SELECT MEDI_EFFECT_SEQ.CURRVAL AS MEF
+	FROM DUAL
+	</select>
+	<delete id="deleteMedi" parameterType="hashmap">
+	DELETE FROM MEDI_EFFECT_MID
+	WHERE EFFECT_NUM = #{mefnum}
+	</delete>
+	
+	<delete id="delete" parameterType="hashmap">
+	UPDATE MEDI SET DEL_D = SYSDATE
+	WHERE MEDI_NUM IN(${delete})
+	</delete>
+	
+	<select id="sefNum" resultType="Integer">
+	SELECT MEDI_SEFFECT_SEQ.NEXTVAL AS SMEF
+	FROM DUAL
+	</select>
+	<insert id="smefinsert" parameterType="hashmap">
+	INSERT INTO MEDI_SEFFECT(SEFFECT_NUM , SEFFECT_NM)
+	VALUES(#{smefnum},#{seef})
+	</insert>
+	<insert id="smefinsert2" parameterType="hashmap">
+	INSERT INTO MEDI_SEFFECT_MID(MEDI_NUM , SEFFECT_NUM)
+	VALUES(#{no}, #{smefnum})
+	</insert>
+	
+	<select id="meDetail" parameterType="hashmap" resultType="hashmap">
+	SELECT DISTINCT MECOM.MEDI_NUM , MECOM.PROD_NM , MECOM.PIC, MECOM.COM_NM , MECOM.PROD_CODE , MECOM.MAT_CODE , MECOM.TAKE_METH , MECOM.SHAPE_NM
+	FROM (
+	SELECT MED.MEDI_NUM, MED.COM_NUM, MED.PROD_NM, MED.PIC, MED.PROD_CODE , MED.MAT_CODE , TM.TAKE_METH , COM.COM_NM , SA.SHAPE_NM
+	FROM MEDI MED INNER JOIN COM_NM COM
+    ON MED.COM_NUM = COM.COM_NUM
+    INNER JOIN MEDI_SHAPE_MID SHM
+    ON MED.MEDI_NUM = SHM.MEDI_NUM
+    INNER JOIN SHAPE SA
+    ON SA.SHAPE_NUM = SHM.SHAPE_NUM
+    INNER JOIN MEDI_TAKE_METH TM
+    ON MED.TAKE_METH_NUM = TM.TAKE_METH_NUM
+    ) MECOM
+    WHERE MEDI_NUM = #{no}
+	</select>
+	<select id="meDetaileffect" parameterType="hashmap" resultType="hashmap">
+	SELECT EF.EFFECT_NUM , EF.EFFECT_NM
+	FROM MEDI ME INNER JOIN MEDI_EFFECT_MID MEF
+    ON ME.MEDI_NUM = MEF.MEDI_NUM
+    INNER JOIN MEDI_EFFECT EF
+    ON MEF.EFFECT_NUM = EF.EFFECT_NUM
+	WHERE ME.MEDI_NUM = #{no}
+	</select>
+	<select id="meDetailseffect" parameterType="hashmap" resultType="hashmap">
+	SELECT SF.SEFFECT_NM , SF.SEFFECT_NUM
+	FROM MEDI ME INNER JOIN MEDI_SEFFECT_MID MESF
+    ON ME.MEDI_NUM = MESF.MEDI_NUM
+    INNER JOIN MEDI_SEFFECT SF
+    ON MESF.SEFFECT_NUM = SF.SEFFECT_NUM
+    WHERE ME.MEDI_NUM = #{no}
+	</select>
+	<select id="meDetailComnm" parameterType="hashmap" resultType="hashmap"> 
+	SELECT M.COM_NUM , CM.COM_NM
+	FROM MEDI M INNER JOIN COM_NM CM
+    ON M.COM_NUM = CM.COM_NUM
+    WHERE M.MEDI_NUM = #{no}
+	</select>
+	<select id="effCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM MEDI M INNER JOIN MEDI_EFFECT_MID MD
+    ON M.MEDI_NUM = MD.MEDI_NUM
+    INNER JOIN MEDI_EFFECT EF
+    ON EF.EFFECT_NUM = MD.EFFECT_NUM
+	</select>
+	<select id="seffCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM MEDI M INNER JOIN MEDI_SEFFECT_MID MD
+    ON M.MEDI_NUM = MD.MEDI_NUM
+    INNER JOIN MEDI_SEFFECT EF
+    ON EF.SEFFECT_NUM = MD.SEFFECT_NUM
+	</select>
+	<select id="efList" parameterType="hashmap" resultType="hashmap">
+	SELECT DISTINCT(EF.EFFECT_NM) AS EFFECT_NM , EF.EFFECT_NUM
+	FROM MEDI ME INNER JOIN MEDI_EFFECT_MID MEF
+    ON ME.MEDI_NUM = MEF.MEDI_NUM
+    INNER JOIN MEDI_EFFECT EF
+    ON MEF.EFFECT_NUM = EF.EFFECT_NUM
+    WHERE EF.EFFECT_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="sefList" parameterType="hashmap" resultType="hashmap">
+	 SELECT DISTINCT(SEF.SEFFECT_NM) AS SEFFECT_NM , SEF.SEFFECT_NUM
+	FROM MEDI ME INNER JOIN MEDI_SEFFECT_MID SMEF
+    ON ME.MEDI_NUM = SMEF.MEDI_NUM
+    INNER JOIN MEDI_SEFFECT SEF
+    ON SMEF.SEFFECT_NUM = SEF.SEFFECT_NUM
+    WHERE SEF.SEFFECT_NUM BETWEEN #{start} AND #{end}
+	</select>
+	<delete id="Efdel" parameterType="hashmap">
+	DELETE FROM MEDI_EFFECT_MID
+	WHERE MEDI_NUM = #{no}
+	</delete>
+	<delete id="SEfdel" parameterType="hashmap">
+	DELETE FROM MEDI_SEFFECT_MID
+	WHERE MEDI_NUM = #{no}
+	</delete>
+	<insert id="sujeonginsert" parameterType="hashmap">
+	INSERT INTO MEDI(MEDI_NUM , MEM_NUM , COM_NUM , PROD_NM , PROD_CODE , MAT_CODE , TAKE_METH_NUM , MAT_NM , PIC)
+	VALUES(#{no},2,1,#{pm},#{prcode},#{matcode},#{metk},'졲같네',#{pic})
+	</insert>
+	
+	<insert id="takeinsert" parameterType="hashmap">
+	INSERT INTO MEDI_TAKE_METH(TAKE_METH_NUM , TAKE_METH)
+	VALUES(MEDI_TAKE_METH_SEQ.NEXTVAL,#{takemeth})
+	</insert>
+	
+	<update id="imgupdate" parameterType="hashmap">
+	UPDATE MEDI SET PIC = #{pic}
+	WHERE MEDI_NUM = #{no}
+	</update>
+	<select id="medicomList" parameterType="hashmap" resultType="hashmap">
+	SELECT COM_NM, COM_NUM
+	FROM COM_NM
+	WHERE COM_NUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="conCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM MEDI M INNER JOIN COM_NM CM
+    ON M.COM_NUM = CM.COM_NUM
+	</select>
+</mapper>

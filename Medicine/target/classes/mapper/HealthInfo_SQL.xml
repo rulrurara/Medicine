@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="healthInfo">
+
+<!-- 검색 결과 블럭 -->
+<select id="getResultBlock1" resultType="hashmap" parameterType="hashmap">
+SELECT C.HEALTH_FUN_FOOD_NUM, C.PROD_PIC, C.COM_NM, C.PROD_NM
+FROM(SELECT HFF.HEALTH_FUN_FOOD_NUM, HFF.PROD_PIC, CN.COM_NM, HFF.PROD_NM, HFF.DEL_D,
+	ROW_NUMBER() OVER(ORDER BY HEALTH_FUN_FOOD_NUM DESC) AS RNUM
+	FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+	                        ON HFF.COM_NUM = CN.COM_NUM
+	WHERE HFF.PROD_NM LIKE '%' || #{searchbox} || '%'
+	AND HFF.DEL_D IS NULL)C
+WHERE C.RNUM BETWEEN #{start} AND #{end}
+
+</select>
+
+<!-- 검색 결과 블럭 페이징 -->
+<select id="getResultBlockCnt1" parameterType="hashmap" resultType="Integer">
+SELECT COUNT(*) AS CNT
+FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+                        ON HFF.COM_NUM = CN.COM_NUM
+WHERE HFF.PROD_NM LIKE '%' || #{searchbox} || '%'
+AND DEL_D IS NULL
+</select>
+
+<!-- 검색 결과 블럭 체크시 팝업창 -->
+<select id="getPopupSearch" parameterType="hashmap" resultType="hashmap">
+SELECT HFF.HEALTH_FUN_FOOD_NUM, HFF.PROD_PIC, CN.COM_NM, HFF.PROD_NM
+FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+	                        ON HFF.COM_NUM = CN.COM_NUM
+WHERE HFF.HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+AND HFF.DEL_D IS NULL
+</select>
+
+<!-- 등록한 블럭들 불러오기 -->
+<select id="getResultBlock2" resultType="hashmap" parameterType="hashmap">
+SELECT C.HEALTH_FUN_FOOD_NUM, C.PROD_NM, C.PROD_PIC, C.COM_NM , C.SHAPE_NUM ,C.ONE_CNT_TAKE_AMT,C.PILL_PIC_NUM
+FROM(SELECT HFFK.PILL_PIC_NUM, HFFK.ONE_CNT_TAKE_AMT ,HFF.SHAPE_NUM,HFFK.HEALTH_FUN_FOOD_NUM, HFF.PROD_NM, HFF.PROD_PIC, CN.COM_NM, ROW_NUMBER() OVER(ORDER BY HFFK.HEALTH_FUN_FOOD_NUM DESC) AS RNUM
+    FROM HEALTH_FUN_FOOD_TAKE HFFK INNER JOIN HEALTH_FUN_FOOD HFF
+                                ON HFFK.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+                               INNER JOIN MEM MEM
+                               ON HFFK.MEM_NUM = MEM.MEM_NUM
+                               INNER JOIN COM_NM CN
+                               ON HFF.COM_NUM = CN.COM_NUM
+WHERE MEM.MEM_NUM = #{memNum}
+AND HFFK.DEL_D IS NULL
+AND HFF.DEL_D IS NULL)C
+WHERE C.RNUM BETWEEN #{start1} AND #{end1}
+</select>
+
+<!-- 등록한 블럭들 페이징 -->
+<select id="getResultBlockCnt2" parameterType="hashmap" resultType="Integer">
+SELECT COUNT(*) AS CNT
+FROM HEALTH_FUN_FOOD_TAKE HFFK INNER JOIN HEALTH_FUN_FOOD HFF
+                                ON HFFK.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+                               INNER JOIN MEM MEM
+                               ON HFFK.MEM_NUM = MEM.MEM_NUM
+                               INNER JOIN COM_NM CN
+                               ON HFF.COM_NUM = CN.COM_NUM
+WHERE MEM.MEM_NUM = #{memNum}
+AND HFFK.DEL_D IS NULL
+AND HFF.DEL_D IS NULL
+</select>
+
+<!-- 건강기능식품 등록 시 조건 -->
+<select id="selectBlock" parameterType="hashmap" resultType="Integer">
+SELECT COUNT(*) CNT
+FROM HEALTH_FUN_FOOD_TAKE
+WHERE DEL_D IS NOT NULL
+AND MEM_NUM = #{memNum}
+AND HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+</select>
+
+<!-- 건강기능식품 등록 시 인서트 -->
+<insert id="insertBlock" parameterType="hashmap">
+INSERT INTO HEALTH_FUN_FOOD_TAKE (HEALTH_FUN_FOOD_NUM, MEM_NUM)
+VALUES(#{healthFunFoodNum},#{memNum})
+</insert>
+
+<!-- 삭제된 건강기능식품을 다시 등록 시 업데이트 -->
+<update id="updateBlock" parameterType="hashmap">
+UPDATE HEALTH_FUN_FOOD_TAKE SET DEL_D = NULL
+WHERE HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+AND MEM_NUM = #{memNum}
+</update>
+
+<!-- 건강기능식품 삭제 시 업데이트 -->
+<delete id="deleteBlock" parameterType="hashmap">
+UPDATE HEALTH_FUN_FOOD_TAKE SET DEL_D = SYSDATE
+WHERE HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+AND MEM_NUM = #{memNum}
+</delete>
+
+<!-- 키 몸무게 불러오기 -->
+<select id="wgthgt" resultType="hashmap" parameterType="hashmap">
+SELECT A.MEM_NUM, A.WGT, A.HGT
+FROM (SELECT MEM.MEM_NUM, BMI.WGT, BMI.HGT, BMI.D, RANK()OVER (ORDER BY BMI.D DESC) AS RNK
+FROM MEM MEM INNER JOIN BMI BMI 
+            ON MEM.MEM_NUM = BMI.MEM_NUM
+            WHERE MEM.MEM_NUM=#{memNum})A
+WHERE RNK=1
+</select>
+
+<!-- 등록버튼 클릭 시 키, 몸무게, bmi 값 넣기 -->
+<insert id="insertBMI" parameterType="hashmap">
+INSERT INTO BMI (MEM_NUM, HGT, WGT, BMI)
+VALUES(#{memNum}, #{cmbox}, #{kgbox}, ROUND(#{kgbox}/#{cmbox}/#{cmbox}*10000, 2))
+</insert>
+
+</mapper>

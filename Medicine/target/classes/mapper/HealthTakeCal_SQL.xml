@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="calendar">
+<update id="productUpdate" parameterType="hashmap">
+	UPDATE HEALTH_FUN_FOOD_TAKE SET
+       ONE_CNT_TAKE_AMT = #{takeAmt},
+       PILL_PIC_NUM = HEALTH_FUN_FOOD_TAKE_SEQ.NEXTVAL
+	WHERE HEALTH_FUN_FOOD_NUM = #{numm} 
+</update>
+
+<select id="getPillCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM HEALTH_FUN_FOOD_TAKE
+	WHERE PILL_PIC_NUM IS NOT NULL
+	AND MEM_NUM = #{memNum}
+	AND DEL_D IS NULL
+</select>
+
+<select id="getPill" resultType="hashmap" parameterType="hashmap">
+	SELECT C.PROD_NM,C.SHAPE_NUM,C.PILL_PIC_NUM,C.ONE_CNT_TAKE_AMT , C.HEALTH_FUN_FOOD_NUM
+	FROM(
+	SELECT PROD_NM , SHAPE_NUM, PILL_PIC_NUM, ONE_CNT_TAKE_AMT, HFF.HEALTH_FUN_FOOD_NUM,
+	ROW_NUMBER() OVER(ORDER BY HFF.HEALTH_FUN_FOOD_NUM DESC) AS RNUM
+	FROM HEALTH_FUN_FOOD_TAKE HFT INNER JOIN HEALTH_FUN_FOOD HFF
+	ON HFT.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+	WHERE PILL_PIC_NUM IS NOT NULL
+	AND HFT.MEM_NUM = #{memNum}
+	AND HFT.DEL_D IS NULL) C
+	WHERE RNUM BETWEEN #{start} AND #{end}
+</select>
+
+<insert id="pillInsert" parameterType="hashmap">
+	INSERT INTO HEALTH_FUN_FOOD_TAKE_CAL (HEALTH_FUN_FOOD_NUM, MEM_NUM, Y_M_D,TAKE_AMT)
+	VALUES(#{numm},#{memNum},#{Date},#{takeAmt})
+</insert>
+<insert id="pillUpdate" parameterType="hashmap">
+	UPDATE HEALTH_FUN_FOOD_TAKE_CAL SET
+       TAKE_AMT =  (SELECT ONE_CNT_TAKE_AMT
+    FROM HEALTH_FUN_FOOD_TAKE
+    WHERE MEM_NUM = #{memNum}
+    AND HEALTH_FUN_FOOD_NUM= #{numm}) + 
+       (SELECT TAKE_AMT FROM HEALTH_FUN_FOOD_TAKE_CAL WHERE MEM_NUM=#{memNum}
+       AND HEALTH_FUN_FOOD_NUM=#{numm} AND Y_M_D = #{Date})
+	WHERE HEALTH_FUN_FOOD_NUM = #{numm}
+    AND MEM_NUM= #{memNum}
+    AND Y_M_D = #{Date}
+</insert>
+<delete id="pillDelete" parameterType="hashmap">
+	DELETE FROM HEALTH_FUN_FOOD_TAKE_CAL
+	WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+	AND MEM_NUM=#{memNum}
+	AND Y_M_D = #{Date}
+</delete>
+<select id="getCalPill" resultType="hashmap" parameterType="hashmap">
+	SELECT HFT.HEALTH_FUN_FOOD_NUM , TO_CHAR(Y_M_D,'YYYY-MM-DD') AS Y_M_D, TAKE_AMT, PILL_PIC_NUM, MEMO ,ONE_CNT_TAKE_AMT
+	FROM HEALTH_FUN_FOOD_TAKE_CAL HFC INNER JOIN HEALTH_FUN_FOOD_TAKE HFT
+											ON HFC.HEALTH_FUN_FOOD_NUM = HFT.HEALTH_FUN_FOOD_NUM
+		WHERE HFT.MEM_NUM = #{memNum}
+	AND HFC.MEM_NUM= #{memNum}
+	AND PILL_PIC_NUM IS NOT NULL
+	AND HFT.DEL_D IS NULL
+	ORDER BY Y_M_D DESC 
+</select>
+<select id="pillCnt" resultType="Integer" parameterType="hashmap">
+    SELECT COUNT(*)
+    FROM HEALTH_FUN_FOOD_TAKE_CAL
+    WHERE HEALTH_FUN_FOOD_NUM = #{numm}
+    AND MEM_NUM = #{memNum}
+    AND Y_M_D = #{Date}
+</select>
+<select id="pillCnt2" resultType="Integer" parameterType="hashmap">
+    SELECT (SELECT TAKE_AMT
+    FROM HEALTH_FUN_FOOD_TAKE_CAL
+    WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+    AND MEM_NUM=#{memNum}
+    AND Y_M_D =#{Date}) /
+    (SELECT ONE_CNT_TAKE_AMT
+    FROM HEALTH_FUN_FOOD_TAKE
+    WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+    AND MEM_NUM=#{memNum}
+    AND DEL_D IS NULL) AS AMT
+    FROM DUAL
+</select>
+<update id="pillDeleteUpdate" parameterType="hashmap">
+    UPDATE HEALTH_FUN_FOOD_TAKE_CAL SET
+    TAKE_AMT = TAKE_AMT - 
+    (SELECT ONE_CNT_TAKE_AMT
+    FROM HEALTH_FUN_FOOD_TAKE
+    WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+    AND MEM_NUM=#{memNum})
+    WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+    AND MEM_NUM=#{memNum}
+    AND Y_M_D =#{Date}
+</update>
+<update id="MemoUpdate" parameterType="hashmap">
+    UPDATE HEALTH_FUN_FOOD_TAKE_CAL SET
+    MEMO = #{memo} 
+    WHERE HEALTH_FUN_FOOD_NUM=#{numm}
+    AND MEM_NUM=#{memNum}
+    AND Y_M_D =#{Date}
+</update>
+<select id="getMemoList" resultType="hashmap" parameterType="hashmap">
+	SELECT PROD_NM,HFT.HEALTH_FUN_FOOD_NUM
+	FROM HEALTH_FUN_FOOD_TAKE_CAL HFT INNER JOIN HEALTH_FUN_FOOD HFF
+	ON HFT.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+	WHERE HFT.MEM_NUM=#{memNum}
+	AND Y_M_D = #{Date}
+</select>
+<select id="getMemoInfo" resultType="hashmap" parameterType="hashmap">
+	SELECT PROD_NM,TAKE_AMT,TO_CHAR(Y_M_D,'YYYY-MM-DD') AS Y_M_D,SHAPE_NUM,COM_NM,MEMO,
+	HFT.HEALTH_FUN_FOOD_NUM
+	FROM HEALTH_FUN_FOOD_TAKE_CAL HFT INNER JOIN HEALTH_FUN_FOOD HFF
+	ON HFT.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+	INNER JOIN COM_NM COM
+	ON HFF.COM_NUM = COM.COM_NUM
+	WHERE HFT.MEM_NUM=#{memNum}
+	AND HFT.HEALTH_FUN_FOOD_NUM = #{numm}
+	AND Y_M_D = #{Date}
+</select>
+</mapper>

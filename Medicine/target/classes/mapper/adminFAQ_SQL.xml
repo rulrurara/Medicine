@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FAQ">
+
+<select id="getAdminFAQList" resultType="hashmap"
+		parameterType="hashmap">
+		SELECT S.GBN_NM, S.TITLE, S.FAQ_NUM
+		FROM(SELECT FG.GBN_NM, TITLE, F.FAQ_NUM, ROW_NUMBER() OVER(ORDER BY FAQ_NUM DESC) AS RNK
+		FROM FAQ F INNER JOIN FAQ_GBN FG
+		                    ON F.GBN_NUM = FG.GBN_NUM
+		WHERE F.DEL_D IS NULL
+		
+				<if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+			<choose>
+				<when test="searchGbn == 0"><!-- 구분 -->
+					AND FG.GBN_NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1"><!-- 제목 -->
+					AND TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+
+			</choose>
+		</if>
+		) S
+		WHERE S.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="getAdminFreeCnt" parameterType="hashmap" resultType="integer">
+		SELECT COUNT(*) AS CNT
+		FROM FAQ F INNER JOIN FAQ_GBN FG
+		                ON F.GBN_NUM = FG.GBN_NUM
+		<if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+			<choose>
+				<when test="searchGbn == 0"><!-- 구분 -->
+					AND FG.GBN_NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1"><!-- 제목 -->
+					AND TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+
+			</choose>
+		</if>
+		WHERE DEL_D IS NULL
+	</select>
+	
+	<select id="getAFAQ" resultType="hashmap" parameterType="hashmap">
+		SELECT F.FAQ_NUM, F.TITLE, F.CON, F.GBN_NUM, FG.GBN_NM
+		FROM FAQ F INNER JOIN FAQ_GBN FG
+		                    ON F.GBN_NUM = FG.GBN_NUM
+		WHERE FAQ_NUM = #{no}          	
+	</select>
+
+	<insert id="AFAQInsert" parameterType="hashmap">
+		INSERT INTO FAQ(FAQ_NUM, GBN_NUM, MEM_NUM, TITLE, CON)
+		VALUES(FAQ_SEQ.NEXTVAL, #{gbnNo}, #{no}, #{title}, #{con})
+	</insert>
+	
+	<select id="ListGBN" resultType="hashmap" parameterType="hashmap">
+		SELECT GBN_NUM, GBN_NM
+		FROM FAQ_GBN
+		ORDER BY GBN_NUM
+	</select>
+	
+	<update id="delete" parameterType="hashmap">
+		UPDATE FAQ SET DEL_D = SYSDATE
+		WHERE FAQ_NUM IN(${checkdel})
+	</update>
+	
+	<update id="update" parameterType="hashmap">
+		UPDATE FAQ SET
+		TITLE = #{title},
+		CON = #{con},
+		MEM_NUM = #{MemNo},
+		GBN_NUM = #{gbnNo}
+		WHERE FAQ_NUM = #{no}
+	</update>
+</mapper>

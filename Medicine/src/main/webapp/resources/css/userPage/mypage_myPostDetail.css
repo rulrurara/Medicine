@@ -1,0 +1,255 @@
+@charset "UTF-8";
+body{
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    background: url(../../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+/* 네비게이션 바*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-family: "Nanum-Square";
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -13.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:17%;
+    font-family: "Nanum-Square";
+}
+.allwrap{
+   min-height: 600px;
+   margin: 0 auto;
+   width: 60%;
+   background-color:white;
+   opacity:0.9;
+   box-shadow: 5px 5px 5px 5px grey;
+}
+.titlewrap{
+   margin-top:100px;
+   display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+   border-top: 2px solid #000;
+    border-bottom: 1px solid #e5e5e5;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+   font-family: "Nanum-Square";
+   width: 94%;
+    text-align: center;
+    font-size:17px;
+    font-weight: 600;
+}
+.number{
+   font-family: "Nanum-Square";
+   font-size:13px;
+   flex:1;
+   color: #929292;
+   text-align: right;
+   margin-right:30px;
+}
+.writerwrap{
+   display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #c8c8c8;
+    align-items: center;
+    justify-content: center;
+    padding : 0 30;
+}
+.writer{
+   font-family: "Nanum-Square";
+   width: 80%;
+    text-align: right;
+    font-size:13px;
+    color: #929292;
+}
+.date{
+   font-family: "Nanum-Square";
+   font-size:13px;
+   flex:2;
+   color: #929292;
+   text-align: right;
+}
+.hit{
+   font-family: "Nanum-Square";
+   font-size:13px;
+   flex:1;
+   color: #929292;
+   text-align: right;
+   margin-right:30px;
+}
+.content{
+   font-family: "Nanum-Square";
+   font-size:15px;
+   border-bottom: 2px solid #000;
+   height: 400px;
+   text-indent:30px;
+   padding-top:20px;
+}
+.btnwrap{
+   margin-top: 40px;
+    text-align: center;
+}
+.reple{
+   font-family: "Nanum-Square";
+   font-size:16px;
+   text-indent:25px;
+   border-bottom: 2px solid #c8c8c8;
+   margin-top:7px;
+   height:30px;
+}
+.replewrap{
+   display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+}
+.replewriter{
+   font-family: "Nanum-Square";
+   width: 10%;
+    text-align: left;
+    font-size:14px;
+    color: #000;
+    text-indent:50px;
+}
+.repledate{
+   font-family: "Nanum-Square";
+   font-size:13px;
+   flex:1;
+   color: #929292;
+   text-align: left;
+}
+.replebtnwrap{
+   flex:1;
+   text-align: right;
+}
+.replecon{
+   font-family: "Nanum-Square";
+   font-size:14px;
+   height: 40px;
+   border-bottom: 1px solid #c8c8c8;
+   text-indent:50px;
+}
+.repleupdatebtn , .repledeletebtn{
+   width: 64px;
+    height: 28px;
+    border: none;
+    font-size: 13px;
+    font-family: "Nanum-SquareR";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-right:10px;
+}
+.repleinsertwrap{
+    height: 90px;
+   text-align:center;
+   border-bottom: 1px solid #c8c8c8;
+}
+.repleinsert{
+   display:inline-block;
+   font-size: 13px;
+    font-family: "Nanum-SquareR";
+    margin-top:10px;
+    padding-left:10px;
+    border: 1px solid #c8c8c8;
+    vertical-align:middle;
+}
+.repleinsertbtn{
+    width: 64px;
+    height: 28px;
+    border: none;
+    font-size: 13px;
+    font-family: "Nanum-SquareR";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-left:39px;
+    display:inline-block;
+}
+.registerbtn, .cancelbtn{
+   width: 112px;
+    height: 40px;
+    border: none;
+    font-size: 13px;
+    font-family: "Nanum-SquareR";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+.cancelbtn{
+   margin-left:30px;
+   background: #757575;
+}
+.popup_delete {
+   width: 300px;
+   height: 70px;
+   border : 1px solid #b7b7b7;
+   position: absolute;
+   top: calc(50% - 50px);
+   left: calc(50% - 150px);
+   margin: 0 auto;
+   text-align:center;
+   font-size:15px;
+   padding-top:30px;
+   z-index:999;
+   font-family: "Nanum-Square";
+   border-radius: 7px;
+   display:none;
+} 
+.popupyes, .popupno{
+   width: 50px;
+    height: 30px;
+    background: #FFB300;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+.popupno{
+    margin-left:5px;
+}
+.popupbtn{
+    margin-top:10px;
+ }
+ .listBtn {
+	background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    border:0px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+    margin-right:10px;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="healthmain">
+<select id="getHealthMainPic" parameterType="hashmap" resultType="hashmap">
+	SELECT TITLE, CON, HEALTH_MAIN_PIC
+	FROM(
+	SELECT TITLE, CON, HEALTH_MAIN_PIC, RANK() OVER (ORDER BY REG_D DESC) RNK
+	FROM HEALTH_INFO
+	WHERE DEL_D IS NULL)
+	WHERE RNK BETWEEN 1 AND 4
+</select>
+</mapper>

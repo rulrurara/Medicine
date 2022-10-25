@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+body{
+	 -ms-overflow-style: none;
+}
+body::-webkit-scrollbar{
+  display:none;
+}
+.calpill{
+	width:23px;
+	height:23px;
+}
+.txt_pill {
+	border: 0.5px solid #ddd;
+	font-size: 13pt;
+	height: 46px;
+	width: 220px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 5px;
+	font-family:"Nanum-SquareR";
+}
+
+.table1{
+	border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    box-sizing: border-box;
+    font-family:"Nanum-Square";
+    width: 100%;
+    height:230px;
+}
+.table1-th1{
+	vertical-align: middle;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+}
+.table1-th2{
+	vertical-align: middle;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+    height:180px;
+}
+.table1-td{
+	text-align: center;
+    font-size: 16px;
+     border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    font-family: "Nanum-SquareR";
+}
+#fullCalendarArea {
+	height: 750px;
+}
+.fc table{
+	width: 100%;
+}
+@font-face {
+	font-family: "Nanum-Square";
+	font-size: "normal";
+	src: url("../../../resources/font/NanumSquareEB.ttf");
+}
+.wrap_rap {
+	display: inline-block;
+	vertical-align: top;
+	width: 80%;
+	font-size: 11pt;
+	position: relative;
+	margin-top:100px;
+}
+.dt {
+	position:relative;
+	margin-top: 152.5px;
+	height:697px;
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
+	font-size: 30px;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid white;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	box-sizing: border-box;
+}
+
+.bigrap {
+	position: relative;
+	margin: 0 auto;
+	height:1010px;
+	width: 1096px;
+	box-sizing: border-box;
+	margin-bottom: 190px;
+	margin-top: 50px;
+}
+
+.fc-center h2 {
+	display: inline-block;
+}
+.pill{
+	height: 39px;
+	width: 37px;
+	background-size:cover;
+	background-position: center;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.txt_pill {
+	border: 1px solid black;
+	font-size: 10pt;
+	height: 46px;
+	width: 135px;
+	display: inline-block;
+	vertical-align: top;
+	padding-left:3px;
+}
+.txt_rap {
+	width: 300px;
+	margin-top: 20px;
+	margin-left:13px;
+}
+.pillWrap{
+	margin-top:40px;
+}
+.btn_rap {
+	top: 485px;
+    left: 46px;
+	position:absolute;
+	margin-top: 80px;
+	text-align: center;
+}
+
+.enroll_btn_rap {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	margin-right: 66.297px;
+}
+.memowrap{
+	display:inline-block;
+	height:250px;
+	width:100%;
+}
+.selectbox{
+	width: 180px;
+	height:30px;
+	border: 1px solid #999;
+	font-family: inherit;  
+	font-family: "Nanum-SquareR";
+}
+.registerBtn{
+	width: 140px;
+    height: 40px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+ .btnWrap{
+ 	position:absolute;
+ 	left:40px;
+ 	top:465px;
+ 	margin-top:30px;
+ 	text-align: center;
+ }
+ 
+ .calendarIcon{
+position: absolute;
+width: 47px;
+height: 49px;
+left: 34px;
+top: 30px;
+background: url(../../images/userPage/ye/calendarIcon.png) no-repeat;
+}

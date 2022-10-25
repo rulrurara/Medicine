@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-right:10px;
+}
+.br {
+	font-size: 80pt;
+}
+
+
+textarea {
+	resize: none;
+	border: 1px solid #d7d7d7;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+}

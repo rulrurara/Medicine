@@ -1,0 +1,64 @@
+@charset "UTF-8";
+#bottom {
+   	padding-top: 2.9%; /* 1:1 화면비율 */
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+    margin-right: 130px;
+}
+#im {
+	height: 240px;
+	width: 240px;
+}
+td {
+	height: 100px;
+}
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+th{
+	border-left: 2px solid #A7A49A;
+	
+}
+
+.serbtn {
+	display: inline-block;
+	background-image: url("../../../resources/images/adminPage/search.png");
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+}
+
+.delete {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+
+.enroll{
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.btn_one {
+	margin-top: 5px;
+	margin-bottom: 0px;
+}

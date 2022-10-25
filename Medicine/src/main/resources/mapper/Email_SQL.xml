@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail">
+
+	<insert id="emailCert" parameterType="hashmap">
+		INSERT INTO EMAIL_CERT(EMAIL_NUM,EMAIL,CERT_NUM,REG_D)
+		VALUES(#{current}, #{userEmail}, #{checkNum}, SYSDATE)
+	</insert>
+	
+	<select id="seqSel" parameterType="Integer" resultType="Integer">
+		SELECT EMAIL_CERT_SEQ.NEXTVAL AS NEXT
+		FROM DUAL
+	</select>
+	<select id="seqSel2" parameterType="Integer" resultType="Integer">
+		SELECT EMAIL_CERT_SEQ.CURRVAL AS CUR
+		FROM DUAL
+	</select>
+	<select id="seqCur" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM EMAIL_CERT
+		WHERE CERT_NUM = #{certificationConfirm}
+		AND EMAIL_NUM = #{current}
+	</select>
+	<!-- 아래는 마이페이지 이메일 변경 -->
+	<insert id="email_Cert" parameterType="hashmap">
+		INSERT INTO EMAIL_CERT(EMAIL_NUM,EMAIL,CERT_NUM,REG_D)
+		VALUES(#{current}, #{user_Email}, #{checkNum}, SYSDATE)
+	</insert>
+	<select id="seqSele" parameterType="Integer" resultType="Integer">
+		SELECT EMAIL_CERT_SEQ.NEXTVAL AS NEXT
+		FROM DUAL
+	</select>
+	<select id="seqSele2" parameterType="Integer" resultType="Integer">
+		SELECT EMAIL_CERT_SEQ.CURRVAL AS CUR
+		FROM DUAL
+	</select>
+	<select id="seqCurr" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM EMAIL_CERT
+		WHERE CERT_NUM = #{certificationConfirm}
+		AND EMAIL_NUM = #{current}
+	</select>
+</mapper>

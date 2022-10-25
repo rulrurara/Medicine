@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../resources/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	 $(".menu").on("click",function(){
+		$(".bar").animate({
+		marginLeft:"0px"
+		}, 100)
+	});
+	 
+	$("html").on("click", function(e) {
+		if(!$(e.target).is(".menu") && !$(e.target).is(".bar") && !$(e.target).parent().is(".bar") && !$(e.target).parent().parent().is(".bar")) {
+			$(".bar").animate({
+				marginLeft:"-300px"
+			}, 100);
+		}
+	});
+})
+
+</script>
+<style type="text/css">
+@font-face{
+   font-family: "Nanum-Square";
+   font-size:"normal";
+   src: url("../../resources/font/NanumSquareEB.ttf");
+}
+body{
+	font-size: 0px;
+	margin:0px;
+}
+html {
+	background-color: #B3DEE5;
+}
+/*
+.header{
+	margin : 25px;
+}*/
+.menu{
+    display: inline-block;
+    width: 54px;
+    height: 50px;
+    margin: 25px 20px 0px 25px;
+    cursor: pointer;
+    background: url(../../resources/images/common/menu_bar.png) no-repeat;
+    background-position: 0 0;
+}
+.logo {
+	vertical-align: top;
+    cursor: pointer;
+    margin:28px 0px 0px 0px;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url(../../resources/images/common/logo.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+}
+.logo2{
+	vertical-align: top;
+	cursor: pointer;
+	margin-top:30px;
+	display : inline-block;
+	width: 90px;
+	height:90px;
+	background-image: url(../../resources/images/common/logo.png);
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+.bar{
+	background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    transition-duration: .3s;
+    transition-timing-function: ease-in;
+    width: 260px;
+    z-index: 10000;
+    margin-left:-300px;
+ 
+}
+.wrap{
+	height:239px;
+	background-color:#D9D9D9;
+}
+.element{
+	font-size: 20px;
+	margin: 0 auto;
+    width: 240px;
+    padding: 13px 0;
+    text-align:center;
+}
+.elements{
+	line-height:20px;
+	font-size: 20px;
+	margin-top: 60px;
+	cursor: pointer;
+}
+.elements > div {
+	display: none;
+}
+
+.elements:hover{
+	color:#F26A4B;
+}
+
+.top_header {
+	background-color: #FAE6B1;
+	height: 100px;
+}
+.homepage_name {
+    height: 30px;
+    text-align: center;
+    position: relative;
+    width: 50%;
+    font-size: 30px;
+    margin-left: 24%;
+    line-height: 26px;
+    margin-top: -40px;
+    font-family: "Nanum-Square";
+}
+.login_border {
+	display: inline-block;
+    position: relative;
+    width: 400px;
+    /*height: 79px;*/
+    height:85px;
+    float: right;
+    margin-top: -52px;
+    margin-right: 15px;
+}
+.userId_border {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height:50px;
+}
+/*
+.userId{
+	border: 0px;
+    width: 396px;
+     background-color: #FAE6B1; 
+    height: 48px;
+    text-align: center;
+    font-family: "Nanum-Square";
+    font-size: 18px;
+}*/
+.userId {
+display:inline-block;
+	border: 0px;
+    width: 396px;
+     background-color: #FAE6B1; 
+    height: 48px;
+    text-align: center;
+    font-family: "Nanum-Square";
+    font-size: 18px;
+    margin-top : 13px;
+   }
+.loginBtn_border {
+	display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 37px;
+    float: right;
+    bottom: 13%;
+}
+.loginBtn {
+	    width: 111px;
+    height: 37px;
+    text-align: center;
+    /* background-color: #FFA101; */
+    /* border: 1px solid black; */
+    border-right: 0px;
+    background-image: url(../../resources/images/common/loginBtn.png);
+    /* background-size: 111px 26px; */
+    background-color: #FAE6B1;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    border: 0px;
+    /* float: left; */
+    margin-left: 160px;
+    cursor: pointer;
+}
+.newAccountBtn {
+	width: 111px;
+	height: 37px;
+	text-align: center;
+	/*background-color: #FFA101;*/
+	/*border: 1px solid black;*/
+	background-image: url(../../resources/images/newAccountBtn.png);
+	 background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-color:#FAE6B1;
+    border: 0px;
+    float: right;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="top_header">
+<div class="header">
+	<div class="menu"></div>
+	<div class="logo"></div>
+	
+	<div class="homepage_name">
+		이런 약은 어때?
+	</div>
+	
+	<div class="login_border">
+		<div class="userId_border">
+			<!-- <input type="text" id="userId" class="userId" value=""/> -->
+			<div id="userId" class="userId"></div>
+		</div>
+		
+		<div class="loginBtn_border">
+			<input type="button" id="loginBtn" class="loginBtn" />
+			<input type="button" id="newAccountBtn" class="newAccountBtn"/>
+		</div>
+	</div>
+</div>
+	
+</div>
+<div class="bar">
+	<div class="wrap">
+		<div class="logo2"></div>
+	</div>
+	<div class="element">
+		<div class="elements">의약품 정보</div>
+		<div class="elements">건강 관리</div>
+		<div class="elements">의약품 비교</div>
+		<div class="elements">자유게시판</div>
+		<div class="elements">고객센터</div>
+		<div class="elements">마이페이지</div>
+	</div>
+</div>
+</body>
+</html>

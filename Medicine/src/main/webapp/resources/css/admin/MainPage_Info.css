@@ -1,0 +1,121 @@
+@charset "UTF-8";
+body {
+	font-size: 0px;
+	margin: 0px;
+}
+.loggo {
+	background-size: 90px;
+	width: 90px;
+	height: 90px;
+}
+
+.text {
+	margin-top: 130px;
+	font-size: 40px;
+	font-family: "Nanum-Square";
+	z-index: 10;
+	vertical-align: top;
+	text-align: center;
+	color: white;
+}
+
+#bottom {
+	padding-top: 2.9%; /* 1:1 화면비율 */
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+	margin-right: 130px;
+	height: 0;
+}
+#im {
+	height: 240px;
+}
+tr {
+	height: 104px;
+}
+textarea {
+	resize: none;
+	border: 1px solid #d7d7d7;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+	background-color: #00ff0000;
+}
+textarea:focus {
+	outline: none;
+}
+#fix{
+	display: none;
+}
+#fix2{
+	display: none;
+}
+.backimg{
+	width: 320px;
+	height: 350px;
+	background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+	cursor: pointer;
+}
+.backimg2{
+	width: 320px;
+	height: 350px;
+	background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+	cursor: pointer;
+}
+.enroll {
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.aYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.m {
+	cursor: pointer;
+}
+.t{
+	margin-bottom: 30px;
+}
+.del{
+	margin-top: 0px !important;
+}

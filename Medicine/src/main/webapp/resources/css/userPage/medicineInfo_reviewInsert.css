@@ -1,0 +1,443 @@
+@charset "UTF-8";
+@font-face{
+   font-family: "Nanum-Square";
+   font-size:"normal";
+   src: url("../../font/NanumSquare_acEB.ttf");
+}
+body{
+	font-size: 0px;
+	margin:0px;
+	  background: url(../../images/userPage/medicine3.jpg) no-repeat;
+    background-size: cover;
+}
+
+.menu{
+    display: inline-block;
+    width: 54px;
+    height: 50px;
+    margin: 25px 20px 0px 25px;
+    cursor: pointer;
+    background: url(../../images/common/menu_bar.png) no-repeat;
+    background-position: 0 0;
+}
+.logo {
+	vertical-align: top;
+    cursor: pointer;
+    margin:28px 0px 0px 0px;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url(../../images/common/logo.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 35%;
+}
+.logo2{
+	vertical-align: top;
+	cursor: pointer;
+	margin-top:30px;
+	display : inline-block;
+	width: 90px;
+	height:90px;
+	background-image: url('../../images/common/logo.png');
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+.bar{
+	background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    transition-duration: .3s;
+    transition-timing-function: ease-in;
+    width: 260px;
+    z-index: 10000;
+    margin-left:-300px;
+ 
+}
+.wrap{
+	height:239px;
+	background-color:#D9D9D9;
+}
+.element{
+	font-size: 20px;
+	margin: 0 auto;
+    width: 240px;
+    padding: 13px 0;
+    text-align:center;
+    font-family: "Nanum-Square";
+}
+.elements{
+	line-height:20px;
+	font-size: 20px;
+	margin-top: 60px;
+	cursor: pointer;
+	
+}
+.elements > div {
+	display: none;
+}
+
+.elements:hover{
+	color:#58C0BC;
+}
+
+.top_header {
+	/*background-color: #FAE6B1;*/
+	height: 100px;
+}
+.homepage_name {
+    height: 30px;
+    text-align: center;
+    position: relative;
+    width: 50%;
+    font-size: 30px;
+    margin-left: 24%;
+    line-height: 26px;
+    margin-top: -40px;
+    font-family: "Nanum-Square";
+}
+
+/* 약품정보 글자*/
+.info {
+	display: block;
+	font-family: "Nanum-Square";
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -6.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+	font-family: "Nanum-Square";
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:9%;
+}
+
+/*메인 페이지*/
+.main_border {
+	display: block;
+    width: 70%;
+    border: 1px solid black;
+    border-radius:10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: white;
+    
+     /*그림자 테스트*/
+    box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+    /*투명도 테스트*/
+    background-color: white;
+    opacity: 0.9;
+}
+
+.assistant_border {
+	display: block;
+	height: 580px;
+	border-radius: 10px;
+}
+
+/*리뷰 버튼 div*/
+.btn_border {
+	margin-top:10px;
+	display: inline-block;
+	width: 77%;
+	height: 40px;
+	float: right;
+	border: 0px;
+    position: relative;
+    right: 9%;
+    margin-top:10px;
+}
+.btn_border input[type="button"], table input[type="button"] {
+	cursor: pointer;
+}
+.reviewAddBtn {
+	border:0px;
+	/*background-image: url(../images/userPage/reviewAddBtn.png);
+	background-color:#FAE6B1;
+    background-repeat: no-repeat;*/
+    width: 111px;
+    height: 40px;
+    color:white;
+    font-size: 15px;
+    font-family: "Nanum-SquareR";
+    float: right;
+    margin-right:6%;
+}
+.listBtn {
+	background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    border:0px;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    float: left;
+}
+/*좌측 테이블*/
+.left_table {
+	display:inline-block;
+	vertical-align:top;
+	width: 400px;
+    height: 580px;
+    border-right:1px solid black;
+    padding:15px;
+}
+.left_table td {
+	font-size: 20px;
+	font-family: "Nanum-Square";
+	font-weight: bold;
+}
+.left_table tr {
+	margin-top:10px;
+}
+/*
+td:nth-child(1n) {
+	width: 100px;
+}*/
+/* 홀수 행 - 1번째 td */
+tr:nth-child(odd) td:nth-child(1) {
+	width: 130px;
+}
+/*점수 입력 text*/
+input[type=number], input[type="text"] {
+	width: 200px;
+	height: 34px;
+	text-align: center;
+}
+/*select box */
+select {
+	height: 34px;
+    width: 220px;
+    text-align: center;
+}
+/*효과,부작용 입력 text
+input[type=text] {
+	width:212px;
+	height: 34px;
+	text-align: center;
+}
+*/
+/*number의 오른쪽 화살표 없애기*/
+.input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     margin: 0;
+}
+/*짝수 행 - 2번쨰 td*/
+tr:nth-child(even) button {
+	width: 50px;
+}
+
+/*추가버튼*/
+.addBtn {
+	/*background-image: url(../images/userPage/addBtn_w135_h40.png);
+    background-color: white;
+    background-repeat: no-repeat;*/
+    width: 135px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    border-radius:10px;
+}
+.choiceBtn {
+	width: 135px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    border-radius:10px;
+}
+.searchEffectBtn, .searchSeffectBtn {
+	width: 70px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    border-radius:10px;
+    margin-left:10px;
+}
+.searchEffect, .searchSeffect {
+	width: 88% !important;
+	font-size: 18px;
+	text-align: left !important;
+	text-indent: 15px;
+}
+/*가운데 테이블 관련*/
+.middle_table {
+	display:inline-block;
+	vertical-align:top;
+	width: 500px;
+    height: 590px;
+    border-right:1px solid black;
+    padding: 0px;
+}
+.middle_table tr {
+	/* height: 5px;
+	font-size: 15px; */
+	/* height: 75px; */
+}
+.effect_name{
+	height: 10px !important;
+}
+.effect_tr1, .effect_tr2, .effect_tr3, .effect_tr4, .seffect_tr1, .seffect_tr2, .seffect_tr3, .seffect_tr4 {
+	/* height: 78px !important; */
+	height: 20px;
+}
+.effect_name1{
+    top: 7%;
+	text-align: center;
+	left:36%;
+}
+.effect_name2 {
+    top: 33%;
+    left:36%;
+}
+.effect_name2 td, .effect_name3 td, .effect_name4 td {
+	width: 130px;
+	text-align: center;
+}
+.effect_name1 td, .effect_name2 td, .effect_name3 td, .effect_name4 td {
+	display: none;
+}
+.effect_name3 {
+    top: 58%;
+    left:36%;
+}
+.effect_name4 {
+    top: 77%;
+    left:36%;
+}
+.effect_tr1 {
+    top: 12%;
+}
+.effect_tr2 {
+    top: 19%;
+}
+.seffect_tr1 {
+    top: 38%;
+}
+.seffect_tr2 {
+    top: 45%;
+}
+.effect_tr3 {
+	top:61%;
+}
+.effect_tr4 {
+	top:67%;
+}
+.seffect_tr3 {
+	top:81%;
+}
+.seffect_tr4 {
+	top:87%;
+}
+
+
+.middle_table tr {
+	display: inline-block;
+	position: absolute;
+}
+
+
+
+
+.middle_table td{
+	font-size: 15px;
+	font-family: "Nanum-Square";
+	cursor: pointer;
+	height: 5px;
+}
+.span_1 {
+	font-size: 15px;
+}
+
+/*오른쪽 div - border*/
+.right_div {
+	display: inline-block;
+	width: 420px;
+	vertical-align: top;
+    margin-top: 60px;
+}
+
+/*에디터 DIV*/
+.editor_div {
+	margin-top:10px;
+}
+input:focus ,select:focus{
+	outline: none;
+}
+
+/*팝업창 테이블*/
+.reviewTable, .reviewTable2 {
+	width: 100%;
+	margin-top : 15px;
+	border:1px solid black;
+	border-radius : 10px;
+	border-collapse: collapse;
+	font-size: 15px;
+}
+.reviewTable tr, .reviewTable th, .reviewTable td,
+.reviewTable2 tr, .reviewTable2 th, .reviewTable2 td {
+	font-family: "Nanum-S	quare";	
+	font-size: 17px;
+	height: 32px;
+}
+.reviewTable th, .reviewTable2 th {
+	border-bottom: 1px solid black;
+	background-color: #D5D5D5;
+}
+.reviewTable tr, .reviewTable2 tr {
+	border-bottome: 1px solid black;
+	border-right: 1px solid black;
+}
+.reviewTable td, .reviewTable2 td {
+	text-align:center;
+}
+.reviewTable td:first-child, .reviewTable2 td:first-child {
+	border-right: 1px solid black;
+}
+
+.searchEffectBtn , .searchSeffectBtn{
+	cursor: pointer;
+}
+.paging_area {
+	margin-top : 45px;
+}
+.reviewTable tr:nth-child(n+1):nth-child(-n+10):hover,
+.reviewTable2 tr:nth-child(n+1):nth-child(-n+10):hover
+ {
+	color:#58C0BC;
+	cursor: pointer;
+}
+
+
+/* 그래프 글씨 크기*/
+.highcharts-title {
+	font-size: 13px !important;
+}

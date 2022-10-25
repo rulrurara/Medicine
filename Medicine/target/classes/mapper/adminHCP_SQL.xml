@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ahcp">
+
+	<select id="getAhcpList" resultType="hashmap"
+		parameterType="hashmap">
+		SELECT HI.INFO_NUM, HI.TITLE, HI.CON, HI.HEALTH_MAIN_PIC
+		FROM HEALTH_INFO HI INNER JOIN MEM M
+                        		ON HI.MEM_NUM = M.MEM_NUM
+                				AND HI.DEL_D IS NULL                
+	</select>
+	
+	<insert id="AhcpInsert" parameterType="hashmap">
+		INSERT INTO HEALTH_INFO (INFO_NUM, MEM_NUM, TITLE, CON, HEALTH_MAIN_PIC)
+		VALUES(HEALTH_INFO_SEQ.NEXTVAL, #{no}, #{title}, #{con}, #{pic})
+	</insert>
+	
+	<select id="getAhcp" parameterType="hashmap" resultType="hashmap">
+		SELECT INFO_NUM, TITLE, CON, HEALTH_MAIN_PIC
+		FROM HEALTH_INFO 
+		WHERE DEL_d IS NULL
+		AND INFO_NUM = #{no}      
+	</select>
+	
+	<delete id="AhcpDelete" parameterType="hashmap">
+		UPDATE HEALTH_INFO SET
+		DEL_D = SYSDATE
+		WHERE INFO_NUM = #{no}
+	</delete>
+	
+	<delete id="AhcpUpdate" parameterType="hashmap">
+		UPDATE HEALTH_INFO SET
+		TITLE = #{title},
+		CON = #{con},
+		HEALTH_MAIN_PIC = #{pic}
+		WHERE INFO_NUM = #{no}
+	</delete>
+</mapper>

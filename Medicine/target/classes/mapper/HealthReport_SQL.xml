@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="report">
+
+	<select id="getBmiReport" parameterType="hashmap" resultType="hashmap">
+        SELECT *
+        FROM(
+		SELECT WGT, HGT, BMI,D,
+		MONTHS_BETWEEN(TRUNC(SYSDATE,'YEAR'),
+		TRUNC(TO_DATE(TO_CHAR(BIRTH,'YYYYMMDD'),'YYYYMMDD'),'YEAR')) /12 +1 AS AGE,
+        ROW_NUMBER ()OVER(ORDER BY D DESC) AS RNUM
+		FROM MEM M INNER JOIN BMI B
+		ON M.MEM_NUM = B.MEM_NUM
+		WHERE B.MEM_NUM = #{memnum})
+        WHERE RNUM=1
+	</select>
+	<select id="getBmiGraph1" parameterType="hashmap" resultType="hashmap">
+		SELECT D
+		FROM(
+		SELECT TO_CHAR(D,'MM.DD') AS D,
+		ROW_NUMBER ()OVER(ORDER BY TO_CHAR(D,'YY.MM.DD.HH24:MI:SS') DESC) AS RNUM
+		FROM MEM M INNER JOIN BMI B
+		ON M.MEM_NUM = B.MEM_NUM
+        WHERE B.MEM_NUM= #{memnum}
+		)
+		WHERE RNUM  BETWEEN 1 AND 10
+		ORDER BY D
+	</select>
+	<select id="getBmiGraph2" parameterType="hashmap" resultType="hashmap">
+ 		SELECT BMI
+		FROM(
+		SELECT BMI,D,
+		ROW_NUMBER ()OVER(ORDER BY TO_CHAR(D,'YY.MM.DD.HH24:MI:SS') DESC) AS RNUM
+		FROM MEM M INNER JOIN BMI B
+		ON M.MEM_NUM = B.MEM_NUM
+		WHERE B.MEM_NUM= #{memnum}
+		)
+		WHERE RNUM  BETWEEN 1 AND 10
+		ORDER BY D
+	</select>
+		<select id="getBmiGraph3" parameterType="hashmap" resultType="hashmap">
+        SELECT D
+        FROM(
+        SELECT  D,ROW_NUMBER ()OVER(ORDER BY D DESC) AS RNUM
+		FROM(
+		SELECT DISTINCT TO_CHAR(D,'YYYY.MM') AS D
+		FROM MEM M INNER JOIN BMI B
+		ON M.MEM_NUM = B.MEM_NUM
+		WHERE B.MEM_NUM= #{memnum}
+		))
+		WHERE RNUM  BETWEEN 1 AND 10
+        ORDER BY D 
+	</select>
+	<select id="getBmiGraph4" parameterType="hashmap" resultType="hashmap">
+        SELECT BMII
+        FROM(
+        SELECT BMII ,ROW_NUMBER ()OVER(ORDER BY D DESC) AS RNUM, D
+		FROM(
+		SELECT ROUND(AVG(BMI),1) AS BMII,TO_CHAR(D,'YYYY.MM') AS D
+		FROM MEM M INNER JOIN BMI B
+		ON M.MEM_NUM = B.MEM_NUM
+		WHERE B.MEM_NUM= #{memnum}
+        GROUP BY TO_CHAR(D,'YYYY.MM')
+		))
+		WHERE RNUM  BETWEEN 1 AND 10
+		ORDER BY D
+	</select>
+	<select id="getDrugList" parameterType="hashmap" resultType="hashmap">
+		SELECT FOOD.HEALTH_FUN_FOOD_NUM,COM_NM,PROD_NM,PROD_PIC,SHAPE_PIC
+		FROM COM_NM COM
+		INNER JOIN HEALTH_FUN_FOOD FOOD 
+		ON COM.COM_NUM = FOOD.COM_NUM
+		INNER JOIN HEALTH_FUN_FOOD_TAKE TAKE
+		ON FOOD.HEALTH_FUN_FOOD_NUM = TAKE.HEALTH_FUN_FOOD_NUM
+		INNER JOIN SHAPE SHA
+		ON FOOD.SHAPE_NUM = SHA.SHAPE_NUM
+		WHERE TAKE.MEM_NUM= #{memnum}
+		AND TAKE.DEL_D IS NULL
+	</select>
+	<select id="getDrugList2" parameterType="hashmap" resultType="hashmap">
+        SELECT FUNC_NM , PIC
+        FROM HEALTH_FUN_FOOD_FUNC_MID MID 
+        INNER JOIN FUNC FUN 
+        ON FUN.FUNC_NUM = MID.FUNC_NUM
+		WHERE HEALTH_FUN_FOOD_NUM = #{1}
+	</select>
+	<select id="getDrugList3" parameterType="hashmap" resultType="hashmap">
+        SELECT NUT_NM, MIN_PROP_TAKE_AMT,MAX_PROP_TAKE_AMT,UNIT,FIG 
+        FROM NUT NUT INNER JOIN UNIT UNIT
+        ON NUT.UNIT_NUM = UNIT.UNIT_NUM
+        INNER JOIN HEALTH_FUN_FOOD_NUT_MID MID
+        ON NUT.NUT_NUM = MID.NUT_NUM
+        WHERE HEALTH_FUN_FOOD_NUM = #{1}
+	</select>
+	
+	<select id="getVitList1" parameterType="hashmap" resultType="hashmap">
+		SELECT A.NUT_NM, NUT.MIN_PROP_TAKE_AMT, NUT.MAX_PROP_TAKE_AMT, UNIT.UNIT, A.FIG
+		FROM(SELECT NUT_NM, SUM(FIG) AS FIG
+		    FROM  HEALTH_FUN_FOOD_TAKE HFFT INNER JOIN HEALTH_FUN_FOOD_NUT_MID HFFNM 
+		                                    ON HFFT.HEALTH_FUN_FOOD_NUM = HFFNM.HEALTH_FUN_FOOD_NUM
+		                                    INNER JOIN NUT NUT
+		                                    ON HFFNM.NUT_NUM = NUT.NUT_NUM
+		                                    INNER JOIN UNIT UNIT
+		                                    ON NUT.UNIT_NUM = UNIT.UNIT_NUM
+		    WHERE HFFT.MEM_NUM = #{memnum}
+		    AND HFFT.DEL_D IS NULL
+		    GROUP BY NUT_NM)A INNER JOIN NUT NUT ON A.NUT_NM = NUT.NUT_NM
+		                      INNER JOIN UNIT UNIT ON UNIT.UNIT_NUM = NUT.UNIT_NUM
+		WHERE NUT.GBN = '필수'
+	</select>
+	
+	<select id="getVitList2" parameterType="hashmap" resultType="hashmap">
+		SELECT A.NUT_NM, NUT.MIN_PROP_TAKE_AMT, NUT.MAX_PROP_TAKE_AMT, UNIT.UNIT, A.FIG
+		FROM(SELECT NUT_NM, SUM(FIG) AS FIG
+		    FROM  HEALTH_FUN_FOOD_TAKE HFFT INNER JOIN HEALTH_FUN_FOOD_NUT_MID HFFNM 
+		                                    ON HFFT.HEALTH_FUN_FOOD_NUM = HFFNM.HEALTH_FUN_FOOD_NUM
+		                                    INNER JOIN NUT NUT
+		                                    ON HFFNM.NUT_NUM = NUT.NUT_NUM
+		                                    INNER JOIN UNIT UNIT
+		                                    ON NUT.UNIT_NUM = UNIT.UNIT_NUM
+		    WHERE HFFT.MEM_NUM = #{memnum}
+		    AND HFFT.DEL_D IS NULL
+		    GROUP BY NUT_NM)A INNER JOIN NUT NUT ON A.NUT_NM = NUT.NUT_NM
+		                      INNER JOIN UNIT UNIT ON UNIT.UNIT_NUM = NUT.UNIT_NUM
+		WHERE NUT.GBN = '기능성'
+	</select>
+	
+	
+</mapper>

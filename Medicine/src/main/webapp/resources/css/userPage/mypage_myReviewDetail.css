@@ -1,0 +1,411 @@
+@charset "UTF-8";
+body{
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    background: url(../../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+
+
+/* 약품정보 글자*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -7.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:9%;
+    font-family: "Nanum-Square";
+}
+
+/*메인 페이지*/
+.main_border {
+	display: block;
+    width: 70%;
+    border: 1px solid black;
+    border-radius:10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: white;
+    opacity: 0.9;
+    box-shadow: 5px 5px 5px 5px grey;
+}
+
+.assistant_border {
+	display: block;
+	height: 475px;
+	border-radius: 10px;
+}
+
+/*리뷰 버튼 div*/
+.btn_border {
+	display: inline-block;
+	width: 200px;
+	height: 40px;
+	float: right;
+	border: 0px;
+    position: relative;
+    right: 9%;
+    margin-top:10px;
+}
+.reviewAddBtn {
+	border:0px;
+	/*background-image: url(../images/userPage/reviewAddBtn.png);
+	background-color:#FAE6B1;
+    background-repeat: no-repeat;*/
+    width: 111px;
+    height: 37px;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+
+/*좌측 테이블*/
+.left_table {
+	display:inline-block;
+	vertical-align:top;
+	width: 400px;
+   /*  height: 475px; */
+   height:580px;
+    border-right:1px solid black;
+    padding:15px;
+}
+.left_table td {
+	font-size: 20px;
+	font-family: "Nanum-Square";
+	font-weight: bold;
+}
+.left_table tr {
+	margin-top:10px;
+}
+/*
+td:nth-child(1n) {
+	width: 100px;
+}*/
+/* 홀수 행 - 1번째 td */
+tr:nth-child(odd) td:nth-child(1) {
+	width: 130px;
+}
+/*점수 입력 text*/
+input[type=number] {
+	width: 200px;
+	height: 34px;
+	text-align: center;
+}
+/*select box */
+select {
+	height: 34px;
+    width: 220px;
+    text-align: center;
+}
+/*효과,부작용 입력 text*/
+input[type=text] {
+	width:200px;
+	height: 34px;
+	text-align: center;
+}
+
+/*number의 오른쪽 화살표 없애기*/
+.input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     margin: 0;
+}
+/*짝수 행 - 2번쨰 td*/
+tr:nth-child(even) button {
+	width: 50px;
+}
+
+/*버튼div*/
+.btn_border {
+    width: 160px;
+    margin-left: 15px;
+    height: 50px;
+    border: 0px;
+    vertical-align: top;
+}
+/*추가버튼*/
+.addBtn {
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    width: 135px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    border-radius: 10px;
+}
+.updateBtn {
+	display:none;
+	/*background-image: url(../images/userPage/editBtn_w45_h40.png);
+    background-color: white;
+    background-repeat: no-repeat;*/
+    width: 45px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+.deleteBtn {
+	display:none;
+	/*background-image: url(../images/userPage/deleteBtn_w45_h40.png);
+    background-color: white;
+    background-repeat: no-repeat;*/
+    width: 45px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+}
+
+/*가운데 테이블 관련*/
+.middle_table {
+	display:inline-block;
+	vertical-align:top;
+	width: 500px;
+    height: 550px;
+    border-right:0px;
+    padding: 0px;
+}
+.middle_table td{
+	font-size: 15px;
+	font-family: "Nanum-Square";
+}
+
+/*오른쪽 div - border*/
+.right_div {
+	display: inline-block;
+	width: 420px;
+	vertical-align: top;
+    margin-top: 60px;
+}
+
+/*에디터 DIV*/
+.editor_div {
+	margin-top:105px;
+}
+
+.middle_table td{
+	cursor: pointer;
+	height: 26px;
+}
+input:focus ,select:focus{
+	outline: none;
+}
+
+/*클릭한 해당 의약품 명*/
+.topSpan {
+	display: inline-block;
+    font-size: 20px;
+    font-family: "Nanum-Square";
+    text-align: center;
+}
+.regDt {
+	display: inline-block;
+    font-size: 20px;
+    font-family: "Nanum-Square";
+    text-align: center;
+    float: right;
+}
+
+/*하단 버튼 div*/
+.bottom_btn_border {
+	margin-left: 15px;
+    display: inline-block;
+    width: 98%;
+    height: 40px;
+    margin-top: 50px;
+}
+.updateReviewBtn,.deleteReviewBtn,.cancelReviewBtn {
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    width: 64px;
+    height: 37px;
+    border: 0px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.deleteReviewBtn {
+	float: right;
+	margin-right:15px;
+}
+.cancelReviewBtn {
+	float: right;
+}
+.choiceBtn {
+	width: 135px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color: white;
+    border-radius: 10px;
+}
+
+.etcEffectInput, .etcSEffectInput {
+	width: 190px !important;
+}
+input[type="button"] {
+	cursor: pointer;
+}
+/*팝업창 테이블*/
+.reviewTable, .reviewTable2 {
+	width: 100%;
+	margin-top : 15px;
+	border:1px solid black;
+	border-radius : 10px;
+	border-collapse: collapse;
+	font-size: 15px;
+}
+.reviewTable tr, .reviewTable th, .reviewTable td,
+.reviewTable2 tr, .reviewTable2 th, .reviewTable2 td {
+	font-family: "Nanum-S	quare";	
+	font-size: 17px;
+	height: 32px;
+}
+.reviewTable th, .reviewTable2 th {
+	border-bottom: 1px solid black;
+	background-color: #D5D5D5;
+}
+.reviewTable tr, .reviewTable2 tr {
+	border-bottome: 1px solid black;
+	border-right: 1px solid black;
+}
+.reviewTable td, .reviewTable2 td {
+	text-align:center;
+}
+.reviewTable td:first-child, .reviewTable2 td:first-child {
+	border-right: 1px solid black;
+}
+
+.searchEffectBtn , .searchSeffectBtn{
+	cursor: pointer;
+}
+.paging_area {
+	margin-top : 45px;
+}
+.reviewTable tr:nth-child(n+1):nth-child(-n+10):hover,
+.reviewTable2 tr:nth-child(n+1):nth-child(-n+10):hover
+ {
+	color:#58C0BC;
+	cursor: pointer;
+}
+/*팝업창 input text*/
+.searchEffect, .searchSeffect {
+	width: 88% !important;
+	font-size: 18px;
+	text-align: left !important;
+	text-indent: 15px;
+}
+/* 팝업창 검색 버튼*/
+.searchEffectBtn, .searchSeffectBtn {
+	width: 70px;
+    height: 40px;
+    border: 0px;
+    vertical-align: top;
+    color:white;
+    border-radius:10px;
+    margin-left:10px;
+}
+
+/*중간 테이블 글자 css*/
+.effect_name{
+	height: 10px !important;
+}
+.effect_tr1, .effect_tr2, .effect_tr3, .effect_tr4, .seffect_tr1, .seffect_tr2, .seffect_tr3, .seffect_tr4 {
+	/* height: 78px !important; */
+	height: 20px;
+}
+.effect_name1{
+    top: 32%;
+    text-align: center;
+    left: 47%;
+}
+.effect_name2 {
+    top: 47.5%;
+    left:47%;
+}
+.effect_name2 td, .effect_name3 td, .effect_name4 td {
+	width: 130px;
+	text-align: center;
+}
+.effect_name1 td, .effect_name2 td, .effect_name3 td, .effect_name4 td {
+	
+}
+.effect_name3 {
+    top: 63%;
+    left: 47%;
+}
+.effect_name4 {
+    top: 75.5%;
+    left: 47%;
+}
+.effect_tr1 {
+   left: 37%;
+    top: 36%;
+}
+.effect_tr2 {
+    top: 41%;
+    left: 37%;
+}
+.seffect_tr1 {
+    top: 52%;
+    left: 37%;
+}
+.seffect_tr2 {
+	top: 57%;
+    left: 37%;
+}
+.effect_tr3 {
+	top: 66%;
+    left: 37%;
+}
+.effect_tr4 {
+	top:71%;
+	left: 37%;
+}
+.seffect_tr3 {
+	top: 79%;
+    left: 37%;
+}
+.seffect_tr4 {
+	top:84%;
+	left:37%;
+}
+
+
+.middle_table tr {
+	display: inline-block;
+	position: absolute;
+}
+.effect_tr1 td, .effect_tr2 td, .effect_tr3 td, .effect_tr4 td, .seffect_tr1 td, .seffect_tr2 td, .seffect_tr3 td, .seffect_tr4 td {
+    width: 150px !important;
+    text-align: center;
+    height: 36px;
+}

@@ -1,0 +1,148 @@
+@charset "UTF-8";
+body {
+	font-size: 0px;
+	margin: 0px;
+}
+.bar{
+	z-index: 10;
+}
+.loggo {
+	background-size: 90px;
+	width: 90px;
+	height: 90px;
+}
+.brunch-wrap {
+	position: relative;
+	height: 520px;
+	overflow: hidden;
+	margin-top: 100px;
+}
+
+.brunch {
+	width: 5000px;
+	height: 520px;
+}
+
+.pic-first {
+	width: 500px;
+	height: 520px;
+	display: inline-block;
+}
+
+.pic {
+	display: inline-block;
+	width: 320px;
+	height: 520px;
+	background-size: cover;
+	background-position: center;
+	transition: .3s;
+	filter: brightness(85%);
+	cursor: pointer;
+	vertical-align: top;
+}
+
+.pic:hover {
+	transform: scale(1.05);
+	filter: brightness(70%);
+}
+#pic0{
+	background-image: url('../../../resources/images/adminPage/플러스.png');
+	background-size: 200px;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+#pic1 {
+	background-image: url('../../../resources/images/adminPage/파인애플.jpg');
+}
+
+#pic2 {
+	background-image: url('../../../resources/images/adminPage/키위블루베리.jpg');
+}
+
+#pic3 {
+	background-image: url('../../../resources/images/adminPage/체리2.jpg');
+}
+
+#pic4 {
+	background-image: url('../../../resources/images/adminPage/체리.jpg');
+}
+
+#pic5 {
+	background-image: url('../../../resources/images/adminPage/아보카토.jpg');
+}
+
+#pic6 {
+	background-image: url('../../../resources/images/adminPage/산딸기.jpg');
+}
+
+#pic7 {
+	background-image: url('../../../resources/images/adminPage/블루베리.jpg');
+}
+
+#pic8 {
+	background-image: url('../../../resources/images/adminPage/베리.jpg');
+}
+
+#pic9 {
+	background-image: url('../../../resources/images/adminPage/딸기베리.jpg');
+}
+
+#pic10 {
+	background-image: url('../../../resources/images/adminPage/딸기.jpg');
+}
+
+#pic11 {
+	background-image: url('../../../resources/images/adminPage/귤귤귤.jpg');
+}
+
+#pic12 {
+	background-image: url('../../../resources/images/adminPage/귤귤.jpg');
+}
+
+#pic13 {
+	background-image: url('../../../resources/images/adminPage/귤2.jpg');
+}
+
+#pic14 {
+	background-image: url('../../../resources/images/adminPage/귤.jpg');
+}
+
+.text {
+	margin-top: 130px;
+	font-size: 40px;
+	font-family: "Nanum-Square";
+	z-index: 10;
+	vertical-align: top;
+	text-align: center;
+	color: white;
+}
+
+.icon-right {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	right: 50px;
+	top: 210px;
+	z-index: 10;
+	background:
+		url(//t1.daumcdn.net/brunch9/static/images/pc/ico_brunch_v8_181004_v2.png)
+		no-repeat 0 0;
+	background-position: -269px -175px;
+	cursor: pointer;
+}
+
+.icon-left {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	left: 50px;
+	top: 210px;
+	z-index: 10;
+	background:
+		url(//t1.daumcdn.net/brunch9/static/images/pc/ico_brunch_v8_181004_v2.png)
+		no-repeat 0 0;
+	background-position: -167px -175px;
+	cursor: pointer;
+}

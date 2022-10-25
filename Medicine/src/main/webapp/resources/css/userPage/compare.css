@@ -1,0 +1,575 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: "Nanum-SquareR";
+	font-size: "normal";
+	src: url("../../../resources/font/NanumSquare_acR.ttf");
+}
+table td{
+	height:60px;
+}
+html, body {
+	margin: 0;
+	font-size: 0;
+	min-width: 1190px;
+}
+
+.top_header {
+	background-color: #F5F0E6;
+}
+
+body {
+	min-width: 1190px;
+	font-family: "Nanum-SquareR";
+	font-size: "normal";
+	background-color: #F5F0E6;
+	-ms-overflow-style: none;
+	background-repeat: no-repeat;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+.total {
+	width: 1381.09px;
+	top: 55px;
+	margin: 0px auto;
+	position: relative;
+	text-align: center;
+}
+
+.headTxt {
+	position: absolute;
+	left: 143px;
+	top: 23px;
+	font-weight: 700;
+	font-size: 28px;
+}
+
+.headImg {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 715px;
+	top: 15px;
+	background-image: url(../../images/userPage/ye/magnifyingGlassIcon.png);
+	background-repeat: no-repeat;
+}
+
+.compare {
+	position: absolute;
+	width: 548px;
+	height: 289px;
+	top: 150px;
+	box-sizing: border-box;
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+#compare1 {
+	left: 143px;
+	border-width: 4px 1px 2px 4px;
+	border-top-left-radius: 40px;
+}
+
+#compare2 {
+	left: 691px;
+	border-width: 4px 4px 2px 1px;
+	border-top-right-radius: 40px;
+}
+
+.compareTxt {
+	position: absolute;
+	width: 1096px;
+	left: 143px;
+	top: 439px;
+	box-sizing: border-box;
+	border-width: 2px 4px 4px 4px;
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0.1);
+	font-size: 25px;
+	line-height: 99px;
+	letter-spacing: 0.2em;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.7);
+	cursor: pointer;
+	height: 105px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.compareBtn{
+	cursor: pointer;
+}
+
+#img1, #img2{
+	width: 100px;
+	margin-top: 100px;
+}
+
+.popup_compare {
+	border: none;
+	background-color: white;
+	width: 916px;
+	height: 300px;
+	display: none;
+	z-index: 999;
+	position: absolute;
+	left: 16.87%;
+	right: 16.8%;
+	top: 5.03%;
+	text-align: center;
+}
+
+.popup_txt {
+	margin-left: 76px;
+	margin-top: 47px;
+	font-size: 25px;
+	line-height: 45px;
+	text-align: left;
+}
+table {
+	border-collapse: collapse;
+	display:none;
+	border-width: 2px 2px 2px 2px;
+	border-color: #d9d9d9;
+	border-style: solid;
+}
+
+tr:nth-child(even) {
+	border-width: 0px 0px 2px 0px;
+	border-color: #d9d9d9;
+	border-style: solid;
+	border-collapse: collapse;
+}
+
+.close {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	right: 72px;
+	top: 47px;
+	background: url(../../images/userPage/ye/deleteIcon.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+}
+
+.searchbox {
+	height: 37px;
+	width:83%;
+	border: none;
+	border-bottom: solid 2px grey;
+	text-indent: 10px;
+}
+
+.searchbox:focus {
+	outline: none;
+}
+
+.searchimg {
+	position: relative;
+	width: 31.48px;
+	height: 37px;
+	left: 803px;
+	background: url(../../images/userPage/ye/search_icon.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	top: 38px;
+}
+
+.resultblock {
+	box-sizing: border-box;
+	display: none;
+	margin-top:30px;
+	background-color: white;
+	width: 916px;
+	text-align: center;
+	border-width: 2px 2px 2px 2px;
+	border-color: #d9d9d9;
+	border-style: solid;
+}
+
+.resultblock img {
+	height: 85px;
+	background-size: cover;
+	background-position: center;
+}
+
+.co {
+	font-family: "Nanum-SquareR";
+	font-size: 13px;
+	text-align: left;
+}
+
+.name {
+	font-family: "Nanum-SquareR";
+	font-size: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.check {
+	background: url(../../images/userPage/ye/check_icon.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+
+.popup_search {
+	border: none;
+	background-color: white;
+	width: 350px;
+	height: 350px;
+	display: none;
+	z-index: 999;
+	position: fixed;
+	top: 23%;
+	left: 39%;
+	border-radius: 15px;
+	text-align: center;
+	border-color: ghostwhite;
+    border-style: solid;
+    box-sizing: border-box;
+}
+
+.enrollTxt {
+	width: 320px;
+	height: 25px;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 28px;
+	display: inline-block;
+	margin-bottom: 20px
+}
+
+.searchResImg {
+	display: inline-block;
+	height: 150px;
+} 
+
+.searchResCo {
+	width: 320px;
+	height: 25px;
+	font-size: 13px;
+	margin-top: 15px;
+	display: inline-block;
+	color: gray;
+}
+
+.searchResName {
+	width: 320px;
+	height: 25px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+.cancelBtn {
+	position: absolute;
+	display: inline-block;
+	width: 175px;
+	height: 40px;
+	left: 0px;
+	bottom: 0px;
+	box-sizing: border-box;
+	border: 0;
+	font-size: 17px;
+	color: #fff;
+	cursor: pointer;
+	font-family: "Nunum-SquareR";
+	border-radius: 0px !important;
+	border-bottom-left-radius: 15px !important;
+	font-weight: bold;
+}
+
+.enrollBtn {
+	position: absolute;
+	display: inline-block;
+	width: 175px;
+	height: 40px;
+	right: 0px;
+	bottom: 0px;
+	box-sizing: border-box;
+	border: 0;
+	font-size: 17px;
+	color: #fff;
+	cursor: pointer;
+	font-family: "Nunum-SquareR";
+	border-radius: 0px !important;
+	border-bottom-right-radius: 15px !important;
+	font-weight: bold;
+}
+
+.homepage_name {
+	font-family: "Nanum-Square" !important;
+	font-size: "normal" !important;
+	src: url("../../font/NanumSquare_acEB.ttf") !important;
+}
+
+.blueBtn {
+	background-color: #6799FF;
+	border: 0px;
+	border-radius: 10px;
+}
+
+.grayBtn {
+	background-color: #8C8C8C;
+	border: 0px;
+	border-radius: 10px;
+}
+
+.compareResBlock {
+	box-sizing: border-box;
+	display: none;
+	position: absolute;
+	width: 1096px;
+	/* height: 468px; */
+	left: 143px;
+	margin-top: 6px;
+	top: 538px;
+}
+
+.bottom_table {
+	width: 916px;
+	height: 45px;
+	background-color: white;
+	border-width: 0px 2px 2px 2px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    box-sizing: border-box;
+    display: none;
+}
+
+.bottom_table span{
+	margin-top:5px;
+}
+
+.resName {
+	box-sizing: border-box;
+	background: #FFFFFF;
+	border-style: solid;
+	font-size: 23px;
+	text-align: center;
+	color: #000000;
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+#resName1 {
+	border-width: 0px 1px 2px 4px;
+}
+
+#resName2 {
+	border-width: 0px 4px 2px 1px;
+}
+
+.resForm, .resFunc {
+	height: 80px;
+	box-sizing: border-box;
+	background: #FFFFFF;
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+#resForm1 {
+	top: 100px;
+	left: 0px;
+	border-width: 0px 0px 2px 4px;
+}
+
+#resForm2 {
+	top: 100px;
+	right: 0px;
+	border-width: 0px 4px 2px 0px;
+}
+
+ #formIcon1, #formIcon1 {
+background-size:cover;
+background-position: center;
+} 
+
+.resFormTxt, .resFuncTxt, .resNutrTxt {
+	box-sizing: border-box;
+	min-height: 80px;
+	background: #FFFFFF;
+	border-bottom: 2px solid #000000;
+	font-size: 25px;
+	text-align: center;
+	border-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.funcIcon {
+	height: 60px;
+	display: inline-grid;
+}
+
+.resFunc {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#resFunc1 {
+	top: 180px;
+	left: 0px;
+	border-width: 0px 0px 2px 4px;
+	background-size:cover;
+	background-position: center;
+}
+
+#resFunc2 {
+	top: 180px;
+	right: 0px;
+	border-width: 0px 4px 2px 0px;
+	background-size:cover;
+	background-position: center;
+}
+
+.resFormTxt, .resFuncTxt{
+	top: 100px;
+}
+
+.resNutr {
+	box-sizing: border-box;
+	background: #FFFFFF;
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+}
+
+#resNutr1 {
+	border-width: 0px 0px 4px 4px;
+	border-bottom-left-radius: 40px;
+}
+
+#resNutr2 {
+	right: 0px;
+	border-width: 0px 4px 4px 0px;
+	border-bottom-right-radius: 40px;
+}
+
+.resNutrTxt {
+	border-bottom: 4px solid #000000;
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+.vit-txt {
+	display: inline-block;
+    font-size: 16px;
+    float: left;
+    font-family: "Nanum-SquareR";
+    height: 20px;
+    line-height: 20px;
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.left {
+	margin-left: 100px;
+}
+
+.right {
+	margin-right: 100px;
+}
+
+.left:last-child, .right:last-child {
+	margin-bottom: 30px;
+}
+
+.vit-bar_wrap {
+	display: inline-block;
+	width: 300px;
+	height: 20px;
+	border-radius: 20px;
+	background: #D9D9D9;
+}
+
+.vit-bar {
+	height: 20px;
+	border-radius: 20px;
+}
+
+.txt2 {
+	padding-left: 30px;
+	margin-top: 30px;
+	font-size: 30px;
+	color: black;
+	text-align: left;
+	font-family: "Nanum-Square";
+	padding-right: 30px;
+	vertical-align: top;
+}
+
+#exc {
+	width: 250px;
+	background-color: red;
+}
+
+#opt {
+	width: 180px;
+	background-color: green;
+}
+
+#lack {
+	width: 100px;
+	background-color: gray;
+}
+
+.explain1 {
+	display: inline-block;
+	height: 10px;
+	width: 40px;
+	border-radius: 10px;
+	background-color: blue;
+	margin-left: 5px;
+}
+
+.explain2 {
+	display: inline-block;
+	font-size: 12px;
+	color: black;
+	font-family: "Nanum-Square";
+}
+
+.inline {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	width: 110px;
+	text-align: right;
+}
+
+#exc1 {
+	background-color: red;
+}
+
+#opt1 {
+	background-color: green;
+}
+
+#lack1 {
+	background-color: gray;
+}
+
+.reCompare {
+	width: 230px;
+    height: 45px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 17px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Nunum-SquareR";
+    font-weight: bold;
+    position: relative;
+    top: 10%;
+    left: 239%;
+    margin-bottom: 100px;
+    margin-top: 35px;
+}

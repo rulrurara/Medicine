@@ -1,0 +1,113 @@
+@charset "UTF-8";
+body {
+	height: 97%;
+}
+#bottom {
+	display:inline-block;
+	vertical-align: top;
+    margin-right: 130px;
+}
+.t {
+   margin-top: 10px;
+   margin-bottom: 30px;
+}
+
+#im {
+	display: block;
+	height: 240px;
+	margin: 0 auto;
+	width: 240px;
+}
+
+thead{
+	background-color: #e8e7e3;
+	border-top: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	text-align: center;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+}
+tbody th {
+	background-color: white;
+	border-right: 0px;
+}
+th {
+	height: 40px;
+	border-right: 0px;
+}
+td {
+	height: 40px;
+	border-right:0px;
+}
+tbody tr:hover {
+	background-color: #DCDCDC;
+}
+
+
+.select_bar {
+	position: relative;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+	background-color: white;
+	border: 1px solid;
+}
+.text:focus{
+	outline: none;
+}
+.serbtn {
+	display: inline-block;
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.del {
+	margin-top: 0px ;
+}
+
+.reg {
+	margin-top: 0px ;
+}
+
+.btn_one {
+	margin-bottom: 0px ;
+}
+
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.paging{
+	margin-left: 8%;
+}

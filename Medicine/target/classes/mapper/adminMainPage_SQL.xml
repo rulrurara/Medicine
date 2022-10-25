@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main">
+	<select id="mainList" parameterType="hashmap" resultType="hashmap">
+	SELECT DIET_NUM , TITLE , CON ,DIET_MAIN_PIC , HEADER_PIC , MEM_NUM
+	FROM RECO_DIET
+	</select>
+	<select id="mainDetail" parameterType="hashmap" resultType="hashmap">
+	SELECT DIET_NUM ,TITLE , CON ,DIET_MAIN_PIC , HEADER_PIC
+	FROM RECO_DIET
+	WHERE DIET_NUM = #{impic}
+	</select>
+	<update id="mainUpdate" parameterType="hashmap">
+	UPDATE RECO_DIET SET TITLE = #{title} , CON = #{con} , DIET_MAIN_PIC = #{pic2} , HEADER_PIC = #{pic}
+	WHERE DIET_NUM = #{impic}
+	</update>
+	<select id="repList" parameterType="hashmap" resultType="hashmap">
+	SELECT S.ID , S.CON , S.REG_D , S.MEM_NUM , S.REP_DIET_NUM
+	FROM
+	(SELECT M.ID , RD.CON , TO_CHAR(RD.REG_D, 'YYYY-MM-DD') AS REG_D ,RD.REP_DIET_NUM, RD.MEM_NUM , ROW_NUMBER() OVER(ORDER BY REP_DIET_NUM DESC) AS RNUM
+	FROM MEM M INNER JOIN REP_DIET RD
+    ON M.MEM_NUM = RD.MEM_NUM 
+    WHERE DEL_D IS NULL) S
+    WHERE S.RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="repCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM REP_DIET
+	</select>
+	<insert id="insert" parameterType="hashmap">
+	INSERT INTO REP_DIET(REP_DIET_NUM , DIET_NUM , MEM_NUM , CON)
+	VALUES(REP_DIET_SEQ.NEXTVAL , #{dietnum}, #{memnum} , #{replePlaceHolder})
+	</insert>
+	<delete id="delete" parameterType="hashmap">
+	UPDATE REP_DIET SET DEL_D = SYSDATE
+	WHERE REP_DIET_NUM = #{no}
+	</delete>
+	<update id="update" parameterType="hashmap">
+	UPDATE REP_DIET SET CON = #{replePlaceHolder}
+	WHERE REP_DIET_NUM = #{no}
+	</update>
+</mapper>

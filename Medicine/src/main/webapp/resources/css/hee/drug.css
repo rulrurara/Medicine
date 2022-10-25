@@ -1,0 +1,177 @@
+@charset "UTF-8";
+.drug-table{
+	border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    box-sizing: border-box;
+    font-family:"Nanum-Square";
+    width: 100%;
+    margin-top:100px;
+}
+.drug-table th {
+	vertical-align: middle;
+    height: 45px;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+}
+.drug-table td{
+	text-align: center;
+    font-size: 16px;
+    width:100px;
+    line-height: 21px;
+    
+}
+.allWrap{
+	width:1096px;
+	margin:0 auto;
+	border : 1px solid #000;
+	box-sizing: border-box;
+}
+
+.vitdiv{
+	height:310px;
+}
+
+.vit-txt{
+	display:inline-block;
+	width:100px;
+	font-size:20px;
+	text-align:center;
+	margin-left:50px;
+	font-family:"Nanum-Square";
+	height:20px;
+	line-height:20px;
+    vertical-align: middle;
+}
+.vit-bar_wrap{
+	display:inline-block;
+	width:300px;
+	height:20px;
+	margin-left:50px;	
+	border: 1px dotted #000;
+	border-radius: 20px;
+    vertical-align: middle;
+}
+.vit-bar{
+	height:20px;
+	border-radius: 20px;
+    vertical-align: middle;
+}
+#exc{
+	width:250px;
+	background-color:red;
+}
+#opt{
+	width:180px;
+	background-color:green;
+}
+#lack{
+	width:100px;
+	background-color:gray;
+}
+.explain1{
+	display:inline-block;
+	height:10px;
+	width:40px;
+	border-radius: 10px;
+	margin-right:10px;
+}
+.explain2{
+	display:inline-block;
+	font-size: 12px;
+	color:black;
+	font-family:"Nanum-Square";
+	margin-right:15px;
+}
+.inline{
+	display:inline-block;
+	vertical-align:top;
+	float:right;
+	width:110px;
+	text-align:right;
+}
+#exc1{
+	background-color:red;
+}
+#opt1{
+	background-color:green;
+}
+#lack1{
+	background-color:gray;
+}
+.eat1{
+	float:right;
+	display:inline-block;
+	font-size:15px;
+	font-family:"Nanum-Square";
+	margin-right:175px;
+}
+.eat2{
+	float:right;
+	display:inline-block;
+	font-size:15px;
+	font-family:"Nanum-Square";
+	margin-right:100px;
+}
+.eat3 , .eat4, .eat5{
+	display:inline-block;	
+	vertical-align:middle;
+	font-size:15px;
+	text-align:center;
+	margin-left:185px;
+	font-family:"Nanum-Square";
+	height:20px;
+	line-height:10px;
+}
+.eat4{
+	margin-left:130px;
+}
+.eat5{
+	margin-left:103px;
+}
+.wrap1{
+	height:25px;
+	margin-top:15px;
+}
+.wrap2{
+	height:60px;
+	padding-top:20px;
+}
+.itemImage{
+	width:200px;
+	height:200px;
+}
+.imoImage{
+	width:85px;
+	height:85px;
+}
+.vitTitle{
+	height:50px;
+}
+.icon-right{
+	position:absolute;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    right:50px;
+    top:calc(50% - 50px);
+    z-index:10;
+    background: url(//t1.daumcdn.net/brunch9/static/images/pc/ico_brunch_v8_181004_v2.png) no-repeat 0 0;
+    background-position: -269px -175px;
+    cursor:pointer;
+}
+.icon-left{
+	position:absolute;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    left:50px;
+    top:calc(50% - 50px);
+    z-index:10;
+    background: url(//t1.daumcdn.net/brunch9/static/images/pc/ico_brunch_v8_181004_v2.png) no-repeat 0 0;
+    background-position: -167px -175px;
+    cursor:pointer;
+}

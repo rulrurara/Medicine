@@ -1,0 +1,481 @@
+@charset "UTF-8";
+.top_header {
+	height: 100px;
+	background-color:#F2E3D5;
+}
+.wrap_rap {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 480px);
+	margin-left: 140px;
+	font-size: 11pt;
+	position: relative;
+}
+tr:nth-child(even) {
+	border-width: 0px 0px 2px 0px;
+	border-color: #d9d9d9;
+	border-style: solid;
+	border-collapse: collapse;
+}
+#fullCalendarArea {
+	height: 750px;
+}
+.dt {
+	margin-top: 52.5px;
+	height: 695px;
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	font-size: 30px;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid white;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.bigrap {
+	min-width : 1300px;
+	position: relative;
+	height: calc(100% - 160px);
+	margin: 30px auto;
+	width: 95%;
+}
+.fc-center h2 {
+	display: inline-block;
+}
+
+.searchMedicine {
+	height: 35px;
+	width: 230px;
+	margin: 10px auto;
+	cursor: pointer;
+	background-color: #6799ff;
+    border-radius: 10px;
+    font-size: 13pt;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    color: white;
+    font-family: "Nanum-Square";
+}
+.pill,.pill2,.pill3,.pill4,.pill7   {
+	height: 46px;
+	width: 46px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.txt_pill {
+	border: 0.5px solid #ddd;
+	font-size: 12pt;
+	height: 65px;
+	width: 220px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 5px;
+}
+
+.txt_rap {
+	width: 300px;
+	height: 50px;
+	margin-top: 20px;
+	text-align: center;
+}
+.btn_rap {
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.enroll_txt {
+	position: absolute;
+	margin: 0 auto;
+	width: calc(100% - 2px);
+	height: calc(100% - 55px);
+	top: 53px;
+	left: 0;
+	z-index: 99;
+	background-color: white;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	font-size: 0;
+	display: none;
+}
+
+.enroll_txt_name {
+	width: calc(50% - 2px);
+	height: 40px;
+	border-top: 1px solid #6799ff;
+	border-right: 1px solid black;
+	border-left: 1px solid #6799ff;
+	margin-top: 27px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: #6799ff;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    color: white;
+    font-family: "Nanum-Square";
+}
+
+.enroll_txt_id {
+	width: calc(50% - 1px);
+	height: 40px;
+	border-top: 1px solid #6799ff;
+	border-right: 1px solid #6799ff;
+	margin-top: 27px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: #6799ff;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    color: white;
+    font-family: "Nanum-Square";
+}
+.resultblock {
+	box-sizing: border-box;
+	background-color: white;
+	width: 100%;
+	text-align: center;
+}
+.resultblock td{
+	height:55px;
+}
+.enroll{
+/* position: absolute; */
+height: 30px;
+/* left: 46.57%;
+right: 46.51%;
+top: 800px; */
+width: 100px;
+margin-top: 50px;
+box-sizing : border-box;
+border:0;
+font-size:14px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+.blueBtn{
+	background-color : #6799FF;
+	border:0px;
+	border-radius:10px;
+}
+.bottom_table {
+	width: 100%;
+	height: 45px;
+	background-color: white;
+	border-width: 2px 0px 0px 0px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    box-sizing: border-box;
+}
+.enroll_content_info {
+	width: calc(50% - 2px);
+	height: 470px;
+	border: 1px solid black;
+	display: inline-block;
+	vertical-align: top;
+	font-family: "Nanum-SquareR";
+	font-size: 18px;
+}
+.selectBox{
+	width: 180px;
+	height:30px;
+	border: 1px solid #999;
+	font-size: 14px;
+	font-family: inherit;  
+	font-family: "Nanum-Square";
+}
+.co {
+	font-family: "Nanum-SquareR";
+	font-size: 13px;
+	text-align: left;
+}
+
+.name {
+	font-family: "Nanum-SquareR";
+	font-size: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+.del,.reg,.upd{
+	background: url(../../images/userPage/ye/deleteIcon2.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+.reg{
+	background: url(../../images/userPage/ye/check_icon.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+.upd{
+	background: url(../../images/userPage/ye/editIcon.png) no-repeat;
+	background-size: 48px;
+	background-position: center;
+	cursor: pointer;
+}
+.AMT{
+	width: 90px;
+}
+.searchResImg{
+	display:inline-block;
+	height: 100px;
+	background-size:cover;
+	background-position: center;
+}
+.enroll_content {
+	width: 603.89px;
+	height: 472px;
+	border: 1px solid black;
+	border-left:none;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	box-sizing: border-box;
+	font-family: "Nanum-SquareR";
+	font-size: 18px;
+
+}
+.enroll_header {
+	width: calc(100% - 740px);
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 20px;
+	margin-left: 66.297px;
+}
+.dt_date {
+	line-height: 26px;
+	font-size: 15pt;
+	text-align: left;
+}
+.enroll_header_btn {
+	width: 150px;
+    height: 40px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    margin-top: 20px;
+    background-color: #6799ff;
+    border-radius: 10px;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    color: white;
+    font-family: "Nanum-Square";
+    cursor: pointer;
+}
+.dt_date_pt {
+	height: 40px;
+	padding-top: 8px;
+	padding-left: 6px;
+}
+.enroll_rap {
+	width: 90%;
+	margin: 0 auto;
+}
+.enroll_header_btn1 {
+	width: 150px;
+	height: 40px;
+	border: 0;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	margin-top: 20px;
+	cursor: pointer;
+	background-color: #6799ff;
+    border-radius: 10px;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    color: white;
+    font-family: "Nanum-Square";
+    margin-left: 3px;
+}
+.enroll_btn_rap {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	margin-right: 66.297px;
+}
+.enrollBtn {
+    position: absolute;
+    display: inline-block;
+    width: 175px;
+    height: 40px;
+    cursor: pointer;
+    background: url(../../images/userPage/enrollBtn.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-bottom-right-radius: 15px;
+    right: 0px;
+    bottom: 0px;
+}
+.header_sele{
+	margin-top: 15px;
+    width: calc(100% - 1000px);
+    margin-left: 66.297px;
+	
+}
+.header_gbn{
+	font-size: 12pt;
+	width: 195px;
+    height: 28px;
+    padding: 0px 2px;
+    text-indent: 2px;
+    vertical-align: middle;
+    border: 1px solid #d7d7d7;
+}
+.close {
+	width:40px;
+	height: 40px;
+	float:right;
+	margin-right:13px;
+	background: url(../../images/userPage/ye/deleteIcon.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	background-color: white;
+}
+.blueBtn {
+	background-color: #6799FF;
+	border: 0px;
+	border-radius: 10px;
+}
+
+.grayBtn {
+	background-color: #8C8C8C;
+	border: 0px;
+	border-radius: 10px;
+}
+.backBtn, .delBtn{
+position:absolute;
+display:inline-block;
+width: 175px;
+height: 40px;
+bottom: 0px;
+box-sizing : border-box;
+border:0;
+font-size:17px;
+color:#fff;
+cursor:pointer;
+font-family:"Nunum-SquareR";
+font-weight: bold;
+}
+.delTxt{
+	width: 320px;
+	height : 25px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 37px;
+    display:inline-block;
+    margin-bottom: 20px
+}
+.backBtn{
+left: 0px;
+border-radius : 0px !important ;
+border-bottom-left-radius : 15px !important ;
+}
+
+.delBtn{
+right: 0px;
+border-radius : 0px !important ;
+border-bottom-right-radius : 15px !important ;
+}
+.popup_del {
+	border: none;
+	background-color: white;
+	width: 350px;
+	height: 250px;
+	display: none;
+	z-index: 999;
+	position: fixed;
+	top: 23%;
+	left: 39%;
+	border-radius: 15px;
+	text-align: center;
+	border-color: ghostwhite;
+    border-style: solid;
+    box-sizing: border-box;
+
+}
+.popupRegister{
+	box-sizing: border-box;
+	background-color:white;
+	width: 1100px;
+	position: absolute;
+	top: calc(50% - 300px);
+	left: calc(50% - 550px);
+	margin: 0 auto;
+	text-align:center;
+	font-size:17px;
+	z-index:999;
+	font-family: "Nanum-SquareR";
+	border-radius: 7px;
+	display:none;
+	border-width: 2px 2px 2px 2px;
+	border-color: #d9d9d9;
+	border-style: solid;
+} 
+.AMT{
+	width:120px;
+	height:20px;
+	border:0;
+	outline-width:0.5px;
+	outline-color:#F2E3D5;;
+	border-radius: 5px;
+}
+.page_area{
+	text-align: center;
+    margin-top: 30px;
+}
+.btn_Wrap{
+	    margin-top: 11px;
+	text-align: center;
+}
+.pillBtn1 , .pillBtn2,.memoRegi{
+	cursor:pointer;
+	border-radius:5px;
+	border:0px;
+	background-color: #6799FF;
+	font-size:15px;
+}
+.pillBtn2{
+	background-color: #8c8c8c;
+	margin-left:15px;
+}
+.fc-prev-button{
+	margin-right: 10px;
+}
+.fc-next-button{
+	margin-left: 10px;
+}
+.time{
+	height:15px;
+	font-size:18px;
+	text-align:center;
+	font-family: "Nanum-SquareR";
+}
+.memo{
+	height:17px;
+	text-align:center;
+	margin-bottom: 40px;
+}
+.calpill{
+	width:23px;
+	height:23px;
+}
+

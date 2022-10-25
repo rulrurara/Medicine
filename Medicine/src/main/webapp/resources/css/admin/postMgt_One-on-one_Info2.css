@@ -1,0 +1,97 @@
+@charset "UTF-8";
+html, body {
+	height: 97%;
+}
+#bottom {
+   	 /* 1:1 화면비율 */
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+    margin-right: 130px;
+}
+
+#im {
+	height: 240px;
+	width: 240px;
+}
+
+th {
+	border-left: 2px solid #A7A49A;
+}
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+
+.serbtn {
+	display: inline-block;
+	background-image: url("../../../resources/images/adminPage/search.png");
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+}
+
+.del {
+	margin-top: 0px;
+}
+
+.reg {
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+.btn_one {
+	margin-bottom: 0px;
+}
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+.Yes2 {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No2 {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+textarea:focus {
+	outline: none;
+}

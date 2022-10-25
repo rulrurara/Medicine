@@ -1,0 +1,564 @@
+@charset "UTF-8";
+body {
+	font-size: 0px;
+	margin:0px;
+	width: 100%;
+    /*background: url(../images/userPage/medicineDetail.png) no-repeat;*/
+   background: url(../../images/userPage/mypage_main.png);
+    background-size: cover;
+}
+/* 네비게이션 바*/
+.info {
+	display: block;
+    float: left;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -8.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:10%;
+    font-family: "Nanum-Square";
+    font-size: 17px;
+}
+
+/* 여기서부터 메인*/
+.main_border {
+	display: block;
+    width: 35%;
+    height:420px;
+    background-color:white;
+    border: 1px solid black;
+    border-radius:10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    opacity: 0.9;
+    /*그림자 테스트*/
+     box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+}
+.gnb {
+    right: 26.4%;
+}
+
+
+
+/*메인페이지*/
+	hr {
+		border: 1px solid #D5D5D5;
+		width: 100%;
+	}
+	.top_name_border {
+		display: block;
+		margin: 0 auto;
+		height: 30px;	
+		font-size: 20px;
+		text-align: center;
+		font-family: "Nanum-Square";
+		font-weight: bold;
+	}
+	.top_border {
+		display:inline-block;
+		width: 100%;
+		height: 230px;
+	}
+
+	.name_border {
+		display: inline-block;
+		width: 15%;
+		height: 230px;
+		vertical-align: top;
+	}
+	.name_border span{
+		display:inline-block;
+		font-family: "Nanum-Square";
+		font-size:20px;
+		margin-top:17px;
+		float:right;
+	}
+	.input_border {
+		display: inline-block;
+		width: 65%;
+		height: 230px;
+	}
+	.input_border input[type="text"], .input_border input[type="password"] {
+		display: inline-block;
+    	width: 400px;
+    	height: 19px;
+    	margin-top: 25px;
+    	border-top: 0px;
+    	border-right: 0px;
+    	border-left: 0px;
+    	border-bottom: 1px solid #D5D5D5;
+    	font-size: 15px;
+    	font-weight: 100;
+    	margin-left: 10px;
+    	color: #BDBDBD;
+	} 
+	
+	.input_border input[type="text"]:focus, .input_border input[type="password"]:focus {
+		outline: none;
+	}
+	
+	.button_border {
+		display: inline-block;
+    	width: 111px;
+    	height: 250px;
+    	vertical-align: middle;
+	}
+	
+	.pwUpdateBtn, .phoneUpdateBtn,.emailUpdateBtn {
+		/*background-image: url(../images/userPage/editBtn_w64_h30.png);
+   		background-repeat: no-repeat;*/
+    	width: 64px;
+    	height: 37px;
+    	border: 0px;
+    /* margin-top: 4px; */
+    	margin-left: 8px;
+    	cursor: pointer;
+    	color:white;
+    	font-family: "Nanum-SquareR";
+    	font-size: 15px;
+	}
+	
+	.middle_border {
+		display: block;
+		margin:0 auto;
+		height: 50px;
+		border:1px solid #D5D5D5;
+		border-radius: 10px;
+		margin-top:35px;
+	}
+	.bottom_border {
+	display: block;
+		margin:0 auto;
+		height: 50px;
+		border:1px solid #D5D5D5;
+		border-radius: 10px;
+		margin-top:20px;
+	}
+	.bottom_btn_border {
+		display: block;
+		width: 100%;
+		height: 40px;
+	}
+	.leaveBtn {
+		/*background-image: url(../images/userPage/leaveBtn_w111_h37.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+   		width: 111px;
+   		height: 37px;
+   		float: left;
+   		border:0px;
+   		margin-top: 7px;
+   	 	margin-left: 15px;
+    	display: inline-block;
+    	font-family: "Nanum-SquareR";
+    	font-size: 15px;
+    	color:white;
+	}
+	.listBtn {
+		cursor: pointer;
+   		width: 111px;
+   		height: 37px;
+   		float: right;
+   		border:0px;
+   		margin-top: 7px;
+    	display: inline-block;
+    	font-family: "Nanum-SquareR";
+    	font-size: 15px;
+    	color:white;
+    	margin-right:15px;
+	}
+	#myAnswer {
+		margin-left:75px;
+		/*background-image: url(../images/userPage/myAskBtn_w111_h37.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+	}
+	#myReview {
+		/*background-image: url(../images/userPage/myReviewBtn_w111_h37.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+	}
+	#myPost {
+		/*background-image: url(../images/userPage/myPostBtn_w111_h37.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+	}
+	#myComment {
+		/*background-image: url(../images/userPage/myRepleBtn_w111_h37.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+	}
+
+	.mypageBtn {
+		position: relative;
+    	float: left;
+    	width: 111px;
+    	height: 37px;
+    	border:0px;
+    	margin-top:6px;
+    	margin-left:25px;
+    	color:white;
+    	font-size: 17px;
+		font-family: "Nanum-SquareR";
+    	
+	}
+	.secessionBtn {
+		position: relative;
+    	float: left;
+    	margin: 2px 0px 0px 10px;
+    	width: 108px;
+    	height: 40px;
+	}
+	
+	/* 팝업창 css */
+	
+	/*비밀번호 수정 팝업창*/
+	.popup_border_pw {
+		display: none;
+		border:1px solid black;
+		border-radius:10px;
+		background-color: white;
+		width: 404px;
+		height: 320px;
+		z-index: 999;
+		position: fixed;
+    	top: 25%;
+    	left: 40%;
+    	padding:5px;
+    	/*그림자 테스트*/
+     	box-shadow: 5px 5px 5px 5px grey;
+   		border: 2px rgba(0,0,0,0.2) solid;
+	}
+	
+	.border_pw {
+		display: inline-block;
+    	/* vertical-align: middle; */
+    	width: 96%;
+    	height: 190px;
+    	font-size: 15px;
+    	padding-left: 15px;
+    	margin-top: 10px;
+	}
+	.border_left_pw {
+		display: inline-block;
+    	width: 98%;
+    	height: 58px;
+    	line-height: 30px;
+	}
+	.popup_top_pw, .popup_top_phone, .popup_top_email,
+	.popup_top_leave{
+		display: block;
+		width: 100%;
+		height: 30px;
+		font-size: 20px;
+		font-family: "Nanum-Square";
+		text-align: center;
+		background-color: #6799FF;
+		color:white;
+		border-radius: 10px;
+		line-height: 28px;
+	}
+	.border_currentpw {
+		margin-top:10px;
+	}
+	.input_pw {
+		display:inline-block;
+		width:100%;
+		height: 30px;
+		border-top:0px;
+		border-right:0px;
+		border-left:0px;
+		border-bottom:1px solid #D5D5D5;
+	}
+	.input_password {
+		outline:none;
+		display:inline-block;
+		width:100%;
+		height: 30px;
+		border-top:0px;
+		border-right:0px;
+		border-left:0px;
+		border-bottom:1px solid #D5D5D5;
+	}
+	.input_pw:focus {
+		outline: none;
+	}
+	.popup_bottom_pw {
+		margin: 0 auto;
+    	width: 80%;
+    	height: 30px;
+    	margin-top:35px;
+	}
+	.editCompleteBtn , .cancelPwBtn{
+		/*background-image: url(../images/userPage/editRepleCompleteBtn_w111_h30.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+   		float:left;
+   		width: 111px;
+   		height: 30px;
+   		border : 0px;
+   		color:white;
+   		font-size: 17px;
+		font-family: "Nanum-SquareR";
+	}
+	.cancelPwBtn {
+		/*background-image: url(../images/userPage/cancelBtn_w111_h30.png);*/
+		float: right;
+		color:white;
+		font-size: 17px;
+		font-family: "Nanum-SquareR";
+	}
+	
+	/*전화번호 팝업창 css*/
+	.popup_border_phone {
+		display: none;
+		border:1px solid black;
+		border-radius:10px;
+		background-color: white;
+		width: 404px;
+		height: 320px;
+		z-index: 999;
+		position: fixed;
+    	top: 25%;
+    	left: 40%;
+    	padding:5px;
+    	/*그림자 테스트*/
+     	box-shadow: 5px 5px 5px 5px grey;
+    	border: 2px rgba(0,0,0,0.2) solid;
+	}
+	.left_border_phone {
+		display:inline-block;
+		background-image: url(../../images/userPage/phone.png);
+		background-size: 40px;
+   		background-repeat: no-repeat;
+		width: 40px;
+		height: 40px;
+		margin-top:20px;
+		vertical-align: top;
+	}
+	.border_left_phone {
+		display: inline-block;
+		vertical-align:top;
+   		width: 90%;
+    	height: 65px;
+    	margin-left: 15px;
+    	
+	}
+	.exception_pw,.exception_phone , .exception_email{
+		/* color:red; */
+		margin-left:15px;
+		font-size: 13px;
+		display: inline-block;
+	}
+	.input_phone {
+		display:inline-block;
+		width:100%;
+		height: 37px;
+		border-top:0px;
+		border-right:0px;
+		border-left:0px;
+		border-bottom:1px solid #D5D5D5;
+	}
+	.current_phone {
+		margin-top:10px;
+	}
+	
+	.popup_border_phone input[type="text"]:focus,
+	.popup_border_email input[type="text"]:focus{
+		outline: none;
+	}
+	
+	.border_phone {
+		display: inline-block;
+   		width: 89%;
+    	height: 190px;
+    	font-size: 15px;
+    	margin-top: 10px;
+	}
+	.phone2 {
+		width: 233px;
+	}
+	.certificationBtn, .certificationBtn2 {
+		/*background-image: url(../images/userPage/certificationBtn_w80_h30.png);
+   		background-repeat: no-repeat;*/
+		font-size: 17px;
+		font-family: "Nanum-SquareR";
+		width: 80px;
+		height: 30px;
+		border:0px;
+		/*background-color: white;*/
+		vertical-align: middle;
+		color:white;
+		
+	}
+	.popup_bottom_phone, .popup_bottom_email {
+		width: 80%;
+    	height: 40px;
+    	margin: 0 auto;
+    	margin-top: 45px;
+	}
+	.changePhoneBtn , .cancelPhoneBtn , .changeEmailBtn , .cancelEmailBtn{
+		/*/background-image: url(../images/userPage/changePhoneBtn_w111_h30.png);
+   		background-repeat: no-repeat;*/
+   		cursor: pointer;
+   		float:left;
+   		width: 111px;
+   		height: 30px;
+   		border : 0px;
+   		font-size: 17px;
+		font-family: "Nanum-SquareR";
+		color:white;
+	}
+	.cancelPhoneBtn, .cancelEmailBtn {
+		/*background-image: url(../images/userPage/cancelBtn_w111_h30.png);*/
+		float:right;
+		font-size: 17px;
+		font-family: "Nanum-SquareR";
+		color:white;
+	}
+	
+	/*이메일 수정 팝업창 css*/
+	.popup_border_email {
+		display: none;
+		border:1px solid black;
+		border-radius:10px;
+		background-color: white;
+		width: 404px;
+		height: 380px;
+		z-index: 99;
+		position: fixed;
+    	top: 25%;
+    	left: 40%;
+    	padding:5px;
+    	/*그림자 테스트*/
+     	box-shadow: 5px 5px 5px 5px grey;
+    	border: 2px rgba(0,0,0,0.2) solid;
+	}
+	.left_border_email {
+		display:inline-block;
+		background-image: url(../../images/userPage/mail.png);
+		background-size: 40px;
+   		background-repeat: no-repeat;
+		width: 40px;
+		height: 40px;
+		margin-top:20px;
+		vertical-align: top;
+	}
+	.border_left_email {
+		display: inline-block;
+		vertical-align:top;
+   		width: 90%;
+    	height: 65px;
+    	margin-left: 15px;
+	}
+	.current_email {
+		margin-top:10px;
+	}
+	.input_email {
+		display:inline-block;
+		width:100%;
+		height: 37px;
+		border-top:0px;
+		border-right:0px;
+		border-left:0px;
+		border-bottom:1px solid #D5D5D5;
+	}
+	.border_email {
+		display: inline-block;
+   		width: 89%;
+    	height: 285px;
+    	font-size: 15px;
+    	margin-top: 10px;
+	}
+	.email3, .email4{
+		width: 233px;
+	}
+	.popup_bottom_email {
+		margin-top:15px;
+	}
+	
+	/*회원탈퇴 팝업창*/
+	.popup_border_leave {
+		display: none;
+		border:1px solid black;
+		border-radius:10px;
+		background-color: white;
+		width: 300px;
+		height: 130px;
+		z-index: 999;
+		position: fixed;
+    	top: 25%;
+    	left: 40%;
+    	padding:5px;
+    	/*그림자 테스트*/
+     	box-shadow: 5px 5px 5px 5px grey;
+    	border: 2px rgba(0,0,0,0.2) solid;
+	}
+	.popup_middle_leave {
+	    height: 25px;
+	    font-size: 20px;
+	    font-family: "Nanum-Square";
+	    text-align: center;
+	    display: inline-block;
+	    width: 300px;
+	    margin-top: 20px;
+	}
+	.popup_bottom_leave {
+		display: block;
+		margin:0 auto;
+		margin-top:25px;
+		height: 30px;
+		width: 85%;
+	}
+	.yesBtn {
+		display:inline-block;
+		/*background-image: url(../images/userPage/yesBtn_w50_h30.png);
+   		background-repeat: no-repeat;*/
+		width: 50px;
+		height: 30px;
+		float:left;
+		vertical-align: top;
+		border:0px;
+		cursor:pointer;
+		color:white;
+		font-size: 15px;
+	    font-family: "Nanum-SquareR";
+	}
+	.noBtn {
+		display:inline-block;
+		/*background-image: url(../images/userPage/noBtn_w50_h30.png);
+   		background-repeat: no-repeat;*/
+		width: 50px;
+		height: 30px;
+		float:right;
+		vertical-align: top;
+		border:0px;
+		cursor:pointer;
+		color:white;
+		font-size: 15px;
+	    font-family: "Nanum-SquareR";
+	}
+	#popup1{
+		z-index: 9999;
+	}

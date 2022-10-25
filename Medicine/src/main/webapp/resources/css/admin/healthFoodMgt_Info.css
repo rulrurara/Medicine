@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.imm {
+	display: block;
+	margin: 0 auto;
+	width: 10%;
+}
+.nav {
+	font-size: 20px;
+    text-align: left;
+    float: left;
+    position: relative;
+    left:1%;
+}
+#plus{
+	cursor: pointer;
+}
+.paging_area{
+    left: calc(50% - 24px);
+}

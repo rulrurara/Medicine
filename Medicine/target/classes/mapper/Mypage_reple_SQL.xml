@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage_reple">
+
+	<select id="getFreeRepleCnt" parameterType = "hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT 
+		FROM REP
+		WHERE DEL_D IS NULL
+        AND MEM_NUM = #{memnum}
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REP_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="getFreeRepleCntList" parameterType = "hashmap" resultType="hashmap">
+		SELECT REP_NUM , TXT_NUM, CON,REG_D 
+		FROM(
+		SELECT REP_NUM , TXT_NUM, CON, 
+		CASE WHEN TO_CHAR(REG_D , 'YY.MM.DD') = TO_CHAR(SYSDATE , 'YY.MM.DD')
+				         THEN TO_CHAR(REG_D, 'HH24:MI')
+				         ELSE TO_CHAR(REG_D , 'YY-MM-DD')
+				    END AS REG_D,
+				    ROW_NUMBER ()OVER(ORDER BY REP_NUM DESC) AS RNUM
+		FROM REP
+		WHERE MEM_NUM= #{memnum}
+		AND DEL_D IS NULL
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REP_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>) A
+			WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	<select id="getRevRepleCnt" parameterType = "hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT 
+		FROM REV_REP
+		WHERE DEL_D IS NULL
+        AND MEM_NUM = #{memnum}
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REP_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="getRevRepleCntList" parameterType = "hashmap" resultType="hashmap">
+		SELECT REP_NUM , MEDI_NUM, CON, REG_D
+		FROM(
+		SELECT REP_NUM , MEDI_NUM, REP.CON,
+		CASE WHEN TO_CHAR(REP.REG_D , 'YY.MM.DD') = TO_CHAR(SYSDATE , 'YY.MM.DD')
+				         THEN TO_CHAR(REP.REG_D, 'HH24:MI')
+				         ELSE TO_CHAR(REP.REG_D , 'YY-MM-DD')
+				    END AS REG_D,
+				    ROW_NUMBER ()OVER(ORDER BY REP_NUM DESC) AS RNUM
+		FROM REV_REP REP
+		INNER JOIN MEDI_REV REV
+		ON REP.REV_NUM = REV.REV_NUM
+		WHERE REP.MEM_NUM=#{memnum}
+		AND REP.DEL_D IS NULL 
+		<if test="searchtext != null and searchtext != '' ">
+			<choose>
+				<when test="searchselect eq 0">
+					AND REP_NUM LIKE '%' || #{searchtext} || '%'
+				</when>
+				<when test="searchselect eq 1">
+					and CON LIKE '%' || #{searchtext} || '%'
+				</when>
+			</choose>
+		</if>) 
+	WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+</mapper>

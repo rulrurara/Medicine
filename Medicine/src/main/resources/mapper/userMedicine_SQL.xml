@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMedicine">
+
+	<!-- 의약품 리스트 짝수 홀수 나누기 -->
+	<select id="selectMedicineList" parameterType="hashmap" resultType="hashmap">
+		SELECT B.MD, B.MEDI_NUM, B.COM_NM,B.PROD_NM,B.PIC,B.MAT_NM
+		FROM(
+			SELECT CASE WHEN MOD(ROW_NUMBER() OVER(ORDER BY A.MEDI_NUM),2) = '0'
+            			THEN 'EVEN'
+            			ELSE 'ODD'
+           				END AS MD, A.MEDI_NUM,A.COM_NM,A.PROD_NM, A.PIC, 
+           				A.MAT_NM, ROW_NUMBER() OVER(ORDER BY A.MEDI_NUM DESC) AS RNK
+			FROM (
+				SELECT M.MEDI_NUM, M.MEM_NUM, M.COM_NUM, C.COM_NM, M.PROD_NM, 
+				M.PIC, M.MAT_CODE, M.MAT_NM
+				FROM MEDI M INNER JOIN COM_NM C 
+                				ON M.COM_NUM = C.COM_NUM
+                				AND M.DEL_D IS NULL) A
+            WHERE 1=1
+            <if test="searchTxt != null and searchTxt != ''">
+            	<choose>
+            		<when test="searchGbn == 1">
+            			AND A.PROD_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            		<when test="searchGbn == 2">
+            			AND A.COM_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            		<when test="searchGbn == 3">
+            			AND A.MAT_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            	</choose>
+            </if>
+            ) B
+		WHERE B.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- [페이징] 총 데이터 건수 가져오기 -->
+	<select id="selectMedicineCnt" resultType="Integer" parameterType="hashmap">
+		SELECT COUNT(*) AS CNT
+        FROM (
+        	SELECT M.PROD_NM, C.COM_NM, M.MAT_NM
+        	FROM MEDI M INNER JOIN COM_NM C
+                        	ON M.COM_NUM = C.COM_NUM
+                       		AND M.DEL_D IS NULL
+        ) A
+        WHERE 1=1
+        <if test="searchTxt != null and searchTxt != ''">
+            	<choose>
+            		<when test="searchGbn == 1">
+            			AND A.PROD_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            		<when test="searchGbn == 2">
+            			AND A.COM_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            		<when test="searchGbn == 3">
+            			AND A.MAT_NM LIKE '%' || #{searchTxt} || '%'
+            		</when>
+            	</choose>
+            </if>
+	</select>
+	
+	<!-- 의약품 상세보기 - 맨위 테이블 -->
+	<select id="medicineDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT M.MEDI_NUM, M.PROD_NM, M.PROD_CODE, C.COM_NM, M.MAT_NM, M.MAT_CODE,
+		M.PIC, MTM.TAKE_METH,
+			   S.SHAPE_NM, ME.EFFECT_NM, MS.SEFFECT_NM
+		FROM MEDI M INNER JOIN COM_NM C
+                		ON M.COM_NUM = C.COM_NUM
+                	INNER JOIN MEDI_SHAPE_MID MSM
+                    	ON M.MEDI_NUM = MSM.MEDI_NUM
+                    INNER JOIN SHAPE S
+                        ON MSM.SHAPE_NUM = S.SHAPE_NUM
+                    INNER JOIN MEDI_EFFECT_MID MEDI_EM
+                        ON M.MEDI_NUM = MEDI_EM.MEDI_NUM
+                    INNER JOIN MEDI_EFFECT ME
+                        ON MEDI_EM.EFFECT_NUM = ME.EFFECT_NUM
+                    INNER JOIN MEDI_SEFFECT_MID MEDI_SM
+                        ON M.MEDI_NUM = MEDI_SM.MEDI_NUM
+                    INNER JOIN MEDI_SEFFECT MS
+                        ON MEDI_SM.SEFFECT_NUM = MS.SEFFECT_NUM
+                    INNER JOIN MEDI_TAKE_METH MTM
+                        ON M.TAKE_METH_NUM = MTM.TAKE_METH_NUM
+		WHERE DEL_D IS NULL
+		AND M.MEDI_NUM = #{no}
+	</select>
+	
+	<!-- 왼쪽 종합그래프 [효과 , 총합]-->
+	<select id="selectGraph1" parameterType="hashmap" resultType="hashmap">
+	SELECT *
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.EFFECT_NM,A.SCORE_SUM, 
+			( SELECT SUM(B.SCORE_SUM)
+  			  FROM ( SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.EFFECT_NM,A.SCORE_SUM
+          FROM ( SELECT SUM(RES.SCORE) AS SCORE_SUM,ME.EFFECT_NM
+                 FROM REV_EFFECT_SCORE RES INNER JOIN MEDI_EFFECT ME
+                                            ON RES.EFFECT_NUM = ME.EFFECT_NUM
+                                          INNER JOIN MEDI_REV MR
+                                            ON MR.REV_NUM = RES.REV_NUM
+       		     WHERE MR.MEDI_NUM = #{no}
+        		 GROUP BY RES.EFFECT_NUM,ME.EFFECT_NM) A
+             ) B
+  		 WHERE B.RNK BETWEEN 1 AND 6 ) AS SUMSUM
+     		FROM ( SELECT SUM(RES.SCORE) AS SCORE_SUM,ME.EFFECT_NM
+            	   FROM REV_EFFECT_SCORE RES INNER JOIN MEDI_EFFECT ME
+                                        ON RES.EFFECT_NUM = ME.EFFECT_NUM
+                                      INNER JOIN MEDI_REV MR
+                                        ON MR.REV_NUM = RES.REV_NUM
+     		WHERE MR.MEDI_NUM = #{no}
+     		GROUP BY RES.EFFECT_NUM,ME.EFFECT_NM) A
+			) B
+	WHERE B.RNK BETWEEN 1 AND 6 
+	</select>
+	<!-- 왼쪽 종합그래프 [부작용 , 총합]-->
+	<select id="selectGraph2" parameterType="hashmap" resultType="hashmap">
+				SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.SEFFECT_NM,A.SCORE_SUM, 
+		( SELECT SUM(B.SCORE_SUM)
+		  FROM ( SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.SEFFECT_NM,A.SCORE_SUM
+		         FROM ( SELECT SUM(RSS.SCORE) AS SCORE_SUM,MS.SEFFECT_NM
+		                FROM REV_SEFFECT_SCORE RSS INNER JOIN MEDI_SEFFECT MS
+		                                            ON RSS.SEFFECT_NUM = MS.SEFFECT_NUM
+		                                          INNER JOIN MEDI_REV MR
+		                                            ON MR.REV_NUM = RSS.REV_NUM
+		        WHERE MR.MEDI_NUM = #{no}
+		        GROUP BY RSS.SEFFECT_NUM,MS.SEFFECT_NM) A
+		        ) B
+		  WHERE B.RNK BETWEEN 1 AND 6 ) AS SUMSUM
+		     FROM ( SELECT SUM(RSS.SCORE) AS SCORE_SUM,MS.SEFFECT_NM
+		            FROM REV_SEFFECT_SCORE RSS INNER JOIN MEDI_SEFFECT MS
+		                                        ON RSS.SEFFECT_NUM = MS.SEFFECT_NUM
+		                                      INNER JOIN MEDI_REV MR
+		                                        ON MR.REV_NUM = RSS.REV_NUM
+		     WHERE MR.MEDI_NUM = #{no}
+		     GROUP BY RSS.SEFFECT_NUM,MS.SEFFECT_NM) A
+		) B
+		WHERE B.RNK BETWEEN 1 AND 6
+	</select>
+	
+	<!-- 왼쪽 종합그래프 [기타 효과, 종합] -->
+	<select id="selectGraph3" parameterType="hashmap" resultType="hashmap">
+				SELECT *
+			FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.EFFECT_NM, A.SCORE_SUM,
+			(SELECT SUM(B.SCORE_SUM)
+			FROM (
+			SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.EFFECT_NM, A.SCORE_SUM
+			FROM (
+			SELECT SUM(REEC.SCORE) AS SCORE_SUM, REEC.EFFECT_NM
+			FROM REV_ETC_EFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+			                                ON REEC.REV_NUM = MR.REV_NUM
+			WHERE MR.MEDI_NUM = #{no}
+			GROUP BY REEC.EFFECT_NM ) A
+			) B
+			WHERE B.RNK BETWEEN 1 AND 6) AS SUMSUM
+			FROM(SELECT SUM(REEC.SCORE) AS SCORE_SUM,REEC.EFFECT_NM
+			     FROM REV_ETC_EFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+			                                        ON REEC.REV_NUM = MR.REV_NUM
+			    WHERE MR.MEDI_NUM = #{no}
+			    GROUP BY REEC.EFFECT_NM) A
+			) B
+			WHERE B.RNK BETWEEN 1 AND 6
+	</select>
+	
+	<!-- 왼쪽 종합그래프 [기타 부작용, 종합] -->
+	<select id="selectGraph4" parameterType="hashmap" resultType="hashmap">
+				SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.SEFFECT_NM, A.SCORE_SUM,
+		(SELECT SUM(B.SCORE_SUM)
+		FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.SEFFECT_NM, A.SCORE_SUM
+		FROM (
+		SELECT SUM(REEC.SCORE) AS SCORE_SUM, REEC.SEFFECT_NM
+		FROM REV_ETC_SEFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+		                                ON REEC.REV_NUM = MR.REV_NUM
+		WHERE MR.MEDI_NUM = #{no}
+		GROUP BY REEC.SEFFECT_NM ) A
+		) B
+		WHERE B.RNK BETWEEN 1 AND 6) AS SUMSUM
+		FROM(SELECT SUM(REEC.SCORE) AS SCORE_SUM,REEC.SEFFECT_NM
+		     FROM REV_ETC_SEFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+		                                        ON REEC.REV_NUM = MR.REV_NUM
+		    WHERE MR.MEDI_NUM = #{no}
+		    GROUP BY REEC.SEFFECT_NM) A
+		) B
+		WHERE B.RNK BETWEEN 1 AND 6
+	</select>
+	
+	<!-- 오른쪽 종합그래프 [효과 , 총합]-->
+	<select id="selectGraph5" parameterType="hashmap" resultType="hashmap">
+	SELECT *
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.EFFECT_NM,A.SCORE_SUM, 
+			( SELECT SUM(B.SCORE_SUM)
+  			  FROM ( SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.EFFECT_NM,A.SCORE_SUM
+          FROM ( SELECT SUM(RES.SCORE) AS SCORE_SUM,ME.EFFECT_NM
+                 FROM REV_EFFECT_SCORE RES INNER JOIN MEDI_EFFECT ME
+                                            ON RES.EFFECT_NUM = ME.EFFECT_NUM
+                                          INNER JOIN MEDI_REV MR
+                                            ON MR.REV_NUM = RES.REV_NUM
+       		     WHERE MR.MEDI_NUM = #{no}
+        		 GROUP BY RES.EFFECT_NUM,ME.EFFECT_NM) A
+             ) B
+  		 WHERE B.RNK BETWEEN 1 AND 12 ) AS SUMSUM
+     		FROM ( SELECT SUM(RES.SCORE) AS SCORE_SUM,ME.EFFECT_NM
+            	   FROM REV_EFFECT_SCORE RES INNER JOIN MEDI_EFFECT ME
+                                        ON RES.EFFECT_NUM = ME.EFFECT_NUM
+                                      INNER JOIN MEDI_REV MR
+                                        ON MR.REV_NUM = RES.REV_NUM
+     		WHERE MR.MEDI_NUM = #{no}
+     		GROUP BY RES.EFFECT_NUM,ME.EFFECT_NM) A
+			) B
+	WHERE B.RNK BETWEEN 1 AND 12 
+	</select>
+	
+	<!-- 오른쪽 종합그래프 [부작용 , 총합]-->
+	<select id="selectGraph6" parameterType="hashmap" resultType="hashmap">
+				SELECT *
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.SEFFECT_NM,A.SCORE_SUM, 
+		( SELECT SUM(B.SCORE_SUM)
+		  FROM ( SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK,A.SEFFECT_NM,A.SCORE_SUM
+		         FROM ( SELECT SUM(RSS.SCORE) AS SCORE_SUM,MS.SEFFECT_NM
+		                FROM REV_SEFFECT_SCORE RSS INNER JOIN MEDI_SEFFECT MS
+		                                            ON RSS.SEFFECT_NUM = MS.SEFFECT_NUM
+		                                          INNER JOIN MEDI_REV MR
+		                                            ON MR.REV_NUM = RSS.REV_NUM
+		        WHERE MR.MEDI_NUM = #{no}
+		        GROUP BY RSS.SEFFECT_NUM,MS.SEFFECT_NM) A
+		        ) B
+		  WHERE B.RNK BETWEEN 1 AND 12 ) AS SUMSUM
+		     FROM ( SELECT SUM(RSS.SCORE) AS SCORE_SUM,MS.SEFFECT_NM
+		            FROM REV_SEFFECT_SCORE RSS INNER JOIN MEDI_SEFFECT MS
+		                                        ON RSS.SEFFECT_NUM = MS.SEFFECT_NUM
+		                                      INNER JOIN MEDI_REV MR
+		                                        ON MR.REV_NUM = RSS.REV_NUM
+		     WHERE MR.MEDI_NUM = #{no}
+		     GROUP BY RSS.SEFFECT_NUM,MS.SEFFECT_NM) A
+		) B
+		WHERE B.RNK BETWEEN 1 AND 12
+	</select>
+	
+	<!-- 오른쪽 종합그래프 [기타 효과, 종합] -->
+	<select id="selectGraph7" parameterType="hashmap" resultType="hashmap">
+				SELECT *
+			FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.EFFECT_NM, A.SCORE_SUM,
+			(SELECT SUM(B.SCORE_SUM)
+			FROM (
+			SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.EFFECT_NM, A.SCORE_SUM
+			FROM (
+			SELECT SUM(REEC.SCORE) AS SCORE_SUM, REEC.EFFECT_NM
+			FROM REV_ETC_EFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+			                                ON REEC.REV_NUM = MR.REV_NUM
+			WHERE MR.MEDI_NUM = #{no}
+			GROUP BY REEC.EFFECT_NM ) A
+			) B
+			WHERE B.RNK BETWEEN 1 AND 12) AS SUMSUM
+			FROM(SELECT SUM(REEC.SCORE) AS SCORE_SUM,REEC.EFFECT_NM
+			     FROM REV_ETC_EFFECT_SCORE REEC INNER JOIN MEDI_REV MR
+			                                        ON REEC.REV_NUM = MR.REV_NUM
+			    WHERE MR.MEDI_NUM = #{no}
+			    GROUP BY REEC.EFFECT_NM) A
+			) B
+			WHERE B.RNK BETWEEN 1 AND 12
+	</select>
+	
+	<!-- 오른쪽 종합그래프 [기타 부작용, 종합] -->
+	<select id="selectGraph8" parameterType="hashmap" resultType="hashmap">
+			SELECT *
+			FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.SEFFECT_NM, A.SCORE_SUM,
+				(SELECT SUM(B.SCORE_SUM)
+				FROM (
+					SELECT ROW_NUMBER() OVER(ORDER BY A.SCORE_SUM DESC) AS RNK, A.SEFFECT_NM, A.SCORE_SUM
+					FROM (
+						SELECT SUM(RESC.SCORE) AS SCORE_SUM, RESC.SEFFECT_NM
+						FROM REV_ETC_SEFFECT_SCORE RESC INNER JOIN MEDI_REV MR
+			                                			ON RESC.REV_NUM = MR.REV_NUM
+						WHERE MR.MEDI_NUM = #{no}
+						GROUP BY RESC.SEFFECT_NM ) A
+					) B
+					WHERE B.RNK BETWEEN 1 AND 12) AS SUMSUM
+				 FROM(SELECT SUM(RESC.SCORE) AS SCORE_SUM,RESC.SEFFECT_NM
+			     FROM REV_ETC_SEFFECT_SCORE RESC INNER JOIN MEDI_REV MR
+			                                        ON RESC.REV_NUM = MR.REV_NUM
+			    WHERE MR.MEDI_NUM = #{no}
+			    GROUP BY RESC.SEFFECT_NM) A
+			) B
+			WHERE B.RNK BETWEEN 1 AND 12
+	</select>
+	
+	
+	<!-- 효과 목록 가져오기 -->
+	<select id="effectList" parameterType="hashmap" resultType="hashmap">
+		SELECT B.EFFECT_NUM,B.EFFECT_NM
+		FROM(
+    		SELECT DISTINCT(ROW_NUMBER() OVER(ORDER BY A.EFFECT_NUM)) AS RNK,
+    		A.EFFECT_NUM, A.EFFECT_NM
+    		FROM(
+        		SELECT DISTINCT(ME.EFFECT_NUM) AS EFFECT_NUM, ME.EFFECT_NM AS EFFECT_NM
+				FROM MEDI M INNER JOIN MEDI_EFFECT_MID MEDI_EM
+						ON M.MEDI_NUM = MEDI_EM.MEDI_NUM
+					INNER JOIN MEDI_EFFECT ME
+						ON MEDI_EM.EFFECT_NUM = ME.EFFECT_NUM
+				ORDER BY 1 ) A
+			WHERE 1=1
+			<if test="searchEffect != null and searchEffect != ''">
+				AND EFFECT_NM LIKE '%' || #{searchEffect} || '%'
+			</if>
+    		) B
+		WHERE B.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 효과 갯수 가져오기 -->
+	<select id="effectCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(DISTINCT ME.EFFECT_NUM)
+		FROM MEDI_EFFECT ME INNER JOIN MEDI_EFFECT_MID MEM
+                        ON ME.EFFECT_NUM = MEM.EFFECT_NUM
+		WHERE 1=1
+		<if test="searchEffect != null and searchEffect != ''">
+			AND EFFECT_NM LIKE '%' || #{searchEffect} || '%'
+		</if>
+	</select>
+	
+	<!-- 부작용 목록 가져오기 -->
+	<select id="seffectList" parameterType="hashmap" resultType="hashmap">
+		SELECT B.SEFFECT_NUM,B.SEFFECT_NM
+		FROM(
+    		SELECT DISTINCT(ROW_NUMBER() OVER(ORDER BY A.SEFFECT_NUM)) AS RNK,
+    		A.SEFFECT_NUM, A.SEFFECT_NM
+    		FROM(
+        		SELECT DISTINCT(ME.SEFFECT_NUM) AS SEFFECT_NUM, ME.SEFFECT_NM AS SEFFECT_NM
+				FROM MEDI M INNER JOIN MEDI_SEFFECT_MID MEDI_EM
+						ON M.MEDI_NUM = MEDI_EM.MEDI_NUM
+					INNER JOIN MEDI_SEFFECT ME
+						ON MEDI_EM.SEFFECT_NUM = ME.SEFFECT_NUM
+				ORDER BY 1 ) A
+			WHERE 1=1
+			<if test="searchSeffect != null and searchSeffect != ''">
+				AND SEFFECT_NM LIKE '%' || #{searchSeffect} || '%'
+			</if>
+    		) B
+		WHERE B.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 부작용 갯수 가져오기 -->
+	<select id="seffectCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEDI_SEFFECT
+		WHERE 1=1
+		<if test="searchEffect != null and searchEffect != ''">
+			AND EFFECT_NM LIKE '%' || #{searchEffect} || '%'
+		</if>
+	</select>
+	
+	<!-- 리뷰 개수 가져오기 -->
+	<select id="selectRevCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEDI_REV
+		WHERE MEDI_NUM = #{no}
+	</select>
+	
+	<!-- 리뷰 리스트 가져오기 -->
+	<select id="selectRev" parameterType="hashmap" resultType="hashmap">
+		SELECT A.REV_NUM,A.MEDI_NUM,A.MEM_NUM,A.ID,A.CON,A.REG_D
+		FROM (
+			SELECT MR.REV_NUM, MR.MEDI_NUM, MR.MEM_NUM, M.ID, MR.CON, 
+				TO_CHAR(MR.REG_D,'YYYY-MM-DD') AS REG_D,ROW_NUMBER() OVER(ORDER BY MR.REV_NUM DESC) AS RNK
+        	FROM MEDI_REV MR INNER JOIN  MEM M
+                            ON MR.MEM_NUM = M.MEM_NUM
+                         INNER JOIN MEDI MD
+                            ON MD.MEDI_NUM = MR.MEDI_NUM   
+        	WHERE MR.DEL_D IS NULL
+        	AND M.LEAVE_D IS NULL
+        	AND MD.MEDI_NUM = #{no}
+        	ORDER BY MR.REV_NUM DESC) A
+        WHERE 1=1
+		AND A.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 리뷰 - 상세보기  -->
+	<select id="revDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT MEDI_NUM, MEM_NUM, CON,REG_D
+		FROM MEDI_REV
+		WHERE REV_NUM = #{revNum}
+		AND DEL_D IS NULL
+	</select>
+	<!-- 리뷰 상세보기 - 효과 -->
+	<select id="revTableEffect" parameterType="hashmap" resultType="hashmap">
+		SELECT ME.EFFECT_NM, RES.SCORE, ME.EFFECT_NUM
+		FROM MEDI_REV MR INNER JOIN REV_EFFECT_SCORE RES
+		                    ON MR.REV_NUM = RES.REV_NUM
+		                 INNER JOIN MEDI_EFFECT ME
+		                    ON ME.EFFECT_NUM = RES.EFFECT_NUM
+		WHERE MR.REV_NUM = #{revNum}
+		AND MR.DEL_D IS NULL
+	</select>
+	<!--  리뷰 상세보기 - 부작용 -->
+	<select id="revTableSEffect" parameterType="hashmap" resultType="hashmap">
+		SELECT MS.SEFFECT_NM, RSS.SCORE, MS.SEFFECT_NUM
+		FROM MEDI_REV MR INNER JOIN REV_SEFFECT_SCORE RSS
+	                    ON MR.REV_NUM = RSS.REV_NUM
+	                 INNER JOIN MEDI_SEFFECT MS
+	                    ON MS.SEFFECT_NUM = RSS.SEFFECT_NUM
+		WHERE MR.REV_NUM = #{revNum}
+		AND MR.DEL_D IS NULL
+	</select>
+	<!--  리뷰 상세보기 - 기타효과 -->
+	<select id="revTableEffectEtc" parameterType="hashmap" resultType="hashmap">
+		SELECT REES.EFFECT_NM , REES.SCORE
+		FROM MEDI_REV MR INNER JOIN REV_ETC_EFFECT_SCORE REES
+	                    ON MR.REV_NUM = REES.REV_NUM
+		WHERE MR.REV_NUM = #{revNum}
+		AND MR.DEL_D IS NULL
+	</select>
+	<!--  리뷰 상세보기 - 기타 부작용 -->
+	<select id="revTableSEffectEtc" parameterType="hashmap" resultType="hashmap">
+		SELECT RESS.SEFFECT_NM , RESS.SCORE
+		FROM MEDI_REV MR INNER JOIN REV_ETC_SEFFECT_SCORE RESS
+	                    ON MR.REV_NUM = RESS.REV_NUM
+		WHERE MR.REV_NUM = #{revNum}
+		AND MR.DEL_D IS NULL
+	</select>
+	
+	<!-- 리뷰에 대한 댓글 리스트  -->
+	<select id="revRepList" parameterType="hashmap" resultType="hashmap">
+		SELECT *
+		FROM (
+			SELECT M.ID,RR.REP_NUM, RR.MEM_NUM,RR.CON,TO_CHAR(RR.REG_D, 'YYYY-MM-DD') AS REG_D,
+						 ROW_NUMBER() OVER(ORDER BY RR.REG_D DESC) AS RNK
+			FROM MEDI_REV MR INNER JOIN REV_REP RR
+	                    ON MR.REV_NUM = RR.REV_NUM
+	                 INNER JOIN MEM M
+	                    ON RR.MEM_NUM = M.MEM_NUM
+			WHERE MR.REV_NUM = #{revNum}
+			AND MR.DEL_D IS NULL
+			AND RR.DEL_D IS NULL
+			ORDER BY RR.REG_D DESC) A
+		WHERE A.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 댓글 총 데이터 건수 가져오기 -->
+	<select id="revRepCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM REV_REP
+		WHERE REV_NUM = #{revNum}
+		AND DEL_D IS NULL
+	</select>
+	
+	<!-- 댓글 등록 -->
+	<insert id="repInsert" parameterType="hashmap">
+		INSERT INTO REV_REP(REP_NUM, REV_NUM,MEM_NUM ,CON, REG_D)
+		VALUES(REV_REP_SEQ.NEXTVAL, #{revNum},#{memNum},#{review_comment},SYSDATE)
+	</insert>
+	<!-- 댓글 수정 -->
+	<update id="repUpdate" parameterType="hashmap">
+		UPDATE REV_REP
+		SET CON = #{repCon},
+		REG_D = SYSDATE
+		WHERE REP_NUM =  #{repNum}
+	</update>
+	<!-- 댓글 삭제 -->
+	<update id="repDelete" parameterType="hashmap">
+		UPDATE REV_REP
+		SET DEL_D = SYSDATE
+		WHERE REP_NUM = #{repNum}
+	</update>
+	
+	<!-- 여 기 서 부 터 는 리 뷰 등 록 에 대 한 부 분  -->
+	
+	<!-- 시퀀스 취득하기 -->
+	<select id="curSeq" resultType="Integer">
+		SELECT REV_SEQ.NEXTVAL AS NUMBERS 
+		FROM DUAL
+	</select>
+	
+	<!-- 리뷰번호, 내용 등 등록하기 -->
+	<insert id="insertRev" parameterType="hashmap">
+		INSERT INTO MEDI_REV(REV_NUM,MEDI_NUM,MEM_NUM,CON,REG_D)
+        VALUES(#{seqNum},#{no},#{sMemNum},#{con},SYSDATE)
+	</insert>
+	
+	<!-- 효과 -->
+	<insert id="insertEffect" parameterType="hashmap">
+		INSERT INTO REV_EFFECT_SCORE(REV_NUM,EFFECT_NUM,SCORE)
+        VALUES(#{seqNum},#{effectNum},#{effectScore})
+	</insert>
+	
+	<!-- 부작용 -->
+	<select id="insertSEffect" parameterType="hashmap">
+		INSERT INTO REV_SEFFECT_SCORE(REV_NUM,SEFFECT_NUM,SCORE)
+    	VALUES(#{seqNum},#{seffectNum},#{seffectScore})
+	</select>
+	
+	<!-- 기타 효과 -->
+	<select id="insertEtcEffect" parameterType="hashmap">
+		INSERT INTO REV_ETC_EFFECT_SCORE(REV_ETC_EFFECT_NUM, REV_NUM, EFFECT_NM, SCORE)
+        VALUES(REV_ETC_EFFECT_SCORE_SEQ.NEXTVAL,#{seqNum},#{etceffectNm},#{etceffectScore})
+	</select>
+	<!--  기타 부작용 -->
+	<select id="insertEtcSEffect" parameterType="hashmap">
+		INSERT INTO REV_ETC_SEFFECT_SCORE(REV_ETC_SEFFECT_NUM, REV_NUM, SEFFECT_NM, SCORE)
+        VALUES(REV_ETC_SEFFECT_SCORE_SEQ.NEXTVAL,#{seqNum},#{etcseffectNm},#{etcseffectScore})
+	
+	</select>
+</mapper>

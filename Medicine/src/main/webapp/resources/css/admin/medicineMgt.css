@@ -1,0 +1,189 @@
+@charset "UTF-8";
+body {
+	font-size: 0px;
+	margin: 0px;
+}
+
+.loggo {
+	background-size: 90px;
+	width: 90px;
+	height: 90px;
+}
+
+.right_wrap {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(101% - 261px);
+	/* background-image: url('../../../resources/images/adminPage/배경화면2.jpg');
+	background-repeat : no-repeat;
+	background-size: cover; */
+	height: 104%;
+}
+
+#bottom {
+	padding-top: 0.5%; /* 1:1 화면비율 */
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	margin-top: 30px;
+	height: 0px;
+}
+
+#bottom_right {
+	width: 40%;
+	display: inline-block;
+}
+
+#bottom_left {
+	width: 40%;
+	display: inline-block;
+}
+
+
+.tr{
+	margin-top: 10px;
+	border-collapse: collapse;
+	border-bottom: 1px solid #FCE9DE;
+   	box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0.2,0,0) solid;
+    background-color: white;
+    opacity: 0.9;
+   	display: inline-table;
+   	vertical-align: top;
+   	margin-bottom: 30px;
+   	width: 100%;
+}
+.tl{
+	margin-top: 10px;
+	border-collapse: collapse;
+	border-bottom: 1px solid #FCE9DE;
+   	box-shadow: 0 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+    background-color: white;
+    opacity: 0.9;
+   	display: inline-table;
+   	vertical-align: top;
+   	margin-bottom: 30px;
+   	width: 100%;
+}
+
+thead {
+	font-size: 16.8px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #e8e7e3;
+	border-top: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	text-align: center;
+	font-family: "Nanum-Square";
+}
+
+td {
+	font-size: 15.4px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+tbody tr:hover {
+	background-color: #DCDCDC;
+}
+.select_bar {
+	position: relative;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+	border:1px solid black;
+	background-color: white;
+}
+
+.serbtn {
+	display: inline-block;
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.del {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-right: 10%;
+}
+
+.reg {
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+
+.nav {
+	position: relative;
+	top:5%;
+}
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+th {
+	border-top: 2px solid #A7A49A;
+	border-right: 0px;
+	border-bottom: 2px solid #A7A49A;
+	background-color: white;
+}
+td {
+	font-size: 15.4px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	border-right:0px;
+	border-bottom: 2px solid #A7A49A;
+	border-top: 2px solid #A7A49A;
+}
+.paging_area {
+	left:48%;
+}

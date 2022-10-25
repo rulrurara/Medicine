@@ -1,0 +1,150 @@
+@charset "UTF-8";
+hyml, body{
+	height: 80%;
+}
+
+.wrap {
+	height: 240px;
+	background-color: #D5D5D5;
+	/* border-top-right-radius: 30px; */
+}
+
+.right_wrap {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 261px);
+	background-image: url('../../../resources/images/배경화면2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+}
+
+#bottom {
+	padding-top: 2.9%; /* 1:1 화면비율 */
+	padding-bottom: 0.5%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 92%;
+	margin-right: 130px;
+}
+
+.t {
+	margin-top: 10px;
+	margin-left: 10%;
+	display: inline-table;
+	vertical-align: top;
+	margin-bottom: 30px;
+	border-collapse: collapse;
+	box-shadow: 5px 5px 5px 5px grey;
+	border: 2px rgba(0, 0, 0, 0.2) solid;
+	background-color: white;
+	opacity: 0.9;
+	width: 90%;
+}
+
+#im {
+	display: block;
+	height: 240px;
+	margin: 0 auto;
+	width: 240px;
+}
+
+th {
+	border-top: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	border-right: 2px solid #A7A49A;
+	height: 100px;
+	text-align: center;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+	background-color: #e8e7e3;
+}
+
+td {
+	height: 100px;
+	text-align: center;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+	border-right: 2px solid #A7A49A;
+	border-bottom: 2px solid #A7A49A;
+	border-top: 2px solid #A7A49A;
+	background-color: white;
+}
+
+
+
+.serbtn {
+	display: inline-block;
+	background-image: url("../../../resources/images/search.png");
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+}
+
+.del {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+
+.reg {
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.btn_one {
+	margin-top: 5px;
+}
+
+
+
+.top_so {
+	width: 100%;
+	height: 100px;
+}
+
+
+
+
+.nav {
+	text-align: left;
+	font-size: 20px;
+	margin-left: 10%;
+}
+
+.big_rap {
+	width: 100%;
+	height: 100%;
+	/* background-color: #000; */
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 5;
+	/* opacity: 0.1;  */ /* 투명도 (투명)0.0 ~ 1.0(불투명)  단, 하위도 모두적용 */
+}
+
+
+
+textarea {
+	resize: none;
+	border: 1px solid #d7d7d7;
+	font-family: "Nanum-Square";
+	font-size: 13pt;
+}

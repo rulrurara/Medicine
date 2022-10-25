@@ -1,0 +1,61 @@
+
+.right_wrap {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(101% - 261px);
+	/* background-image: url('../../../resources/images/adminPage/배경화면2.jpg');
+	background-repeat : no-repeat;
+	background-size: cover; */
+	height: 100%;
+}
+#bottom {
+   	padding-top: 2.9%; /* 1:1 화면비율 */
+	display:inline-block;
+	vertical-align: top;
+	text-align: center;
+	margin-top: 30px;
+    margin-right: 130px;
+    height: 0px;
+}
+
+#im {
+	height: 240px;
+	width: 240px;
+}
+
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+.del {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+}
+
+.regsu {
+	background-color: #6799FF;
+	font-size: 10pt;
+	border: 0px;
+	color: white;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.nav{
+   position: relative;
+   top:2%;
+}

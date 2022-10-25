@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login">
+	<select id="checkMen" parameterType="hashmap" resultType="hashmap">
+	SELECT MEM_NUM, NM , AUTHOR_CODE, TO_CHAR(BIRTH, 'YYYY-MM-DD') BIRTH , ID , PW , EMAIL, PHONE
+	FROM MEM
+	WHERE LEAVE_D IS NULL 
+	AND ID = #{id}
+	AND PW = #{pw}
+	</select>
+	<select id="admincheckMen" parameterType="hashmap" resultType="hashmap">
+	SELECT MEM_NUM, NM , AUTHOR_CODE, TO_CHAR(BIRTH, 'YYYY-MM-DD') BIRTH , ID , PW , EMAIL, PHONE
+	FROM MEM
+	WHERE LEAVE_D IS NULL 
+	AND ID = #{id}
+	AND PW = #{pw}
+	AND AUTHOR_CODE = 1
+	</select>
+	<select id="getEmailCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*)
+	FROM MEM
+	WHERE EMAIL = #{userEmail}
+	</select>
+	<select id="getNm" parameterType="hashmap" resultType="hashmap">
+	SELECT NM
+	FROM MEM
+	WHERE EMAIL = #{userEmail}
+	</select>
+	<select id="getIdCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*)
+	FROM MEM
+	WHERE ID = #{id}
+	</select>
+	<select id="getNm2" parameterType="hashmap" resultType="hashmap">
+	SELECT NM
+	FROM MEM
+	WHERE EMAIL = #{userEmail}
+	AND ID = #{id}
+	</select>
+	<select id="cert" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*)
+	FROM EMAIL_CERT
+	WHERE CERT_NUM = #{cert}
+	AND EMAIL_NUM = #{cur}
+	</select>
+	<select id="getId" parameterType="hashmap" resultType="hashmap">
+	SELECT ID,PW
+	FROM MEM
+	WHERE EMAIL = #{email2}
+	</select>
+</mapper>

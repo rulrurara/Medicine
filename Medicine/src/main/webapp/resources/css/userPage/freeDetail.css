@@ -1,0 +1,230 @@
+@charset "UTF-8";
+.top_header {
+	height: 100px;
+	background-color:#F2E3D5;
+}
+.repleinsert {
+	resize: none;
+}
+.repleinsert:focus{
+	outline: none;
+}
+.allwrap{
+	min-height: 600px;
+	min-width:1300px;
+	margin: 0 auto;
+	width: 60%;
+	height:1000px;
+	margin-top:100px;
+}
+.titlewrap{
+	display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+	border-top: 2px solid #000;
+    border-bottom: 1px solid #e5e5e5;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+	font-family: "Nanum-SquareR";
+	width: 80%;
+    text-align: center;
+    font-size:16px;
+    font-weight: 600;
+}
+.number{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:1;
+	color: #929292;
+	text-align: right;
+	margin-right:30px;
+}
+.writerwrap{
+	display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #c8c8c8;
+    align-items: center;
+    justify-content: center;
+    padding : 0 30;
+}
+.writer{
+	font-family: "Nanum-SquareR";
+	width: 80%;
+    text-align: right;
+    font-size:13px;
+    color: #929292;
+}
+.date{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:2;
+	color: #929292;
+	text-align: right;
+}
+.hit{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:1;
+	color: #929292;
+	text-align: right;
+	margin-right:30px;
+}
+.content{
+	font-family: "Nanum-SquareR";
+	font-size:15px;
+	border-bottom: 2px solid #000;
+	height: 400px;
+	text-indent:30px;
+	padding-top:20px;
+}
+.btnwrap{
+	margin-top: 40px;
+    text-align: center;
+}
+.reple{
+	font-family: "Nanum-SquareR";
+	font-size:16px;
+	text-indent:25px;
+	border-bottom: 2px solid #c8c8c8;
+	margin-top:7px;
+	height:30px;
+}
+.replewrap{
+	display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+}
+.replewriter{
+	font-family: "Nanum-SquareR";
+	width: 10%;
+    text-align: left;
+    font-size:14px;
+    color: #000;
+    text-indent:50px;
+}
+.repledate{
+	font-family: "Nanum-SquareR";
+	font-size:13px;
+	flex:1;
+	color: #929292;
+	text-align: left;
+}
+.replebtnwrap{
+	flex:1;
+	text-align: right;
+}
+.replecon{
+	font-family: "Nanum-SquareR";
+	font-size:14px;
+	height: 40px;
+	border-bottom: 1px solid #c8c8c8;
+	text-indent:50px;
+}
+.repleupdatebtn , .repledeletebtn{
+	width: 64px;
+    height: 28px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-right:10px;
+}
+.repledeletebtn{
+	 background: #8c8c8c;
+}
+.repleinsertwrap{
+    height: 90px;
+	text-align:center;
+	border-bottom: 1px solid #c8c8c8;
+}
+.repleinsert{
+	display:inline-block;
+	font: 12px;
+    font-family: "Nanum-Square";
+    margin-top:10px;
+    padding-left:10px;
+    border: 1px solid #c8c8c8;
+    vertical-align:middle;
+}
+.repleinsertbtn,.repleinsertupdatebtn{
+	width: 64px;
+    height: 28px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-left:39px;
+    display:inline-block;
+}
+.repleinsertupdatebtn{
+	display:none;
+}
+.updatebtn, .deletebtn, .listbtn{
+	width: 112px;
+    height: 40px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+.updatebtn{
+	margin-left: 112px;
+}
+.deletebtn{
+	margin-left:30px;
+	background: #8c8c8c;
+}
+.popup_delete {
+	width: 300px;
+	height: 70px;
+	border : 1px solid #b7b7b7;
+	position: absolute;
+	top: calc(50% - 50px);
+	left: calc(50% - 150px);
+	margin: 0 auto;
+	text-align:center;
+	font-size:15px;
+	padding-top:30px;
+	z-index:999;
+	font-family: "Nanum-Square";
+	border-radius: 7px;
+	display:none;
+} 
+.popupyes, .popupno{
+	width: 50px;
+    height: 30px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+.popupno{
+	 margin-left:5px;
+}
+.popupbtn{
+ 	margin-top:10px;
+ }
+ .gnb{
+ 	font-size: 14px;
+ 	margin-bottom: 10px;
+ 	float: right;
+ }

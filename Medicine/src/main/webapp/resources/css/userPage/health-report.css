@@ -1,0 +1,71 @@
+@charset "UTF-8";
+html, body {
+	margin: 0;
+	font-size: 0;
+	min-width:1190px;
+}
+.top_header{
+	background-color: #F2E3D5;
+}
+body {
+	overflow-y: scroll;
+	min-width:1190px;
+	font-family: "Nanum-Square";
+	font-size:"normal";
+	background-color: #F2E3D5;
+}
+.allWrap{
+	background-color: #ffffff;
+	border:none;
+}
+.bigrap{
+	background-color: #ffffff;
+	border:none;
+}
+.wrapp{
+	background-color: #ffffff;
+	border:none;
+}
+
+.pill2 {
+	background-image: url("../../../resources/images/userPage/ye/pill2.png");
+}
+
+.pill3 {
+	background-image: url("../../../resources/images/userPage/ye/pill3.png");
+}
+
+.pill4 {
+	background-image: url("../../../resources/images/userPage/ye/pill4.png");
+}
+
+.pill7 {
+	background-image: url("../../../resources/images/userPage/ye/pill7.png");
+}
+.pill {
+	background-image: url("../../../resources/images/userPage/ye/pill1.png");
+}
+.page_before {
+	background-image: url("../../../resources/images/userPage/ye/pgBefore.png");
+}
+.pg1 , .pg2 , .pg3, .page_after,.page_before{
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;	
+}
+.pg1 {
+	background-image: url("../../../resources/images/userPage/ye/pg1.png");
+}
+
+.pg2 {
+	background-image: url("../../../resources/images/userPage/ye/pg2.png");
+}
+
+.pg3 {
+	background-image: url("../../../resources/images/userPage/ye/pg3.png");
+}
+
+.page_after {
+	background-image: url("../../../resources/images/userPage/ye/pgAfter.png");
+}

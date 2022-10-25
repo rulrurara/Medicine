@@ -1,0 +1,216 @@
+/* Admin 사이드 바 CSS*/
+
+@charset "UTF-8";
+html, body {
+	height: 100%;
+}
+
+body {
+	font-size: 0px;
+	margin: 0px;
+}
+.menu {
+	display: inline-block;
+	width: 54px;
+	height: 50px;
+	margin: 25px 20px 0px 25px;
+	/* cursor: pointer; */
+	/* background: url(../../resources/images/menu_bar.png) no-repeat; */
+	background-position: 0 0;
+}
+.logo2 {
+	vertical-align: top;
+	cursor: pointer;
+	margin-top: 30px;
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	background-image: url('../images/logo.png');
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+
+.bar {
+	display: inline-block;
+	vertical-align: top;
+	background-color: #fff;
+	border-right: 1px solid #ddd;
+	height: 100%;
+	text-align: center;
+	width: 260px;
+	box-shadow: 0px 2px 2px #f1f1f1;
+	/* border-top-right-radius: 30px; */
+	border-bottom-right-radius: 30px;
+	background-color: #fff;
+}
+
+.wrap {
+	height: 240px;
+	background-color: #FAE6B1;
+	/* border-top-right-radius: 30px; */
+}
+
+.element {
+	font-size: 20px;
+	margin: 0 auto;
+	width: 240px;
+	height: calc(100% - 260px);
+	/* padding: 10px 0; */
+	text-align: center;
+	font-family: "Nanum-Square";
+	overflow: auto;
+}
+
+.elements {
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 65px;
+	cursor: pointer;
+}
+
+.elements_member {
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 65px;
+	cursor: pointer;
+	background-image: url("../images/memberMgt.png")
+}
+
+.elements_med {
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 65px;
+	cursor: pointer;
+	background-image: url("../images/medicineMgt.png")
+}
+
+.elements_helfood {
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 65px;
+	cursor: pointer;
+	background-image: url("../images/healthFoodMgt.png")
+}
+
+.elements_hel {
+	/* 이미지 변경 해야함*/
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 0px;
+	cursor: pointer;
+	background-image: url(../images/mainPageMgt.png);
+}
+
+.elements_info {
+	/* 이미지 변경 해야함*/
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 0px;
+	cursor: pointer;
+	background-image: url(../images/infoMgt.png);
+}
+
+.elements>div {
+	display: inline-block;
+}
+
+.elements:hover {
+	color: #F26A4B;
+}
+
+.dropdown_board {
+	color: black;
+	/* padding: 25px 25px 5px; */
+	text-decoration: none;
+	display: block;
+	height: 55px;
+	/* width: 168px; */
+	background-image: url("../images/freeBoardMgt.png");
+}
+
+.dropdown_mgt {
+	color: black;
+	/* padding: 25px 25px 5px; */
+	text-decoration: none;
+	display: block;
+	height: 55px;
+	/* width: 168px; */
+	background-image: url("../images/1vs1Mgt.png");
+}
+
+.dropdown_faq {
+	color: black;
+	/* padding: 25px 25px 5px; */
+	text-decoration: none;
+	display: block;
+	height: 55px;
+	/* width: 168px; */
+	background-image: url("../images/faqMgt.png");
+}
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: inline-block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #f1f1f1;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	width: 240px;
+	background-image: url(../images/postMgt.png);
+	height: 55px;
+	z-index: 10;
+}
+
+.dropdown_a {
+	position: relative;
+	display: inline-block;
+	width: 240px;
+	background-image: url(../images/healthyMgt.png);
+	height: 55px;
+}
+
+.dropdown_a:hover .dropdown-content-a {
+	display: inline-block;
+}
+
+.dropdown-content-a {
+	display: none;
+	/* position: absolute; */
+	/* background-color: #f1f1f1; */
+	min-width: 218px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	margin-top: 45px;
+}
+
+.dropdown-content {
+	display: none;
+	/* position: absolute; */
+	background-color: #f1f1f1;
+	min-width: 218px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	margin-top: 45px;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 25px 25px 5px;
+	text-decoration: none;
+	display: block;
+	height: 55px;
+	width: 168px;
+}

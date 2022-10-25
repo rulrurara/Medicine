@@ -1,0 +1,119 @@
+@charset "UTF-8";
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 500px;
+    max-width: 700px;
+	display:inline-block;
+	margin-top: 200px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+.wrapp{
+	width:1096px;
+	height:610px;
+	margin:0 auto;
+	border : 1px solid #000;
+	box-sizing: border-box;
+	margin-bottom: 170px;
+	
+}
+#container {
+	width: 550px;
+	height: 500px;
+}
+.BMI-table{
+	border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    box-sizing: border-box;
+    font-family:"Nanum-Square";
+    width: 100%;
+    margin-top:100px;
+}
+.BMI-table th{
+	vertical-align: middle;
+    height: 15px;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+    width:295px;
+}
+.BMI-table td{
+	text-align: center;
+    font-size: 16px;
+    height: 90px;
+    width:100px;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 21px; 
+}
+.dayBtn, .monthBtn, .reviseBtn{
+	width: 115px;
+    height: 35px;
+    background: #6799ff;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-top:20px;
+ }
+.dayBtn{
+	margin-left:136px;
+}
+.monthBtn{
+	margin-left:50px;
+}
+.reviseBtn{
+	float:right;
+	margin-right:146px;
+}
+.shareImage{
+	width: 40px;
+	height: 40px;
+	float:right;
+	margin-right:30px;
+	margin-top:20px;
+	cursor: pointer;
+}
+.btnwrap{
+	
+	background-color: white;
+    padding-bottom: 20px;
+}

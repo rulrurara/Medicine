@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="healthFood">
+
+<select id="gethealthFoodList" resultType="hashmap" parameterType="hashmap">
+	SELECT SS.HEALTH_FUN_FOOD_NUM, SS.PROD_PIC ,SS.PROD_NM, SS.COM_NM, SS.RNK
+	FROM(
+		SELECT SE.HEALTH_FUN_FOOD_NUM, SE.PROD_PIC ,SE.PROD_NM, SE.COM_NM, SE.RNK, SE.DEL_D
+		FROM(
+			SELECT MED.HEALTH_FUN_FOOD_NUM, MED.PROD_PIC, MED.PROD_NM, MED.RNK, MED.DEL_D, MED.COM_NM
+            FROM(
+                SELECT HEALTH_FUN_FOOD_NUM, PROD_PIC, PROD_NM, DEL_D, C.COM_NM, ROW_NUMBER() OVER(ORDER BY HEALTH_FUN_FOOD_NUM DESC) AS RNK
+                FROM HEALTH_FUN_FOOD H INNER JOIN COM_NM C
+                                                ON H.COM_NUM = C.COM_NUM
+                                                WHERE DEL_D IS NULL) MED
+          ) SE
+	WHERE MOD(SE.RNK, 2) = 1
+   	 	 <if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+		<choose>
+			<when test="searchGbn == 0"><!-- 제품명 -->
+				AND PROD_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+			<when test="searchGbn == 1"><!-- 업체명 -->
+				AND COM_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+		</choose>
+	</if>)SS
+		WHERE SS.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+<select id="gethealthFoodList2" resultType="hashmap" parameterType="hashmap">
+	SELECT SS.HEALTH_FUN_FOOD_NUM, SS.PROD_PIC ,SS.PROD_NM, SS.COM_NM, SS.RNK
+	FROM(
+		SELECT SE.HEALTH_FUN_FOOD_NUM, SE.PROD_PIC ,SE.PROD_NM, SE.COM_NM, SE.RNK, SE.DEL_D
+		FROM(
+			SELECT MED.HEALTH_FUN_FOOD_NUM, MED.PROD_PIC, MED.PROD_NM, MED.RNK, MED.DEL_D, MED.COM_NM
+            FROM(
+                SELECT HEALTH_FUN_FOOD_NUM, PROD_PIC, PROD_NM, DEL_D, C.COM_NM, ROW_NUMBER() OVER(ORDER BY HEALTH_FUN_FOOD_NUM DESC) AS RNK
+                FROM HEALTH_FUN_FOOD H INNER JOIN COM_NM C
+                                                ON H.COM_NUM = C.COM_NUM
+                                                WHERE DEL_D IS NULL) MED
+          ) SE
+	WHERE MOD(SE.RNK, 2) = 0
+   	 	 <if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+		<choose>
+			<when test="searchGbn == 0"><!-- 제품명 -->
+				AND PROD_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+			<when test="searchGbn == 1"><!-- 업체명 -->
+				AND COM_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+		</choose>
+	</if>)SS
+		WHERE SS.RNK BETWEEN #{start} AND #{end}
+	</select>
+
+ 	<select id="gethealthFoodCnt" parameterType="hashmap" resultType="integer">
+		SELECT COUNT(*) AS CNT
+		FROM HEALTH_FUN_FOOD F INNER JOIN COM_NM C
+                                    ON F.COM_NUM = C.COM_NUM
+		WHERE DEL_D IS NULL
+		<if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+		<choose>
+			<when test="searchGbn == 0"><!-- 제품명 -->
+				AND PROD_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+			<when test="searchGbn == 1"><!-- 업체명 -->
+				AND COM_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+		</choose>
+	</if>
+	</select>
+	
+	<select id="getHFNCnt" parameterType="hashmap" resultType="integer">
+		SELECT COUNT(*) AS CNT
+			 FROM HEALTH_FUN_FOOD H INNER JOIN HEALTH_FUN_FOOD_NUT_MID NUT
+			                                ON H.HEALTH_FUN_FOOD_NUM = NUT.HEALTH_FUN_FOOD_NUM
+			                       INNER JOIN NUT N
+			                                ON NUT.NUT_NUM = N.NUT_NUM
+			 WHERE H.HEALTH_FUN_FOOD_NUM = #{no}
+	</select> 
+	
+	<select id="getHF1" resultType="hashmap" parameterType="hashmap">
+		SELECT H.HEALTH_FUN_FOOD_NUM, H.PROD_NM, C.COM_NUM, C.COM_NM, S.SHAPE_NUM, S.SHAPE_NM, F.FUNC_NUM, F.FUNC_NM, N.NUT_NUM, N.NUT_NM
+		FROM HEALTH_FUN_FOOD H INNER JOIN SHAPE S
+		                            ON H.SHAPE_NUM = S.SHAPE_NUM
+		                       INNER JOIN COM_NM C
+		                            ON H.COM_NUM = C.COM_NUM
+		                       INNER JOIN HEALTH_FUN_FOOD_FUNC_MID HF
+		                            ON H.HEALTH_FUN_FOOD_NUM = HF.HEALTH_FUN_FOOD_NUM
+		                       INNER JOIN FUNC F
+		                            ON HF.FUNC_NUM = F.FUNC_NUM
+		                       INNER JOIN HEALTH_FUN_FOOD_NUT_MID HN
+		                            ON H.HEALTH_FUN_FOOD_NUM = HN.HEALTH_FUN_FOOD_NUM
+		                       INNER JOIN NUT N
+		                            ON HN.NUT_NUM = N.NUT_NUM
+		WHERE H.HEALTH_FUN_FOOD_NUM = #{no}                       	
+	</select>
+	
+	<select id="getHF" resultType="hashmap" parameterType="hashmap">
+		SELECT HEALTH_FUN_FOOD_NUM, C.COM_NM, F.COM_NUM, PROD_NM, PROD_PIC, S.SHAPE_NM, F.SHAPE_NUM, M.MEM_NUM, M.NM
+		FROM HEALTH_FUN_FOOD F INNER JOIN COM_NM C
+                                    	ON F.COM_NUM = C.COM_NUM
+                               INNER JOIN SHAPE S
+                                        ON F.SHAPE_NUM = S.SHAPE_NUM
+                                INNER JOIN MEM M
+                                        ON F.MEM_NUM = M.MEM_NUM
+        WHERE HEALTH_FUN_FOOD_NUM = #{no}                         	
+	</select>
+	
+	<select id="getHFFU" resultType="hashmap" parameterType="hashmap">
+		SELECT FUN.FUNC_NM, FUN.PIC
+		FROM HEALTH_FUN_FOOD H INNER JOIN HEALTH_FUN_FOOD_FUNC_MID FU
+		                                ON H.HEALTH_FUN_FOOD_NUM = FU.HEALTH_FUN_FOOD_NUM
+		                       INNER JOIN FUNC FUN
+		                                ON FUN.FUNC_NUM = FU.FUNC_NUM 
+		WHERE H.HEALTH_FUN_FOOD_NUM = #{no}
+	</select>
+	
+	<select id="getHFN" resultType="hashmap" parameterType="hashmap">
+		SELECT S.FIG, S.UNIT ,S.NUT_NM
+		FROM(SELECT NUT.FIG, N.NUT_NM, U.UNIT,ROW_NUMBER() OVER(ORDER BY N.NUT_NM DESC) AS RNK
+			 FROM HEALTH_FUN_FOOD H INNER JOIN HEALTH_FUN_FOOD_NUT_MID NUT
+		                    		            ON H.HEALTH_FUN_FOOD_NUM = NUT.HEALTH_FUN_FOOD_NUM
+		     		                  INNER JOIN NUT N
+		            		                    ON NUT.NUT_NUM = N.NUT_NUM
+                                    INNER JOIN UNIT U
+                                            ON N.UNIT_NUM = U.UNIT_NUM
+			 WHERE H.HEALTH_FUN_FOOD_NUM = #{no})S
+		WHERE S.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="getHFS" resultType="hashmap" parameterType="hashmap">
+		SELECT S.SHAPE_NM, S.SHAPE_PIC
+		FROM HEALTH_FUN_FOOD H INNER JOIN SHAPE S
+		                               ON H.SHAPE_NUM = S.SHAPE_NUM
+		WHERE H.HEALTH_FUN_FOOD_NUM = #{no}
+	</select>
+	
+	<select id="ListHFFU" resultType="hashmap" parameterType="hashmap">
+		SELECT FUNC_NUM, FUNC_NM
+		FROM FUNC
+		ORDER BY FUNC_NUM 
+	</select>
+	<select id="funcList" resultType="hashmap" parameterType="hashmap">
+		SELECT F.FUNC_NUM, F.FUNC_NM
+		FROM HEALTH_FUN_FOOD_FUNC_MID HF INNER JOIN FUNC F
+		                                        ON HF.FUNC_NUM = F.FUNC_NUM
+		WHERE HF.HEALTH_FUN_FOOD_NUM = #{no}
+	</select>
+	<select id="ListHFN" resultType="hashmap" parameterType="hashmap">
+		SELECT NUT_NUM, NUT_NM, MIN_PROP_TAKE_AMT, MAX_PROP_TAKE_AMT
+		FROM NUT
+		ORDER BY NUT_NUM
+	</select>
+	<select id="nutList" resultType="hashmap" parameterType="hashmap">
+		SELECT N.NUT_NUM, N.NUT_NM
+		FROM HEALTH_FUN_FOOD_NUT_MID HF INNER JOIN NUT N
+		                                        ON HF.NUT_NUM = N.NUT_NUM
+		WHERE HF.HEALTH_FUN_FOOD_NUM = #{no}  
+	</select>
+	<select id="figList" resultType="hashmap" parameterType="hashmap">
+		SELECT N.NUT_NUM, HF.FIG
+		FROM HEALTH_FUN_FOOD_NUT_MID HF INNER JOIN NUT N
+		                                        ON HF.NUT_NUM = N.NUT_NUM
+		WHERE HF.HEALTH_FUN_FOOD_NUM = #{no}
+	</select>
+	
+	<select id="ListHFS" resultType="hashmap" parameterType="hashmap">
+		SELECT DISTINCT S.SHAPE_NUM, S.SHAPE_NM
+		FROM HEALTH_FUN_FOOD HF INNER JOIN SHAPE S 
+                            			ON HF.SHAPE_NUM = S.SHAPE_NUM
+	</select>
+	
+	<select id="ListCOM" resultType="hashmap" parameterType="hashmap">
+		SELECT COM_NUM, COM_NM
+		FROM COM_NM
+		ORDER BY COM_NUM
+	</select>
+	
+	<select id="ListHFUnit" resultType="hashmap" parameterType="hashmap">
+		SELECT UNIT_NUM, UNIT
+		FROM UNIT
+	</select>
+
+	<insert id="nutinsert" parameterType="hashmap">
+		INSERT INTO NUT(NUT_NUM, UNIT_NUM, NUT_NM, GBN, MIN_PROP_TAKE_AMT, MAX_PROP_TAKE_AMT)
+		VALUES(NUT_SEQ.NEXTVAL, #{unit}, #{nut_nm}, #{gbn}, #{min}, #{max})
+	</insert>
+	
+	<insert id="cominsert" parameterType="hashmap">
+		INSERT INTO COM_NM(COM_NUM, COM_NM)
+		VALUES(COM_NM_SEQ.NEXTVAL, #{com})
+	</insert>
+	
+	<insert id="funcinsert" parameterType="hashmap">
+		INSERT INTO FUNC(FUNC_NUM, FUNC_NM, PIC)
+		VALUES(FUNC_SEQ.NEXTVAL, #{func}, #{pic})
+	</insert>
+	
+	<select id="selectNum" resultType="Integer">
+		SELECT HEALTH_FUN_FOOD_SEQ.NEXTVAL AS NUM
+		FROM DUAL
+	</select>
+	
+	<insert id="insert" parameterType="hashmap">
+		INSERT INTO HEALTH_FUN_FOOD(HEALTH_FUN_FOOD_NUM, SHAPE_NUM, COM_NUM, MEM_NUM, PROD_NM, PROD_PIC)
+		VALUES(#{numnum}, #{shapeNo}, #{comNo}, 1, #{prodNm}, #{pic})
+	</insert>
+	
+	<insert id="insert2" parameterType="hashmap">
+		INSERT INTO HEALTH_FUN_FOOD_FUNC_MID(HEALTH_FUN_FOOD_NUM, FUNC_NUM)
+	    VALUES(#{numnum},#{funcarr})
+	</insert>
+	
+	<insert id="insert3" parameterType="hashmap">
+		INSERT INTO HEALTH_FUN_FOOD_NUT_MID(HEALTH_FUN_FOOD_NUM, NUT_NUM, FIG)
+	    VALUES(#{numnum},#{nutarr}, #{fig})
+	</insert>
+	
+		
+	<update id="delete" parameterType="hashmap">
+		UPDATE HEALTH_FUN_FOOD SET DEL_D = SYSDATE
+		WHERE HEALTH_FUN_FOOD_NUM IN(${checkdel})
+	</update>
+
+	<delete id="funcdel" parameterType="hashmap">
+		DELETE FROM HEALTH_FUN_FOOD_FUNC_MID
+		WHERE HEALTH_FUN_FOOD_NUM = #{no}
+	</delete>
+	
+	<delete id="nutdel" parameterType="hashmap">
+		DELETE FROM HEALTH_FUN_FOOD_NUT_MID
+		WHERE HEALTH_FUN_FOOD_NUM = #{no}
+	</delete>
+	
+	<update id="update" parameterType="hashmap">
+		UPDATE HEALTH_FUN_FOOD SET
+				SHAPE_NUM = #{shapeNo}, 
+				COM_NUM = #{comNo}, 
+				MEM_NUM = 1, 
+				PROD_NM = #{prodNm}, 
+				PROD_PIC = #{pic}
+		WHERE HEALTH_FUN_FOOD_NUM = #{numnum}
+	</update>
+</mapper>

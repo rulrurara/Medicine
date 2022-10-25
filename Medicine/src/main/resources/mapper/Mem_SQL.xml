@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mem">
+	<select id="idChk" resultType="Integer" parameterType="String">
+		SELECT COUNT(*)
+	FROM MEM
+	WHERE ID = #{userId}
+	</select>
+	
+	<select id="memReg" parameterType="hashmap" resultType="hashmap" >
+		INSERT INTO MEM(MEM_NUM, AUTHOR_CODE, ID, PW, NM, GENDER, BIRTH, PHONE, EMAIL, REG_D)
+		VALUES (MEM_SEQ.NEXTVAL, '0', #{userId}, #{userPw},
+		#{userName}, #{gender}, TO_CHAR(TO_DATE(#{userBirth}, 'YYYY/MM/DD'), 'YYYY/MM/DD'), 
+		REGEXP_REPLACE(#{userPhone}, '(.{3})(.+)(.{4})', '\1-\2-\3'),
+		#{userEmail}, SYSDATE)
+	</select>
+	<select id="memList" parameterType="hashmap" resultType="hashmap">
+	SELECT MEM_NUM , NM , ID , EMAIL ,PHONE , AUTHOR_CODE
+	FROM MEM
+	WHERE LEAVE_D IS NULL
+	</select>
+	<select id="memCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT 
+	FROM MEM
+	</select>
+	<insert id="memberInsert" parameterType="hashmap">
+	INSERT INTO MEM(MEM_NUM  , ID , PW , NM , GENDER , BIRTH , PHONE , EMAIL)
+	VALUES(MEM_SEQ.NEXTVAL , #{id} , #{pw} , #{name} , #{gender} ,#{date} , #{phone} ,#{email})
+	</insert>
+	<select id="memDetail" parameterType="hashmap" resultType="hashmap">
+	SELECT MEM_NUM , ID , PW , NM , GENDER , TO_CHAR(BIRTH,'YYYY-MM-DD') AS BIRTH , PHONE , EMAIL 
+	FROM MEM
+	WHERE MEM_NUM = #{no}
+	</select>
+	<select id="memsujeong" parameterType="hashmap" resultType="hashmap">
+	SELECT MEM_NUM , ID , PW , NM , GENDER , TO_CHAR(BIRTH,'YYYY-MM-DD') AS BIRTH , PHONE , EMAIL 
+	FROM MEM
+	WHERE MEM_NUM = #{no}
+	</select>
+	<update id="memberUpdate" parameterType="hashmap">
+	UPDATE MEM SET ID = #{id}, PW = #{pw} , NM = #{name} , GENDER = #{gender}, BIRTH = #{date} , PHONE = #{phone} , EMAIL = #{email}
+	WHERE MEM_NUM = #{no}
+	</update>
+	<delete id="memberDelete" parameterType="hashmap">
+	UPDATE MEM SET LEAVE_D = SYSDATE
+	WHERE MEM_NUM IN(${delete})
+	</delete>
+	<update id="pwUpdate" parameterType="hashmap">
+	UPDATE MEM SET PW = #{main_pw}
+	WHERE MEM_NUM = #{Memnum}
+	</update>
+	<update id="phoneUpdate" parameterType="hashmap">
+	UPDATE MEM SET PHONE = #{change_phone}
+	WHERE MEM_NUM = #{Memnum}
+	</update>
+	<update id="emailUpdate" parameterType="hashmap">
+	UPDATE MEM SET EMAIL = #{user_Email}
+	WHERE MEM_NUM = #{Memnum}
+	</update>
+</mapper>

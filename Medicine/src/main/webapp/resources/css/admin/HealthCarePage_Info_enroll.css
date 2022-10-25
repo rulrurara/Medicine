@@ -1,0 +1,70 @@
+@charset "UTF-8";
+html, body{
+	height: 98%;
+}
+.t {
+	margin-bottom: 20px;
+}
+#im {
+
+	height: 80%;
+	width: 70%;
+}
+.m {
+	display: block;
+	height: 80%;
+	margin: 0 auto;
+	width: 80%;
+}
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+textarea:focus {
+	outline: none;
+}
+.serbtn {
+	display: inline-block;
+	background-image: url("../../../resources/images/adminPage/search.png");
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+}
+.del {
+	margin-top: 0px !important;
+}
+.reg {
+	margin-top: 0px !important;
+}
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-right:10px;
+}
+#plus{
+	cursor: pointer;
+	height: 670px;
+	width: 400px;
+}

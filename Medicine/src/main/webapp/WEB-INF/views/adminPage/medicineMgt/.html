@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@font-face {
+	font-family: "Nanum-Square";
+	font-size: "normal";
+	src: url("../font/NanumSquareEB.ttf");
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-size: 0px;
+	margin: 0px;
+}
+
+.menu {
+	display: inline-block;
+	width: 54px;
+	height: 50px;
+	margin: 25px 20px 0px 25px;
+	cursor: pointer;
+	background: url(../images/menu_bar.png) no-repeat;
+	background-position: 0 0;
+}
+
+/* .logo {
+   vertical-align: top;
+   cursor: pointer;
+   margin: 28px 0px 0px 0px;
+   display: inline-block;
+   width: 45px;
+   height: 45px;
+   background-image: url(../images/logo.png);
+   background-size: 50px;
+   background-repeat: no-repeat;
+} */
+.logo2 {
+	vertical-align: top;
+	cursor: pointer;
+	margin-top: 30px;
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	background-image: url('../images/logo.png');
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+#AB {
+	vertical-align: top;
+	cursor: pointer;
+	margin-top: 30px;
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	background-image: url('../images/logo.png');
+	background-size: 90px;
+	background-repeat: no-repeat;
+}
+
+.bar {
+	display: inline-block;
+	vertical-align: top;
+	background-color: #fff;
+	border-right: 1px solid #ddd;
+	height: 100%;
+	text-align: center;
+	width: 260px;
+	box-shadow: 0px 2px 2px #f1f1f1;
+	/* border-top-right-radius: 30px; */
+	border-bottom-right-radius: 30px;
+	background-color: #fff;
+}
+
+.wrap {
+	height: 240px;
+	background-color: #FAE6B1;
+	/* border-top-right-radius: 30px; */
+}
+
+.element {
+	font-size: 20px;
+	margin: 0 auto;
+	width: 240px;
+	height: calc(100% - 260px);
+	/* padding: 10px 0; */
+	text-align: center;
+	font-family: "Nanum-Square";
+	overflow: auto;
+}
+
+.elements {
+	height: 50px;
+	line-height: 20px;
+	font-size: 20px;
+	margin-top: 65px;
+	cursor: pointer;
+}
+
+.elements>div {
+	display: inline-block;
+}
+
+.elements:hover {
+	color: #F26A4B;
+}
+
+.right_wrap {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 261px);
+	height: 100%;
+	overflow: auto;
+	/* text-align: center; */
+}
+
+.top_header {
+	background-color: #FAE6B1;
+	height: 100px;
+	box-shadow: 0px 2px 2px #FAE6B1;
+}
+
+.homepage_name {
+	height: 30px;
+	text-align: center;
+	position: relative;
+	width: 50%;
+	font-size: 30px;
+	margin-left: 24%;
+	line-height: 26px;
+	margin-top: -40px;
+	font-family: "Nanum-Square";
+}
+
+.login_border {
+	display: inline-block;
+	position: relative;
+	width: 400px;
+	height: 87px;
+	/* border: 1px solid black; */
+	float: right;
+	margin-top: -55px;
+	margin-right: 15px;
+}
+
+.userId_border {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: 50px;
+}
+
+.userId {
+	border: 0px;
+	width: 396px;
+	background-color: #FAE6B1;
+	height: 48px;
+	text-align: center;
+	font-family: "Nanum-Square";
+	font-size: 18px;
+}
+
+.logOut_border {
+	display: inline-block;
+	position: relative;
+	width: 111px;
+	height: 37px;
+	float: right;
+}
+
+.logoutBtn {
+	width: 111px;
+	height: 37px;
+	text-align: center;
+	/*
+    border: 1px solid black;
+    background-color: #FFA101;*/
+	border-right: 0px;
+	background-image: url(../images/logoutBtn.png);
+	background-color: #FAE6B1;
+	background-repeat: no-repeat;
+	background-position-x: 0px;
+	border: 0px;
+	cursor: pointer;
+}
+
+#bottom {
+	padding-top: 2.9%; /* 1:1 화면비율 */
+	padding-bottom: 0.5%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 100%;
+	/* height: 92%; */
+	margin-top: 30px;
+	/*margin-right: 130px; */
+}
+
+.t {
+	margin-top: 20px;
+	/* margin-left: 325px; */
+	border-collapse: collapse;
+	width: calc(100% - 15%);
+	display: inline-table;
+	vertical-align: top;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+th {
+	font-size: 16.8px;
+	height: 50px;
+	line-height: 50px;
+	border-top: 1px solid #f1f1f1;
+}
+
+td {
+	font-size: 15.4px;
+	height: 80px;
+	line-height: 40px;
+	border-top: 1px solid #f1f1f1;
+	text-align: center;
+}
+
+tbody tr:hover {
+	background-color: #e1e1fb;
+}
+
+tr td:nth-child(2) {
+	text-align: center;
+	text-indent: 10px;
+}
+
+.select_bar {
+	height: 38px;
+	/* width: 500px; */
+	text-align: center;
+	display: block;
+}
+
+.select_1 {
+	border-radius: 10px;
+	width: 85px;
+	height: 30px;
+}
+
+.text {
+	border-radius: 10px;
+	width: 300px;
+	height: 24px;
+}
+
+.serbtn {
+	display: inline-block;
+	/* width: 55px;
+    height: 30px;
+    background-color: #FFB300;
+    border-radius: 10px;
+    height: 30px;
+    line-height: 2; */
+	background-image: url("../images/search.png");
+	position: absolute;
+	width: 56px;
+	height: 26px;
+	margin-left: 5px;
+	margin-top: 1px;
+}
+
+.del {
+	text-align: center;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	margin-right: 35px;
+	width: 65px;
+	background-color: #FFB300;
+	background-image: url("../images/delete.png");
+	/* background-size: 65px; */
+}
+
+.reg {
+	text-align: center;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	margin-right: 5px;
+	background-color: #FFB300;
+	background-image: url("../images/enroll.png");
+	/* background-size: 65px; */
+}
+
+.btn_one {
+	margin-top: 5px;
+}
+
+.dropbtn {
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	height: 65px;
+	width: 200px;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	/* position: absolute; */
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 25px 25px 5px;
+	text-decoration: none;
+	display: block;
+	height: 55px;
+	width: 168px;
+}
+
+.next_one {
+	margin-bottom: -1.2px;
+}
+
+.next_two {
+	margin-bottom: -1.4px;
+}
+
+.top_so {
+	width: 100%;
+	height: 100px;
+	background-color: #FAE6B1;
+}
+
+.paging {
+	text-align: center;
+	font-size: 15px;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #f1f1f1;
+}
+
+.nav {
+	width: 1200px;
+	text-align: right;
+	font-size: 13px;
+	margin: -15px auto 20px;
+}
+</style>
+</head>
+<body>
+	<div class="bar">
+		<div class="wrap">
+			<div class="logo2"></div>
+		</div>
+		<div class="element">
+			<div class="elements">회원 관리</div>
+			<div class="elements">의약품 관리</div>
+			<div class="elements">건강 기능 식품 관리</div>
+			<div class="elements">
+				<div class="dropdown">
+					게시물 관리
+					<div class="dropdown-content">
+						<a href="#">자유게시판</a> <a href="#">고객센터 1:1 문의</a> <a href="#">고객센터
+							FAQ</a>
+					</div>
+				</div>
+			</div>
+			<div class="elements">건강 관리</div>
+		</div>
+	</div>
+	<div class="right_wrap">
+		<div class="top_header">
+			<div class="header">
+				<div class="menu"></div>
+				<!-- <div class="logo"></div> -->
+
+				<div class="homepage_name">이런 약은 어때?</div>
+
+				<div class="login_border">
+					<div class="userId_border">
+						<input type="text" id="userId" class="userId"
+							value="'조영은 주당님 환영합니다.'" readonly="readonly" />
+					</div>
+					<div class="logOut_border">
+						<input type="button" id="logoutBtn" class="logoutBtn" />
+					</div>
+				</div>
+			</div>
+			<div id="bottom">
+					    <div class="nav">
+               <p>관리자 홈 > 의약품 관리<p>
+            </div>
+				<table class="t">
+					<colgroup>
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="200" />
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="200" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th><input type="checkbox"></th>
+							<th>번호</th>
+							<th>사진</th>
+							<th>약품명</th>
+							<th>성분코드</th>
+							<th>업체명</th>
+							<th><input type="checkbox"></th>
+							<th>번호</th>
+							<th>사진</th>
+							<th>약품명</th>
+							<th>성분코드</th>
+							<th>업체명</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+							<td><input type="checkbox"></td>
+							<td>번호</td>
+							<td><div id="AB">
+									<img id="AB" src="../images/Ti.jpg">
+								</div></td>
+							<td>타이레놀</td>
+							<td>ac18tiger</td>
+							<td>(주)한국얀센</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+				<div class="select_bar">
+					<select class="select_1">
+						<option value="제목">제목</option>
+						<option value="문의번호" selected="selected">문의번호</option>
+					</select> <input type="text" class="text" placeholder="검색하세요." />
+					<div class="serbtn"></div>
+				</div>
+				<br> <br>
+				<div class="paging">
+					<img src="../images/next.png" class="next_one">&nbsp; <a
+						class="active" title="페이지 선택됨">1</a>&nbsp; <a>2</a>&nbsp; <a>3</a>&nbsp;
+					<a>4</a>&nbsp; <a>6</a>&nbsp; <a>7</a>&nbsp; <a>8</a>&nbsp; <a>9</a>&nbsp;
+					<img src="../images/next_two.png" class="next_two">
+				</div>
+				<div>
+					<div class="del btn">
+						<div class="btn_one"></div>
+					</div>
+					<div class="reg btn">
+						<div class="btn_one"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</body>
+</html>

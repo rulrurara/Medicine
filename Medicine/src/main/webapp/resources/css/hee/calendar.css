@@ -1,0 +1,223 @@
+@charset "UTF-8";
+.table1{
+	border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    box-sizing: border-box;
+    font-family:"Nanum-Square";
+    width: 100%;
+    height:230px;
+}
+.table1-th1{
+	vertical-align: middle;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+}
+.table1-th2{
+	vertical-align: middle;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 17px;
+    height:180px;
+}
+.table1-td{
+	text-align: center;
+    font-size: 13px;
+     border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #ffffff;
+}
+#fullCalendarArea {
+	height: 750px;
+}
+.fc table{
+	width: 100%;
+}
+@font-face {
+	font-family: "Nanum-Square";
+	font-size: "normal";
+	src: url("../../../resources/font/NanumSquareEB.ttf");
+}
+.wrap_rap {
+	display: inline-block;
+	vertical-align: top;
+	width: 80%;
+	font-size: 11pt;
+	position: relative;
+	margin-top:100px;
+}
+.dt {
+	margin-top: 152.5px;
+	height:697px;
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
+	font-size: 30px;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid white;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	box-sizing: border-box;
+}
+
+.bigrap {
+	position: relative;
+	margin: 0 auto;
+	height:1010px;
+	width: 1096px;
+	box-sizing: border-box;
+	margin-bottom: 190px;
+	margin-top: 50px;
+}
+
+.fc-center h2 {
+	display: inline-block;
+}
+.enroll_Btn {
+	background-image: url("../../../resources/images/userPage/enroll_Btn.png");
+	height: 35px;
+	width: 100px;
+	margin: auto 35px auto auto;
+}
+.pill , .pill1, .pill2 ,.pill3,.pill4,.pill7{
+	height: 39px;
+	width: 37px;
+	background-size:cover;
+	background-position: center;
+	display: inline-block;
+	vertical-align: top;
+}
+.pill {
+	background-image: url("../../../resources/images/userPage/pill1.png");
+}
+
+.txt_pill {
+	border: 1px solid black;
+	font-size: 10pt;
+	height: 46px;
+	width: 135px;
+	display: inline-block;
+	vertical-align: top;
+	padding-left:3px;
+}
+.txt_rap {
+	width: 300px;
+	height: 50px;
+	margin-top: 20px;
+	margin-left:13px;
+}
+
+.pill2 {
+	background-image: url("../../../resources/images/userPage/pill2.png");
+}
+
+.pill3 {
+	background-image: url("../../../resources/images/userPage/pill3.png");
+}
+
+.pill4 {
+	background-image: url("../../../resources/images/userPage/pill4.png");
+}
+
+.pill7 {
+	background-image: url("../../../resources/images/userPage/pill7.png");
+}
+.btn_rap {
+	width: 300px;
+	height: 40px;
+	margin-top: 80px;
+	margin-left:13px;
+}
+
+.page_before {
+	background-image: url("../../../resources/images/userPage/pgBefore.png");
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.pg1 , .pg2 , .pg3, .page_after,.page_before{
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+	
+}
+.pg1 {
+	background-image: url("../../../resources/images/userPage/pg1.png");
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.pg2 {
+	background-image: url("../../../resources/images/userPage/pg2.png");
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.pg3 {
+	background-image: url("../../../resources/images/userPage/pg3.png");
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.page_after {
+	background-image: url("../../../resources/images/userPage/pgAfter.png");
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.enroll_btn_rap {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	margin-right: 66.297px;
+}
+.memowrap{
+	display:inline-block;
+	height:250px;
+	width:100%;
+}
+.selectbox{
+	width: 130px;
+	height:30px;
+	border: 1px solid #999;
+	font-family: inherit;  
+	font-family: "Nanum-Square";
+}
+.registerBtn{
+	width: 140px;
+    height: 40px;
+    background: #FFB300;
+    border: none;
+    font: 14px;
+    font-family: "Nanum-Square";
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+ }
+ .btnWrap{
+ 	margin-top:85px;
+ 	margin-left:40px;
+ }
+ 
+ .calendarIcon{
+position: absolute;
+width: 47px;
+height: 49px;
+left: 29px;
+top: 11px;
+background: url(../images/userPage/calendarIcon.png) no-repeat;
+}

@@ -1,0 +1,361 @@
+@charset "UTF-8";
+/* 넘버  */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.figpoPup {
+	display: none;
+	vertical-align: top;
+	width: 330px;
+	height: 120px;
+	padding: 15px;
+	background-color: #f5f6f7;
+	position: absolute;
+	top: calc(50% - 110px);
+	left: calc(50% - 135px);
+	z-index: 10;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+.compoPup {
+	display: none;
+	vertical-align: top;
+	width: 330px;
+	height: 120px;
+	padding: 15px;
+	background-color: #f5f6f7;
+	position: absolute;
+	top: calc(50% - 110px);
+	left: calc(50% - 135px);
+	z-index: 10;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+
+.funcpoPup {
+	display: none;
+	vertical-align: top;
+	width: 330px;
+	height: 120px;
+	padding: 15px;
+	background-color: #f5f6f7;
+	position: absolute;
+	top: calc(50% - 110px);
+	left: calc(50% - 135px);
+	z-index: 10;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+
+.nutpoPup {
+	display: none;
+	vertical-align: top;
+	width: 330px;
+	height: 120px;
+	padding: 15px;
+	background-color: #f5f6f7;
+	position: absolute;
+	top: calc(50% - 110px);
+	left: calc(50% - 135px);
+	z-index: 10;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+
+.ILpoPup {
+	display: none;
+	vertical-align: top;
+	width: 330px;
+	height: 120px;
+	padding: 15px;
+	background-color: #f5f6f7;
+	position: absolute;
+	top: calc(50% - 110px);
+	left: calc(50% - 135px);
+	z-index: 10;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+.m {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+}
+.text {
+	border-radius: 10px;
+	width: 266px;
+	height: 24px;
+}
+.funcYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.figYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.comYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.insertYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.nutYes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+.Yes {	
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-left:15px;
+}
+
+.No {
+	border: 0px;
+	color: white;
+	font-size: 10pt;
+	border-radius: 10px;
+	float: right;
+	height: 30px;
+	width: 65px;
+	cursor: pointer;
+	background-color: #6799FF;
+	margin-right:10px;
+}
+select{
+  width:200px;
+}
+#select{
+    height: 60%;
+    width: 50%;
+    font-size: 13pt;
+    font-family: "Nanum-Square";
+    text-align: center;
+    border: 2px solid #A7A49A;
+}
+
+.plus{
+	background-color: #6799FF;
+    font-size: 10pt;
+    border: 0px;
+    color: white;
+    border-radius: 10px;
+    float: right;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left:10px;
+}
+
+.nav {
+	font-size: 20px;
+    text-align: left;
+    float: left;
+    position: relative;
+    top: 3%;
+}
+
+/* 팝업 */
+
+#searchimg {
+	width: 60px;
+	float: right;
+	cursor: pointer;
+}
+#searchimg1 {
+	width: 60px;
+	float: right;
+	cursor: pointer;
+}
+#searchimg2 {
+	width: 60px;
+	float: right;
+	cursor: pointer;
+}
+.text1 {
+	height: 40%;
+	border: none;
+	border-bottom: solid 2px grey;
+	width: 80%;
+	margin-top:15px;
+	background-color: #00ff0000;
+}
+input[type="text"]:focus {
+	outline: none;
+}
+input[type="number"]:focus {
+	outline: none;
+}
+.poPup_serch1 {
+	display: none;
+    vertical-align: top;
+    width: 50%;
+    height: 70%;
+    padding: 15px;
+    background-color: #e8e7e3;
+    position: absolute;
+    top: calc(50% - 310px);
+    left: calc(50% - 353px);
+    z-index: 10;
+    border-radius: 25px;
+    opacity: 0.9;
+    vertical-align: top;
+}
+.poPup_serch2 {
+	display: none;
+    vertical-align: top;
+    width: 50%;
+    height: 70%;
+    padding: 15px;
+    background-color: #e8e7e3;
+    position: absolute;
+    top: calc(50% - 310px);
+    left: calc(50% - 353px);
+    z-index: 10;
+    border-radius: 25px;
+    opacity: 0.9;
+    vertical-align: top;
+}
+.poPup_serch3 {
+	display: none;
+    vertical-align: top;
+    width: 31%;
+    height: 70%;
+    padding: 15px;
+    background-color: #e8e7e3;
+    position: absolute;
+    top: calc(50% - 400px);
+    left: calc(50% - 210px);
+    z-index: 10;
+    border-radius: 25px;
+    opacity: 0.9;
+    vertical-align: top;
+}
+.mok{
+    margin-top: 85px;
+    display: inline-block;
+    width: 97%;
+    height: 75%;
+    border: 1px solid;
+}
+.br1 {
+	font-size: 35pt;
+}
+.pop1{
+    width: 90%;
+    height: 20px;
+    font-size: 15pt;
+    font-family: "Nanum-Square";
+    background-color: #00ff0000;
+    cursor: pointer;
+}
+.popT{
+	display: inline-block;
+    border: 1px solid #00ff0000;
+	width: 100%;
+	height: 100%;
+}
+.pop3{
+	width: 10%;
+	height: 100%;
+	cursor: pointer;
+	background-color: #00ff0000;
+	border: 1px soild black;
+}
+.data1{
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    padding: 20px;
+    position: absolute;
+    z-index: 16;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+#figdata{
+	display: inline-block;
+    vertical-align: top;
+    width: 86%;
+    padding: 20px;
+    position: absolute;
+    z-index: 16;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+#popForm{
+	height: 100%;
+	display: inline-block;
+}
+.popTh{
+    height: 50px;
+    border-top: 2px solid #A7A49A;
+    border-bottom: 2px solid #A7A49A;
+    border-right: 2px solid #A7A49A;
+    background-color: #e8e7e3;
+    font-size: 20pt;
+}
+.sh{
+	background-color: #6799FF;
+    font-size: 10pt;
+    border: 0px;
+    color: white;
+    border-radius: 10px;
+    float: right;
+    height: 30px;
+    width: 135px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left:15px;
+}
+.pdBtn{
+    float: left;
+    margin-left: 10%;
+}

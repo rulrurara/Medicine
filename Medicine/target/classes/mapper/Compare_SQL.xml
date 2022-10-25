@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="compare">
+<select id="getResultBlock" resultType="hashmap" parameterType="hashmap">
+SELECT C.HEALTH_FUN_FOOD_NUM, C.PROD_PIC, C.COM_NM, C.PROD_NM, C.SHAPE_PIC
+FROM(SELECT HFF.HEALTH_FUN_FOOD_NUM, HFF.PROD_PIC, CN.COM_NM, HFF.PROD_NM, SH.SHAPE_PIC,
+	ROW_NUMBER() OVER(ORDER BY HEALTH_FUN_FOOD_NUM DESC) AS RNUM
+	FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+	                        ON HFF.COM_NUM = CN.COM_NUM
+                            INNER JOIN SHAPE SH
+                            ON HFF.SHAPE_NUM = SH.SHAPE_NUM
+	WHERE HFF.DEL_D IS NULL
+	AND (HFF.PROD_NM LIKE '%' || #{searchbox} || '%'
+	OR CN.COM_NM LIKE '%' || #{searchbox} || '%'))C
+WHERE C.RNUM BETWEEN #{start} AND #{end}
+</select>
+
+<select id="getResultBlockCnt" parameterType="hashmap" resultType="Integer">
+SELECT COUNT(*) AS CNT
+FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+                        ON HFF.COM_NUM = CN.COM_NUM
+WHERE HFF.DEL_D IS NULL
+AND (HFF.PROD_NM LIKE '%' || #{searchbox} || '%'
+OR CN.COM_NM LIKE '%' || #{searchbox} || '%')
+</select>
+
+<select id="getPopupSearch" parameterType="hashmap" resultType="hashmap">
+SELECT HFF.HEALTH_FUN_FOOD_NUM, HFF.PROD_PIC, CN.COM_NM, HFF.PROD_NM
+FROM HEALTH_FUN_FOOD HFF INNER JOIN COM_NM CN
+	                        ON HFF.COM_NUM = CN.COM_NUM
+WHERE HFF.HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+</select>
+
+<select id="getForm" parameterType="hashmap" resultType="hashmap">
+SELECT HFF.HEALTH_FUN_FOOD_NUM, SHAPE.SHAPE_PIC
+FROM HEALTH_FUN_FOOD HFF INNER JOIN SHAPE SHAPE
+ON HFF.SHAPE_NUM = SHAPE.SHAPE_NUM
+WHERE HFF.HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+</select>
+
+<select id="getFunc" parameterType="hashmap" resultType="hashmap">
+SELECT HFF.HEALTH_FUN_FOOD_NUM, FUNC.PIC
+FROM HEALTH_FUN_FOOD_FUNC_MID HFFFM INNER JOIN HEALTH_FUN_FOOD HFF
+ON HFFFM.HEALTH_FUN_FOOD_NUM = HFF.HEALTH_FUN_FOOD_NUM
+INNER JOIN FUNC
+ON HFFFM.FUNC_NUM = FUNC.FUNC_NUM
+WHERE HFF.HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+</select>
+
+<select id="getNut" parameterType="hashmap" resultType="hashmap">
+SELECT HFFNM.HEALTH_FUN_FOOD_NUM, NUT.NUT_NM, NUT.MIN_PROP_TAKE_AMT, NUT.MAX_PROP_TAKE_AMT, HFFNM.FIG, UNIT.UNIT
+FROM HEALTH_FUN_FOOD_NUT_MID HFFNM INNER JOIN NUT NUT
+ON HFFNM.NUT_NUM = NUT.NUT_NUM
+INNER JOIN UNIT UNIT 
+ON UNIT.UNIT_NUM = NUT.UNIT_NUM
+WHERE HFFNM.HEALTH_FUN_FOOD_NUM = #{healthFunFoodNum}
+</select>
+
+</mapper>

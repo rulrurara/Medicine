@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Free">
+
+<select id="getAdminFreeList" resultType="hashmap"
+		parameterType="hashmap">
+		SELECT S.TXT_NUM, S.NM, S.TITLE, S.REG_D, S.HIT
+		FROM(SELECT B.TXT_NUM, M.NM, B.TITLE, 
+	                CASE WHEN TO_CHAR(B.REG_D, 'YYYY.MM.DD') = TO_CHAR(SYSDATE, 'YYYY.MM.DD')
+	            	THEN TO_CHAR(B.REG_D, 'HH24:MI')
+	            	ELSE TO_CHAR(B.REG_D, 'YY.MM.DD')
+	            	END AS REG_D, HIT,
+	                ROW_NUMBER() OVER(ORDER BY TXT_NUM DESC) AS RNK
+			 FROM BB B INNER JOIN MEM M
+                				ON B.MEM_NUM = M.MEM_NUM
+		WHERE B.DEL_D IS NULL
+		<if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+			<choose>
+				<when test="searchGbn == 0"><!-- 제목 -->
+					AND B.TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1"><!-- 번호 -->
+					AND B.TXT_NUM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 2"><!-- 작성자 -->
+					AND M.NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+		) S
+		WHERE S.RNK BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="getAdminFreeCnt" parameterType="hashmap" resultType="integer">
+		SELECT COUNT(*) AS CNT
+		FROM BB B INNER JOIN MEM M 
+		                ON B.MEM_NUM = M.MEM_NUM
+		WHERE DEL_D IS NULL
+		<if test="searchTxt != null and searchTxt != ''"><!-- 검색어가 있다면 -->
+			<choose>
+				<when test="searchGbn == 0"><!-- 제목 -->
+					AND B.TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1"><!-- 번호 -->
+					AND B.TXT_NUM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 2"><!-- 작성자 -->
+					AND M.NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="getAFee" resultType="hashmap" parameterType="hashmap">
+		SELECT B.TITLE, B.CON, B.HIT, M.NM, B.TXT_NUM
+		FROM BB B INNER JOIN MEM M
+                		ON B.MEM_NUM = M.MEM_NUM
+		WHERE B.TXT_NUM = #{no}          	
+	</select>
+	
+	<update id="AFreeHit">
+		UPDATE BB SET HIT = HIT + 1 
+		WHERE TXT_NUM = #{no}
+	</update>
+	
+	<update id="infodel" parameterType="hashmap">
+		UPDATE BB SET DEL_D = SYSDATE
+		WHERE TXT_NUM = #{no}
+	</update>
+	
+	<update id="delete" parameterType="hashmap">
+		UPDATE BB SET DEL_D = SYSDATE
+		WHERE TXT_NUM IN(${checkdel})
+	</update>
+
+</mapper>

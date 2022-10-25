@@ -1,0 +1,218 @@
+@charset "UTF-8";
+@font-face{
+   font-family: "Nanum-Square";
+   font-size:"normal";
+   src: url("../../font/NanumSquare_acEB.ttf");
+}
+body{
+	font-size: 0px;
+	margin:0px;
+	/*background-color: #B3DEE5;*/
+	background-color: white;
+	width: 100%;
+    background: url(../../images/userPage/medicine3.jpg) no-repeat;
+    background-size: cover;
+    overflow-x: auto;
+	overflow-y: hidden;
+}
+
+/* 이미지 공통 */
+img {
+	width: 100px;
+	height: 100px;
+}
+/* 약품정보 글자*/
+.info {
+	display: block;
+    float: left;
+    width: 14%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    right: -8.6%;
+    margin-bottom: 10px;
+}
+/* 네비게이션 바*/
+.gnb {
+	display: block;
+    float: right;
+    width: 20%;
+    height: 30px;
+    margin-top: 60px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    right:7%;
+    font-family: "Nanum-Square";
+    font-size: 17px;
+}
+
+/* 여기서부터 메인*/
+.main_border {
+	display: block;
+    width: 76%;
+    height: 690px;
+    border: 1px solid black;
+    border-radius:10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    /*padding: 20px;*/
+    
+    /*그림자 테스트*/
+    box-shadow: 5px 5px 5px 5px grey;
+    border: 2px rgba(0,0,0,0.2) solid;
+    /*투명도 테스트*/
+    background-color: white;
+    opacity: 0.9;
+    position: relative;
+}
+/*테이블*/
+.main_table_left, .main_table_right {
+	border-collapse: collapse;
+	display: inline-block;
+}
+.main_table_left {
+	width: 725.36px;
+}
+.main_table_right {
+    width: 727.86px;
+}
+
+
+.main_table_left tbody tr:nth-child(odd), 
+.main_table_right tbody tr:nth-child(odd) {
+	background-color: #ddd;
+}
+.main_table_left th,.main_table_right th {
+	background-color: white;
+	color:black;
+}
+.main_table_left td:nth-child(5) {
+	border-right: 1px solid #D5D5D5;
+}
+
+.main_table_left td, .main_table_left tr,
+.main_table_right td, .main_table_right tr {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+td, th {
+	font-size: 13px;
+	border-collapse: collapse;
+	border:0px;
+	text-align: center;
+}
+td {
+	height: 98px;
+	border-bottom: 1px solid #D5D5D5;
+}
+
+th {
+	font-size : 20px;
+	border-bottom: 1px solid #D5D5D5;
+	height: 45px;
+}
+.top_header {
+	background-color: transparent !important;
+	height: 100px;
+}
+/* 이미지 */
+.pic {
+	background-repeat: no-repeat;
+	width: 100px;
+	height: 80px;
+}
+
+
+/* 검색창 */
+.search_border {
+	border: 1px solid black;
+    width: 388px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    position: relative;
+    right:2%;
+}
+.search_select_border {
+	display:inline-block;
+	border-right:1px solid black;
+	width: 100px;
+	height: 30px;
+	
+}
+.search_text_border {
+	display: inline-block;
+    width: 298px;
+    height: 30px;
+    margin-left: 90px;
+}
+.searchTxt {
+	width: 291px;
+    height: 25px;
+    border: 0px;
+    text-indent: 10px;
+    font-family: "Nanum-SquareR";
+}
+.searchTxt:focus, .select_border:focus {
+	outline: none;
+}
+.searchTxt::placeholer {
+	font-family: "Nanum-SquareR";
+}
+/* 셀렉트박스 */
+.select_border {
+	width: 90px;
+    height: 30px;
+    position: absolute;
+    border: 0px;
+    text-align: center;
+    border-right: 1px solid black;
+    font-size: 13px;
+}
+.searchBtn {
+	width: 56px;
+    height: 30px;
+    border: 0px;
+    cursor: pointer;
+    float: right;
+    position: relative;
+	top: -87.5%;
+    right: -21%;
+    background-color: #6799FF;
+    border-radius: 10px;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size: 13px;
+}
+.paging_area {
+	margin-top:15px;
+}
+.listBtn {
+	background-color:#6799FF;
+    color:white;
+    font-family: "Nanum-SquareR";
+    font-size:15px;
+    border-radius : 10px;
+    border:0px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+	position: absolute;
+    left: 93%;
+    top: 93%;
+}
+.border_wrap {
+	position: absolute;
+    left: 34%;
+    top: 85%;
+}
+}
