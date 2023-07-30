@@ -7,9 +7,6 @@
 사용기술 및 프로그램: Ajax, Eclipse, GIT, MyBatis, Oracle, Spring4.3, jsp
 사용언어: CSS, EL, HTML, JSTL, Javascript, Jquery, SQL, dynamic query, java
 
-🔗LINK
-
-[GitHub - rulrurara/Medicine: Good Medicine 프로젝트 소스코드](https://github.com/rulrurara/Medicine)
 
 ## 프로젝트 내용
 
@@ -63,9 +60,9 @@ Spring을 이용하여 서버사이드 개발을 하였습니다. MVC패턴을 �
     
      구현하고 싶은 페이지 별 기능 정의서 작성 
     
-    ![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled.png)
+   ![Untitled](https://github.com/rulrurara/Medicine/assets/110279337/98258fd7-7f30-4a81-8595-aa4b5ac01412)
   
-![Untitled 1](https://github.com/rulrurara/Medicine/assets/110279337/90f4a0a8-2c96-4bd9-92ba-a813af080c0c)
+
 
 
 - 화면 기획서
@@ -73,26 +70,30 @@ Spring을 이용하여 서버사이드 개발을 하였습니다. MVC패턴을 �
      기능 정의서를 참고하여 화면 디자인 및 기획서 작성
     
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%201.png)
+![Untitled 1](https://github.com/rulrurara/Medicine/assets/110279337/40b20a86-4ef3-4170-a66c-009e727f721d)
+
 
 - ERD
     
     Diagrams.net을 사용하여 DB모델링
     
-    ![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%202.png)
+   ![Untitled 2](https://github.com/rulrurara/Medicine/assets/110279337/16ec23b6-56c3-4b42-bdae-acf235fb5067)
+
     
 - 테이블 정의서
     
     모델링 데이터를 기준으로 테이블 정의서 작성
     
-    ![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%203.png)
+   ![Untitled 3](https://github.com/rulrurara/Medicine/assets/110279337/8eb5fc71-c54d-47ff-a68f-0ed370f26188)
+
     
 
 ## 📖 담당 페이지 및 주요 기능
 
 ## LOGIN , LOGOUT
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%204.png)
+![Untitled 4](https://github.com/rulrurara/Medicine/assets/110279337/40962dcb-d46c-40d8-8025-c6115b469e24)
+
 
 <aside>
 💡 로그인 시 Ajax 이용하여, DB 정보와 입력한 ID, PW 대조 후 로그인
@@ -110,7 +111,8 @@ Session에 로그인한 정보(사용자 이름, 사용자번호 등) 할당
 
 ## ID, PW 찾기
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%205.png)
+![Untitled 5](https://github.com/rulrurara/Medicine/assets/110279337/353090c2-b917-4312-98e9-20715784a091)
+
 
 <aside>
 💡 Ajax 이용하여 입력한 정보와 DB 대조 후 찾고자 하는 ID 또는 PW제공
@@ -126,7 +128,8 @@ Session에 로그인한 정보(사용자 이름, 사용자번호 등) 할당
 
 ## 사이드 메뉴바
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%206.png)
+![Untitled 6](https://github.com/rulrurara/Medicine/assets/110279337/326bbaed-d5dc-4575-9782-be2997d520fb)
+
 
 <aside>
 💡 Jquery 이용하여 슬라이드형 메뉴바 구현
@@ -137,7 +140,9 @@ Session에 로그인한 정보(사용자 이름, 사용자번호 등) 할당
 
 ## 건강관리 메인페이지
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%207.png)
+![Untitled 8](https://github.com/rulrurara/Medicine/assets/110279337/9ebda655-5bbd-42f5-be6f-cbad5c97bae8)
+
+
 
 <aside>
 💡 Jquery 이용하여 화면 클릭시 화면 slide 구현 (텍스트,이미지, 배경색 변경)
@@ -148,7 +153,7 @@ Session에 로그인한 정보(사용자 이름, 사용자번호 등) 할당
 
 ## 영양제 섭취일지
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%208.png)
+![Untitled 8](https://github.com/rulrurara/Medicine/assets/110279337/611d6734-deef-4871-b076-8d10302149b0)
 
 <aside>
 💡 사용자가 섭취중인 영양제 DB에 등록.
@@ -167,7 +172,9 @@ Ajax 및 함수 이용하여 화면을 Reload 하면서 구현.
 
 ## 건강관리 리포트 - 달력
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%209.png)
+
+![Untitled 8](https://github.com/rulrurara/Medicine/assets/110279337/611d6734-deef-4871-b076-8d10302149b0)
+
 
 <aside>
 💡 사용자 별 건강 리포트 제공 
@@ -179,7 +186,8 @@ Ajax 및 함수 이용하여 화면을 Reload 하면서 구현.
 
 ## 건강관리 리포트 - 영양제 분석
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2010.png)
+![Untitled 10](https://github.com/rulrurara/Medicine/assets/110279337/5acf056e-ad8e-4ae6-9cac-f09d73728415)
+
 
 <aside>
 💡 사용자 별 건강 리포트 제공. 
@@ -202,7 +210,8 @@ Jquery 이용하여 화면 슬라이드 구현 및 슬라이드 시 Ajax 이용�
 
 ## 건강관리 리포트 - BMI 제공
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2011.png)
+![Untitled 11](https://github.com/rulrurara/Medicine/assets/110279337/eaa0d4c5-4262-421c-8b82-ae06324d6fe8)
+
 
 <aside>
 💡 사용자가 등록한 날짜별 키와 몸무게를 기준으로 BMI 지수 계산
@@ -219,7 +228,7 @@ Jquery 이용하여 화면 슬라이드 구현 및 슬라이드 시 Ajax 이용�
 
 ## 고객센터 - FAQ
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2012.png)
+![Untitled 12](https://github.com/rulrurara/Medicine/assets/110279337/aff0e14c-890d-490b-b3c7-f96d85104bc1)
 
 <aside>
 💡 고객센터 FAQ DB에서 가져와 제공 
@@ -231,7 +240,7 @@ Jquery 이용하여 화면 슬라이드 구현 및 슬라이드 시 Ajax 이용�
 
 ## 고객센터 - QNA
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2013.png)
+![Untitled 13](https://github.com/rulrurara/Medicine/assets/110279337/de97a6de-fd87-442c-87a3-6a37629abbc6)
 
 <aside>
 💡 QNA 등록 시 DB에 등록됨 답변은 Admin 페이지에서 진행
@@ -244,7 +253,8 @@ Session에서 로그인 정보 가져와 전화번호와 이메일 값은 고정
 
 ## Mypage - 내가 등록한 댓글
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2014.png)
+
+![Untitled 14](https://github.com/rulrurara/Medicine/assets/110279337/f5860578-b682-4837-960d-d6311296503b)
 
 <aside>
 💡 게시판 별 내가 등록한 댓글 제공.
@@ -257,7 +267,9 @@ Category 변경 시 ajax 이용하여 화면 다시 그림.
 
 ## 자유게시판
 
-![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled%2015.png)
+
+![Untitled 15](https://github.com/rulrurara/Medicine/assets/110279337/f3f98cb5-3410-45e4-8a03-30586ffd402a)
+
 
 <aside>
 💡 기본적인 게시판, 댓글 CRUD 제공
