@@ -65,6 +65,7 @@ Spring을 이용하여 서버사이드 개발을 하였습니다. MVC패턴을 �
     
     ![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled.png)
   
+![Untitled 1](https://github.com/rulrurara/Medicine/assets/110279337/90f4a0a8-2c96-4bd9-92ba-a813af080c0c)
 
 
 - 화면 기획서
