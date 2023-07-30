@@ -64,7 +64,7 @@ Spring을 이용하여 서버사이드 개발을 하였습니다. MVC패턴을 �
      구현하고 싶은 페이지 별 기능 정의서 작성 
     
     ![Untitled](GOOD%20MEDICINE%207dcc63d896b44d23ad52b9f85e15cb39/Untitled.png)
-    ![Untitled 1](https://github.com/rulrurara/Medicine/assets/110279337/edb4642f-43ef-4a28-bac0-2a8db2a95f17)
+  
 
 
 - 화면 기획서
